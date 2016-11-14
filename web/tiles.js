@@ -8,6 +8,7 @@ var shapeSize = tileSize - tilePadding * 2;
 var xLen = 24;
 var yLen = 12;
 var bgMargin = 25;
+var speedFactor = 1;
 
 var iterations = 10;
 var colors = ['rgba(60, 60, 60, .4)', 'rgb(200, 200, 200)'];
@@ -21,14 +22,13 @@ function draw() {
 
   for (y = 0; y < yLen; y++) {
     for (x = 0; x < xLen; x++) {
-      drawTile(x, y, (x + y * xLen) / (xLen * yLen - 1) * Math.PI + time, time);
-      // drawTile(x, y, 0, time);
+      drawTile(x, y, (x + y * xLen) / (xLen * yLen - 1) * Math.PI + time * speedFactor);
     }
   }
   window.requestAnimationFrame(draw);
 }
 
-function drawTile(x, y, theta, time) {
+function drawTile(x, y, theta) {
   ctx.translate(bgMargin + x * tileSize + tileSize / 2, bgMargin + y * tileSize + tileSize / 2);
   ctx.rotate(theta);
   // if (x == 0 && y == 0) console.log(theta);
@@ -46,4 +46,9 @@ function drawTile(x, y, theta, time) {
   }
 
   ctx.setTransform(1, 0, 0, 1, 0, 0);
+}
+
+function setSpeed(e) {
+  speedFactor = e.target.value;
+  console.log("new speed: " + speedFactor);
 }
