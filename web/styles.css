@@ -1,18 +1,5 @@
 .tile {
   display: inline-block;
   position: absolute;
-  opacity: .3;
+  opacity: .6;
 }
-.tile.red {
-  animation: 14s linear 0s infinite rotatex;
-}
-.tile.green {
-  animation: 14s linear 0s infinite rotatey;
-}
-.tile.blue {
-  animation: 14s linear 0s infinite rotatez;
-}
-
-@keyframes rotatex { from { transform: rotateX(0) } to { transform: rotateX(360deg) }  }
-@keyframes rotatey { from { transform: rotateY(0) } to { transform: rotateY(360deg) }  }
-@keyframes rotatez { from { transform: rotateZ(0) } to { transform: rotateZ(360deg) }  }
