@@ -11,8 +11,13 @@
   </head>
 
   <body>
-    <canvas id="canvas" width="1200" height="624"></canvas>
-    <input type="range" id="setSpeed" min="0" max="2" step=".1" onchange="setSpeed(event)" />
+    <div id="controls">
+      tile size <input type="range" id="tileSize" min="10" max="100" step="1" oninput="changeSetting(this.id, event.target.value)" />
+      tile padding <input type="range" id="tilePadding" min="0" max="5" step="1" oninput="changeSetting(this.id, event.target.value)" />
+      grid x <input type="range" id="gridX" min="2" max="30" step="1" oninput="changeSetting(this.id, event.target.value)" />
+      grid y <input type="range" id="gridY" min="2" max="30" step="1" oninput="changeSetting(this.id, event.target.value)" />
+      curve iterations <input type="range" id="curveIterations" min="2" max="11" step="1" oninput="changeSetting(this.id, event.target.value)" />
+    </div>
 
     <script src="tiles.js" type="text/javascript"></script>
   </body>
