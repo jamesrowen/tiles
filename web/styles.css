@@ -1,8 +1,27 @@
+html {
+  background-color: #eee;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 1em;
+}
+#canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+}
 .tile {
   display: inline-block;
   position: absolute;
   opacity: .6;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
 #controls {
   position: fixed;
   bottom: 0px;
@@ -18,5 +37,9 @@
   transition: bottom .4s ease 0s;
 }
 #controls.closed {
+<<<<<<< HEAD
   bottom: -53px;
+=======
+  bottom: -40px;
+>>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
 }

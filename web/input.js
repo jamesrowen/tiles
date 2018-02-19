@@ -13,6 +13,7 @@ function changeSetting(setting, value) {
     case 'gridY':
       gridSize.y = val;
       break;
+<<<<<<< HEAD
     case 'speed':
       speed = val;
       break;
@@ -25,11 +26,16 @@ function changeSetting(setting, value) {
       break;
     case 'camY':
       camY = val;
+=======
+    case 'curveIterations':
+      curveIterations = val;
+>>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
       break;
   }
 }
 
 function keyPressed() {
+<<<<<<< HEAD
   console.log(key, keyCode);
   switch(key) {
     case ' ':
@@ -40,10 +46,13 @@ function keyPressed() {
       document.getElementById('rewind').checked = !document.getElementById('rewind').checked;
       break;
   }
+=======
+>>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
   switch(keyCode) {
     case 27:
       document.getElementById('controls').classList.toggle('closed');
       break;
+<<<<<<< HEAD
     case 187:
       tileSize = min(tileSize + 2, 100);
       document.getElementById('tileSize').value = tileSize;
@@ -52,5 +61,7 @@ function keyPressed() {
       tileSize = max(tileSize - 2, 10);
       document.getElementById('tileSize').value = tileSize;
       break;
+=======
+>>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
   }
 }
