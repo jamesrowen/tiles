@@ -1,6 +1,11 @@
 html {
   background-color: #eee;
 }
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 1em;
+}
 #canvas {
   position: absolute;
   top: 50%;
@@ -17,4 +22,5 @@ html {
 .controls {
   position: fixed;
   bottom: 10px;
+  left: 30px;
 }
