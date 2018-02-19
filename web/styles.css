@@ -18,10 +18,7 @@ body {
   position: absolute;
   opacity: .6;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
 #controls {
   position: fixed;
   bottom: 0px;
@@ -37,9 +34,5 @@ body {
   transition: bottom .4s ease 0s;
 }
 #controls.closed {
-<<<<<<< HEAD
   bottom: -53px;
-=======
-  bottom: -40px;
->>>>>>> 677a1d476f4a06ff97f21fb49e63e34699991994
 }
