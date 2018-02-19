@@ -1,16 +1,20 @@
 function changeSetting(setting, value) {
+  const val = parseInt(value);
   switch(setting) {
     case 'tileSize':
-      tileSize = value;
+      tileSize = val;
       break;
     case 'tilePadding':
-      tilePadding = value;
+      tilePadding = val;
       break;
     case 'gridX':
-      gridSize.x = value;
+      gridSize.x = val;
       break;
     case 'gridY':
-      gridSize.y = value;
+      gridSize.y = val;
+      break;
+    case 'curveIterations':
+      curveIterations = val;
       break;
   }
 }
