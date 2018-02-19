@@ -19,8 +19,20 @@ body {
   opacity: .6;
 }
 
-.controls {
+#controls {
   position: fixed;
-  bottom: 10px;
-  left: 30px;
+  bottom: 0px;
+  left: 5px;
+  right: 5px;
+  border: 2px solid #5a5a5a;
+  border-bottom: 0px;
+  background-color: #878787;
+  color: #222;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px 10px;
+  transition: bottom .4s ease 0s;
+}
+#controls.closed {
+  bottom: -40px;
 }
