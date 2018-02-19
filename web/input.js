@@ -18,3 +18,11 @@ function changeSetting(setting, value) {
       break;
   }
 }
+
+function keyPressed() {
+  switch(keyCode) {
+    case 27:
+      document.getElementById('controls').classList.toggle('closed');
+      break;
+  }
+}
