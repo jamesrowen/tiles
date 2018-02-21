@@ -15,6 +15,10 @@
       <div id="playback">
         <div class="controlHeader">playback</div>
         <div class="controlPanel">
+          <div id="rewinda">🔄</div>
+          <div id="stepBack">⏪</div>
+          <div id="pause"></div>
+          <div id="stepForward">⏩</div>
         </div>
       </div>
       <div id="mode">
@@ -34,17 +38,17 @@
             spin x <input type="range" id="spinGridX" min="2" max="50" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div>
-            zoom <input type="range" id="zoom" min="5" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
+            zoom <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
             radius <input type="range" id="radius" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />
             bodies <input type="range" id="bodies" min="10" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
             speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
             rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, this.checked)" />
-            <button type="button" id="defaults" onclick="loadDefaults(event.target)">defaults</button>
+            <button type="button" id="defaults" onclick="loadDefaults()">defaults</button>
           </div>
         </div>
       </div>
       <div id="color">
-        <div class="controlHeader">colors</div>
+        <div class="controlHeader">color</div>
         <div class="controlPanel">
           <input type="color" id="color1a" onchange="updateSetting(this.id, this.value)" />
           <input type="color" id="color1b" onchange="updateSetting(this.id, this.value)" />

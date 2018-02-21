@@ -1,27 +1,37 @@
 function keyPressed() {
   // console.log(key, keyCode);
-  switch(key) {
-    case ' ':
-      updateSetting('pause', !pause);
-      break;
-    case 'R':
-      if (!keyIsDown(91) && !keyIsDown(93)) {
-        updateSetting('rewind', !rewind);
-      }
-      break;
-  }
-  switch(keyCode) {
-    case 27:
+}
+
+window.addEventListener('keydown', e => {
+  console.log(e.key, e.keyCode);
+  switch(e.keyCode) {
+    case 27: // esc
       el('controls').classList.toggle('closed');
       break;
-    case 187:
-      updateSetting('tileSize', min(tileSize + 2, 100));
+    case 32: // space
+      updateSetting('pause', !pause);
+      e.preventDefault();
       break;
-    case 189:
-      updateSetting('tileSize', max(tileSize - 2, 5));
+    case 37: // left arrow
+      step = -1;
+      break;
+    case 39: // right arrow
+      step = 1;
+      break;
+    case 82: // R
+      if (!e.ctrlKey && !e.metaKey)
+        updateSetting('rewind', !rewind);
+      break;
+    case 187: // equal/plus
+      mode == 'spin' ? updateSetting('tileSize', min(tileSize + 1, 180)) :
+        updateSetting('zoom', min(zoom + 1, 80));
+      break;
+    case 189: // minus
+      mode == 'spin' ? updateSetting('tileSize', max(tileSize - 1, 40)) :
+        updateSetting('zoom', max(zoom - 1, 5));
       break;
   }
-}
+});
 
 window.addEventListener('wheel', e => {
   if (mode == 'orbit') {

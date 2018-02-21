@@ -1,7 +1,5 @@
 // globals
-var lastTime = 0;
-var tileColors = [];
-var shapeSize;
+var lastTime = 0, tileColors, shapeSize, step = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -17,7 +15,8 @@ function windowResized() {
 
 function draw() {
   const time = millis() / 1000.0;
-  const elapsed = pause ? 0 : time - lastTime;
+  const elapsed = pause ? (step != 0 ? (time - lastTime) * step : 0) : time - lastTime;
+  step = 0;
   lastTime = time;
   resetMatrix();
   background(bgColor);

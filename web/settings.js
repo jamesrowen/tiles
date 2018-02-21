@@ -5,7 +5,7 @@ var settings = {
   // playback
   'speed': {default: 40, parse: parseInt, attr: 'value'},
   'rewind': {default: false, parse: parseBool, attr: 'checked'},
-  'pause': {default: false, parse: parseBool},
+  'pause': {default: false, parse: parseBool, attr: 'className'},
   // colors
   'color1a': {default: '#000000', parse: x => x, attr: 'value'},
   'color2a': {default: '#ffffff', parse: x => x, attr: 'value'},
@@ -44,9 +44,8 @@ function updateSetting(name, value) {
     el(name)[settings[name].attr] = val;
 }
 
-function loadDefaults(el) {
+function loadDefaults() {
   Object.entries(settings).map(s => updateSetting([s[0]], s[1].default));
-  if (el) el.blur();
 }
 
 // load available settings from storage
