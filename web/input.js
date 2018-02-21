@@ -24,7 +24,9 @@ function keyPressed() {
 }
 
 window.addEventListener('wheel', e => {
-  updateSetting('camX', camX - e.deltaX);
-  updateSetting('camY', camY - e.deltaY);
+  if (mode == 'orbit') {
+    updateSetting('camX', camX - e.deltaX);
+    updateSetting('camY', camY - e.deltaY);
+  }
   e.preventDefault();
 });

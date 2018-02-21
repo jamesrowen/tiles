@@ -1,6 +1,7 @@
 // globals
 var lastTime = 0;
 var tileColors;
+var shapeSize;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -13,34 +14,44 @@ function windowResized() {
 
 function draw() {
   const time = millis() / 1000.0;
-  el('message').textContent = "orbit: " + parseInt((orbit - 1) * 10);
   const elapsed = pause ? 0 : time - lastTime;
   lastTime = time;
-  if (mode == 'orbit')
-    updateSetting('orbit', orbit + elapsed / speed * (rewind ? -1 : 1));
   tileColors = [color(color1a), color(color2a)];
+  shapeSize = tileSize - tilePadding * 2;
   resetMatrix();
   background(bgColor);
 
-  translate(camX, camY);
-  for (let y = 0; y < gridY; y++) {
-    for (let x = 0; x < gridX; x++) {
-      const tilePct = (x + y * gridX) / (gridX - 1) / (gridY - 1);
-      // tileColors[0] = color(255 - 105 * x / gridX, 255, 255 - 105 * y / gridY, 200);
-      // tileColors[1] = color(205 * x / gridX + 50, 205 * y / gridY + 50, 255, 200);
-      // tileColors[0] = color(55 * x / gridX, 55 * x / gridX, 55 * x / gridX, 200);
-      // tileColors[1] = color(35 * x / gridX + 220, 35 * x / gridX + 220, 35 * x / gridX + 220, 200);
-      translate(tileSize * x + tilePadding, tileSize * y + tilePadding);
-      rotate(tilePct * (mode == 'orbit' ? orbit : time));
-      drawTile();
-      rotate(-tilePct * (mode == 'orbit' ? 1 : time));
-      translate(-(tileSize * x + tilePadding), -(tileSize * y + tilePadding));
+  if (mode == 'spin') {
+    for (let y = 0; y < gridY; y++) {
+      for (let x = 0; x < gridX; x++) {
+        const tilePct = (x + y * gridX) / (gridX - 1) / (gridY - 1);
+        translate(tileSize * x + tileSize / 2, tileSize * y + tileSize / 2);
+        rotate(tilePct * time);
+        translate(-shapeSize / 2, -shapeSize / 2);
+        drawTile();
+        resetMatrix();
+      }
+    }
+  }
+
+  if (mode == 'orbit') {
+    el('message').textContent = "orbit: " + (orbit * 10).toFixed(1);
+    updateSetting('orbit', orbit + elapsed / speed * (rewind ? -1 : 1));
+    translate(camX, camY);
+
+    for (let y = 0; y < gridY; y++) {
+      for (let x = 0; x < gridX; x++) {
+        const tilePct = (x + y * gridX) / (gridX - 1) / (gridY - 1);
+        translate(tileSize * x + tilePadding, tileSize * y + tilePadding);
+        rotate(tilePct * orbit);
+        drawTile();
+        translate(-(tileSize * x + tilePadding), -(tileSize * y + tilePadding));
+      }
     }
   }
 }
 
 function drawTile() {
-  const shapeSize = tileSize - tilePadding * 2;
   // draw two halves, first upper left then bottom right
   for (let i = 0; i < 2; i++) {
     fill(tileColors[i]);

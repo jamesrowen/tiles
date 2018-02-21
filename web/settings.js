@@ -9,7 +9,7 @@ var settings = {
   'gridX': {default: 30, parse: parseInt, attr: 'value'},
   'gridY': {default: 30, parse: parseInt, attr: 'value'},
   // playback
-  'speed': {default: 40, parse: parseInt},
+  'speed': {default: 40, parse: parseInt, attr: 'value'},
   'rewind': {default: false, parse: parseBool, attr: 'checked'},
   'pause': {default: false, parse: parseBool},
   // colors
