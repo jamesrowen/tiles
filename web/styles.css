@@ -22,39 +22,41 @@ body {
 #controls {
   position: fixed;
   bottom: 0px;
-  left: 25px;
-  right: 25px;
-  border: 3px solid #5a5a5a;
+  left: 50px;
+  right: 50px;
+  border: 3px solid #555;
   border-bottom: 0px;
-  background-color: #878787;
-  color: #222;
+  background-color: #717171;
+  color: #333;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  padding: 3px;
+  padding: 4px;
   transition: bottom .4s ease 0s;
 }
 #controls.closed {
-  bottom: -53px;
+  bottom: -97px;
 }
 
+#mode { margin-bottom: 5px; }
 #mode div {
   display: inline-block;
   cursor: pointer;
-  padding: 5px 10px;
+  background-color: #b1b4b7;
+  padding: 1px 35px;
   margin-right: 3px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-radius: 1px;
 }
 #mode.spin div:nth-child(1),
 #mode.pattern div:nth-child(2),
 #mode.orbit div:nth-child(3) {
-  background-color: #a5a5a5;
+  background-color: #bee0f1;
 }
 
 #modeControls {
   display: inline-block;
   background-color: #a5a5a5;
-  padding: 5px 5px;
+  border-radius: 1px;
+  padding: 5px;
   height: 50px;
   width: 70%;
 }

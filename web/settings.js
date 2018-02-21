@@ -2,12 +2,6 @@ var el = document.getElementById.bind(document);
 
 var settings = {
   'mode': {default: 'spin', parse: x => x, attr: 'className'},
-  // tile grid
-  'tileSize': {default: 10, parse: parseInt, attr: 'value'},
-  'tilePadding': {default: 0, parse: parseInt, attr: 'value'},
-  'shapeIterations': {default: 10, parse: parseInt},
-  'gridX': {default: 30, parse: parseInt, attr: 'value'},
-  'gridY': {default: 30, parse: parseInt, attr: 'value'},
   // playback
   'speed': {default: 40, parse: parseInt, attr: 'value'},
   'rewind': {default: false, parse: parseBool, attr: 'checked'},
@@ -17,10 +11,14 @@ var settings = {
   'color2a': {default: '#ffffff90', parse: x => x},
   'bgColor': {default: '#f0f0f0', parse: x => x},
   // spin mode
-  'spinGridX' : {default: 30, parse: parseInt, attr: 'value'},
-  'spinGridY' : {default: 30, parse: parseInt, attr: 'value'},
+  'tileSize' : {default: 30, parse: parseInt, attr: 'value'},
+  'tileScale': {default: 1, parse: parseFloat, attr: 'value'},
+  'shapeIterations': {default: 7, parse: parseInt, attr: 'value'},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},
+  'curl': {default: 25, parse: parseInt, attr: 'value'},
+  'bodies': {default: 30, parse: parseInt, attr: 'value'},
+  'zoom': {default: 10, parse: parseInt, attr: 'value'},
   'camX': {default: 0, parse: parseInt},
   'camY': {default: 0, parse: parseInt}
 };

@@ -13,25 +13,23 @@
   <body>
     <div id="controls">
       <div id="mode">
-        <div onclick="updateSetting('mode', 'spin')">spin</div>
-        <div onclick="updateSetting('mode', 'pattern')">pattern</div>
-        <div onclick="updateSetting('mode', 'orbit')">orbit</div>
+        <div onclick="updateSetting('mode', 'spin')">spin</div><div onclick="updateSetting('mode', 'pattern')">pattern</div><div onclick="updateSetting('mode', 'orbit')">orbit</div>
       </div>
       <div id="modeControls">
         <div>
-          spin x <input type="range" id="spinGridX" min="2" max="50" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
-          spin y <input type="range" id="spinGridY" min="2" max="50" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
+          tile size <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
+          tile scale <input type="range" id="tileScale" min=".7" max="3" step=".1" oninput="updateSetting(this.id, this.value)" />
+          shape <input type="range" id="shapeIterations" min="2" max="10" step="1" oninput="updateSetting(this.id, this.value)" />
         </div>
         <div>
-          spin x <input type="range" id="spinGridX" min="2" max="50" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
+          spin x <input type="range" id="spinGridX" min="2" max="50" step="1" oninput="updateSetting(this.id, this.value)" />
         </div>
         <div>
-          tile size <input type="range" id="tileSize" min="5" max="100" step="1" value="10" oninput="updateSetting(this.id, event.target.value)" />
-          tile padding <input type="range" id="tilePadding" min="0" max="5" step="1" oninput="updateSetting(this.id, event.target.value)" />
-          grid x <input type="range" id="gridX" min="2" max="30" step="1" value="30" oninput="updateSetting(this.id, event.target.value)" />
-          grid y <input type="range" id="gridY" min="2" max="60" step="1" value="30" oninput="updateSetting(this.id, event.target.value)" />
-          speed <input type="range" id="speed" min="1" max="80" step="1" value="40" oninput="updateSetting(this.id, event.target.value)" />
-          rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, event.target.checked)" />
+          zoom <input type="range" id="zoom" min="5" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
+          curl <input type="range" id="curl" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />
+          bodies <input type="range" id="bodies" min="10" max="60" step="1"oninput="updateSetting(this.id, this.value)" />
+          speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+          rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, this.checked)" />
           <button type="button" id="defaults" onclick="loadDefaults(event.target)">defaults</button>
         </div>
       </div>
