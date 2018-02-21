@@ -1,6 +1,6 @@
 // globals
 var lastTime = 0;
-var tileColors;
+var tileColors = [];
 var shapeSize;
 
 function setup() {
@@ -19,7 +19,6 @@ function draw() {
   const time = millis() / 1000.0;
   const elapsed = pause ? 0 : time - lastTime;
   lastTime = time;
-  tileColors = [color(color1a), color(color2a)];
   resetMatrix();
   background(bgColor);
 
@@ -32,6 +31,7 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
+        updateColors(x / (nx - 1), y / (ny - 1), tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
         rotate(tilePct * time);
         translate(-shapeSize / 2, -shapeSize / 2);
@@ -49,8 +49,10 @@ function draw() {
 
     for (let b = 0; b < bodies; b++) {
       for (let r = 0; r < radius; r++) {
+        const tilePct = (r + b * radius) / (radius - 1) / (bodies - 1);
+        updateColors(r / (radius - 1), b / (bodies - 1), tilePct);
         translate(zoom * r, zoom * b);
-        rotate((r + b * radius) / (radius - 1) / (bodies - 1) * orbit);
+        rotate(tilePct * orbit);
         drawTile();
         translate(-zoom * r, -zoom * b);
       }
@@ -70,4 +72,11 @@ function drawTile() {
     }
     endShape(CLOSE);
   }
+}
+
+function updateColors(xpct, ypct, pct) {
+  tileColors = [lerpColor(color(color1a), color(color1b), g1x ? (g1y ? pct : xpct) : (g1y ? ypct : 0)),
+    lerpColor(color(color2a), color(color2b), g2x ? (g2y ? pct : xpct) : (g2y ? ypct : 0))];
+  tileColors[0].setAlpha(c1alpha);
+  tileColors[1].setAlpha(c2alpha);
 }
