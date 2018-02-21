@@ -5,6 +5,9 @@ var shapeSize;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  el('defaultCanvas0').addEventListener('click', e => {
+    el('controls').classList.toggle('closed');
+  });
   noStroke();
 }
 
@@ -45,11 +48,11 @@ function draw() {
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {
-      for (let c = 0; c < curl; c++) {
-        translate(zoom * c, zoom * b);
-        rotate((c + b * curl) / (curl - 1) / (bodies - 1) * orbit);
+      for (let r = 0; r < radius; r++) {
+        translate(zoom * r, zoom * b);
+        rotate((r + b * radius) / (radius - 1) / (bodies - 1) * orbit);
         drawTile();
-        translate(-zoom * c, -zoom * b);
+        translate(-zoom * r, -zoom * b);
       }
     }
   }

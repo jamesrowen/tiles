@@ -17,7 +17,7 @@ var settings = {
   'shapeIterations': {default: 7, parse: parseInt, attr: 'value'},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},
-  'curl': {default: 25, parse: parseInt, attr: 'value'},
+  'radius': {default: 20, parse: parseInt, attr: 'value'},
   'bodies': {default: 30, parse: parseInt, attr: 'value'},
   'zoom': {default: 10, parse: parseInt, attr: 'value'},
   'camX': {default: 0, parse: parseInt},

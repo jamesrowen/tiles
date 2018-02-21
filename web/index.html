@@ -12,29 +12,49 @@
 
   <body>
     <div id="controls">
+      <div id="playback">
+        <div class="controlHeader">playback</div>
+        <div class="controlPanel">
+        </div>
+      </div>
       <div id="mode">
-        <div onclick="updateSetting('mode', 'spin')">spin</div><div onclick="updateSetting('mode', 'pattern')">pattern</div><div onclick="updateSetting('mode', 'orbit')">orbit</div>
+        <div id="modeTabs">
+          <div class="controlHeader" onclick="updateSetting('mode', 'spin')">spin</div><!--
+       --><div class="controlHeader" onclick="updateSetting('mode', 'pattern')">pattern</div><!--
+       --><div class="controlHeader" onclick="updateSetting('mode', 'orbit')">orbit</div>
+        </div>
+        <div id="modeControls" class="controlPanel">
+          <div>
+            tile size <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
+            tile scale <input type="range" id="tileScale" min=".7" max="3" step=".1" oninput="updateSetting(this.id, this.value)" />
+            margin <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
+            shape <input type="range" id="shapeIterations" min="2" max="10" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div>
+            spin x <input type="range" id="spinGridX" min="2" max="50" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div>
+            zoom <input type="range" id="zoom" min="5" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
+            radius <input type="range" id="radius" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />
+            bodies <input type="range" id="bodies" min="10" max="60" step="1"oninput="updateSetting(this.id, this.value)" />
+            speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+            rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, this.checked)" />
+            <button type="button" id="defaults" onclick="loadDefaults(event.target)">defaults</button>
+          </div>
+        </div>
       </div>
-      <div id="modeControls">
-        <div>
-          tile size <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
-          tile scale <input type="range" id="tileScale" min=".7" max="3" step=".1" oninput="updateSetting(this.id, this.value)" />
-          margin <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
-          shape <input type="range" id="shapeIterations" min="2" max="10" step="1" oninput="updateSetting(this.id, this.value)" />
-        </div>
-        <div>
-          spin x <input type="range" id="spinGridX" min="2" max="50" step="1" oninput="updateSetting(this.id, this.value)" />
-        </div>
-        <div>
-          zoom <input type="range" id="zoom" min="5" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
-          curl <input type="range" id="curl" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />
-          bodies <input type="range" id="bodies" min="10" max="60" step="1"oninput="updateSetting(this.id, this.value)" />
-          speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
-          rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, this.checked)" />
-          <button type="button" id="defaults" onclick="loadDefaults(event.target)">defaults</button>
+      <div id="color">
+        <div class="controlHeader">color</div>
+        <div class="controlPanel">
+          <div>base 1<input type="color" id="color1a" /></div>
+          <div>base 2<input type="color" id="color2a" /></div>
         </div>
       </div>
-      <span id="message"></span>
+      <div id="msg">
+        <div id="msgHeader" class="controlHeader">help text</div>
+        <div id="message" class="controlPanel">
+        </div>
+      </div>
     </div>
 
     <script src="lib/p5.min.js" type="text/javascript"></script>
