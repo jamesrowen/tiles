@@ -21,13 +21,15 @@ function draw() {
   background(bgColor);
 
   if (mode == 'spin') {
-    shapeSize = parseInt(tileSize * tileScale);
-    const nx = parseInt(windowWidth / tileSize);
-    const ny = parseInt(windowHeight / tileSize);
+    const nx = parseInt((windowWidth - margin * 1.8) / tileSize);
+    const ny = parseInt((windowHeight - margin * 1.8) / tileSize);
+    let newSize = tileSize + parseInt(((windowWidth - margin * 1.8) % tileSize) / nx);
+    shapeSize = parseInt(newSize * tileScale);
+
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        translate(tileSize * (x + .5), tileSize * (y + .5));
+        translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
         rotate(tilePct * time);
         translate(-shapeSize / 2, -shapeSize / 2);
         drawTile();

@@ -13,6 +13,7 @@ var settings = {
   // spin mode
   'tileSize' : {default: 30, parse: parseInt, attr: 'value'},
   'tileScale': {default: 1, parse: parseFloat, attr: 'value'},
+  'margin': {default: 30, parse: parseInt, attr: 'value'},
   'shapeIterations': {default: 7, parse: parseInt, attr: 'value'},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},

@@ -1,5 +1,5 @@
 function keyPressed() {
-  console.log(key, keyCode);
+  // console.log(key, keyCode);
   switch(key) {
     case ' ':
       updateSetting('pause', !pause);
