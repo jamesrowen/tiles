@@ -1,56 +1,30 @@
-function changeSetting(setting, value) {
-  const val = parseInt(value);
-  switch(setting) {
-    case 'tileSize':
-      tileSize = val;
-      break;
-    case 'tilePadding':
-      tilePadding = val;
-      break;
-    case 'gridX':
-      gridSize.x = val;
-      break;
-    case 'gridY':
-      gridSize.y = val;
-      break;
-    case 'speed':
-      speed = val;
-      break;
-    case 'rewind':
-      rewind = value ? -1 : 1;
-      console.log(value);
-      break;
-    case 'camX':
-      camX = val;
-      break;
-    case 'camY':
-      camY = val;
-      break;
-  }
-}
-
 function keyPressed() {
   console.log(key, keyCode);
   switch(key) {
     case ' ':
-      pause = !pause;
+      updateSetting('pause', !pause);
       break;
     case 'R':
-      rewind *= -1;
-      document.getElementById('rewind').checked = !document.getElementById('rewind').checked;
+      if (!keyIsDown(91) && !keyIsDown(93)) {
+        updateSetting('rewind', !rewind);
+      }
       break;
   }
   switch(keyCode) {
     case 27:
-      document.getElementById('controls').classList.toggle('closed');
+      el('controls').classList.toggle('closed');
       break;
     case 187:
-      tileSize = min(tileSize + 2, 100);
-      document.getElementById('tileSize').value = tileSize;
+      updateSetting('tileSize', min(tileSize + 2, 100));
       break;
     case 189:
-      tileSize = max(tileSize - 2, 10);
-      document.getElementById('tileSize').value = tileSize;
+      updateSetting('tileSize', max(tileSize - 2, 5));
       break;
   }
 }
+
+window.addEventListener('wheel', e => {
+  updateSetting('camX', camX - e.deltaX);
+  updateSetting('camY', camY - e.deltaY);
+  e.preventDefault();
+});
