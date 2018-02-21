@@ -12,15 +12,29 @@
 
   <body>
     <div id="controls">
-      tile size <input type="range" id="tileSize" min="5" max="100" step="1" value="10" oninput="updateSetting(this.id, event.target.value)" />
-      tile padding <input type="range" id="tilePadding" min="0" max="5" step="1" oninput="updateSetting(this.id, event.target.value)" />
-      grid x <input type="range" id="gridX" min="2" max="30" step="1" value="30" oninput="updateSetting(this.id, event.target.value)" />
-      grid y <input type="range" id="gridY" min="2" max="60" step="1" value="30" oninput="updateSetting(this.id, event.target.value)" />
-      speed <input type="range" id="speed" min="1" max="80" step="1" value="40" oninput="updateSetting(this.id, event.target.value)" />
-      rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, event.target.checked)" />
-      cam x <input type="range" id="camX" min="0" max="800" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
-      cam y <input type="range" id="camY" min="0" max="500" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
-      <button type="button" id="defaults" onclick="loadDefaults(event.target)">defaults</button>
+      <div id="mode">
+        <div onclick="updateSetting('mode', 'spin')">spin</div>
+        <div onclick="updateSetting('mode', 'pattern')">pattern</div>
+        <div onclick="updateSetting('mode', 'orbit')">orbit</div>
+      </div>
+      <div id="modeControls">
+        <div>
+          spin x <input type="range" id="spinGridX" min="2" max="50" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
+          spin y <input type="range" id="spinGridY" min="2" max="50" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
+        </div>
+        <div>
+          spin x <input type="range" id="spinGridX" min="2" max="50" step="1" value="0" oninput="updateSetting(this.id, event.target.value)" />
+        </div>
+        <div>
+          tile size <input type="range" id="tileSize" min="5" max="100" step="1" value="10" oninput="updateSetting(this.id, event.target.value)" />
+          tile padding <input type="range" id="tilePadding" min="0" max="5" step="1" oninput="updateSetting(this.id, event.target.value)" />
+          grid x <input type="range" id="gridX" min="2" max="30" step="1" value="30" oninput="updateSetting(this.id, event.target.value)" />
+          grid y <input type="range" id="gridY" min="2" max="60" step="1" value="30" oninput="updateSetting(this.id, event.target.value)" />
+          speed <input type="range" id="speed" min="1" max="80" step="1" value="40" oninput="updateSetting(this.id, event.target.value)" />
+          rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, event.target.checked)" />
+          <button type="button" id="defaults" onclick="loadDefaults(event.target)">defaults</button>
+        </div>
+      </div>
       <span id="message"></span>
     </div>
 

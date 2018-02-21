@@ -16,7 +16,8 @@ function draw() {
   el('message').textContent = "orbit: " + parseInt((orbit - 1) * 10);
   const elapsed = pause ? 0 : time - lastTime;
   lastTime = time;
-  updateSetting('orbit', orbit + elapsed / speed * (rewind ? -1 : 1));
+  if (mode == 'orbit')
+    updateSetting('orbit', orbit + elapsed / speed * (rewind ? -1 : 1));
   tileColors = [color(color1a), color(color2a)];
   resetMatrix();
   background(bgColor);
@@ -30,9 +31,9 @@ function draw() {
       // tileColors[0] = color(55 * x / gridX, 55 * x / gridX, 55 * x / gridX, 200);
       // tileColors[1] = color(35 * x / gridX + 220, 35 * x / gridX + 220, 35 * x / gridX + 220, 200);
       translate(tileSize * x + tilePadding, tileSize * y + tilePadding);
-      rotate(orbit * tilePct);
+      rotate(tilePct * (mode == 'orbit' ? orbit : time));
       drawTile();
-      rotate(-tilePct);
+      rotate(-tilePct * (mode == 'orbit' ? 1 : time));
       translate(-(tileSize * x + tilePadding), -(tileSize * y + tilePadding));
     }
   }

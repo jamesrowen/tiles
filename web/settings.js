@@ -1,6 +1,7 @@
 var el = document.getElementById.bind(document);
 
 var settings = {
+  'mode': {default: 'spin', parse: x => x, attr: 'className'},
   // tile grid
   'tileSize': {default: 10, parse: parseInt, attr: 'value'},
   'tilePadding': {default: 0, parse: parseInt, attr: 'value'},
@@ -15,6 +16,9 @@ var settings = {
   'color1a': {default: '#00000090', parse: x => x},
   'color2a': {default: '#ffffff90', parse: x => x},
   'bgColor': {default: '#f0f0f0', parse: x => x},
+  // spin mode
+  'spinGridX' : {default: 30, parse: parseInt, attr: 'value'},
+  'spinGridY' : {default: 30, parse: parseInt, attr: 'value'},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},
   'camX': {default: 0, parse: parseInt},

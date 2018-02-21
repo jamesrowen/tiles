@@ -4,7 +4,7 @@ html {
 body {
   margin: 0;
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: .9em;
 }
 #canvas {
   position: absolute;
@@ -22,17 +22,48 @@ body {
 #controls {
   position: fixed;
   bottom: 0px;
-  left: 5px;
-  right: 5px;
-  border: 2px solid #5a5a5a;
+  left: 25px;
+  right: 25px;
+  border: 3px solid #5a5a5a;
   border-bottom: 0px;
   background-color: #878787;
   color: #222;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 5px 10px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 3px;
   transition: bottom .4s ease 0s;
 }
 #controls.closed {
   bottom: -53px;
+}
+
+#mode div {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#mode.spin div:nth-child(1),
+#mode.pattern div:nth-child(2),
+#mode.orbit div:nth-child(3) {
+  background-color: #a5a5a5;
+}
+
+#modeControls {
+  display: inline-block;
+  background-color: #a5a5a5;
+  padding: 5px 5px;
+  height: 50px;
+  width: 70%;
+}
+
+#modeControls div {
+  display: none;
+}
+#mode.spin + #modeControls div:nth-child(1),
+#mode.pattern + #modeControls div:nth-child(2),
+#mode.orbit + #modeControls div:nth-child(3) {
+  display: block;
 }
