@@ -19,7 +19,7 @@ body {
   opacity: .6;
 }
 
-#controls {
+.controls {
   position: fixed;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr;
@@ -36,10 +36,10 @@ body {
   border-top-right-radius: 4px;
   transition: bottom .4s ease 0s;
 }
-#controls.closed {
+.controls.closed {
   bottom: -120px;
 }
-#controls > div {
+.controls > div {
   display: flex;
   flex-flow: column;
   padding: 5px;
@@ -56,24 +56,21 @@ body {
 }
 #modeTabs { display: flex; flex-flow: row; }
 #modeTabs div {
-  background-color: #b1b4b7;
+  background-color: #b9b9b9;
   cursor: pointer;
   margin-right: 3px;
   text-align: center;
   flex: 1 1 auto;
 }
 #modeTabs div:last-child { margin-right: 0; }
-#mode.spin #modeTabs div:nth-child(1),
-#mode.pattern #modeTabs div:nth-child(2),
-#mode.orbit #modeTabs div:nth-child(3) {
+#mode[value="spin"] #modeTabs div:nth-child(1),
+#mode[value="pattern"] #modeTabs div:nth-child(2),
+#mode[value="orbit"] #modeTabs div:nth-child(3) {
   background-color: #e6e4d0;
-}
-#modeControls div {
-  display: none;
 }
 
 .controlPanel {
-  background-color: #a5a5a5;
+  background-color: #cecece;
   border-radius: 1px;
   padding: 5px;
   flex: 1 1 auto;
@@ -101,10 +98,16 @@ body {
   padding: 3px;
 }
 #speedControl { grid-column: 1 / 3; }
-#mode.spin #modeControls div:nth-child(1),
-#mode.pattern #modeControls div:nth-child(2),
-#mode.orbit #modeControls div:nth-child(3) {
-  display: block;
+
+.spinMode,
+.patternMode,
+.orbitMode {
+  display: none;
+}
+#mode[value="spin"] .spinMode,
+#mode[value="pattern"] .patternMode,
+#mode[value="orbit"] .orbitMode {
+  display: initial;
 }
 #color input[type="range"] { width: 44px; }
 

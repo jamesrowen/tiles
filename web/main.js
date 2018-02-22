@@ -4,7 +4,7 @@ var lastTime = 0, tileColors, shapeSize, step = 0;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   el('defaultCanvas0').addEventListener('click', e => {
-    el('controls').classList.toggle('closed');
+    el('mode').classList.toggle('closed');
   });
   noStroke();
 }
@@ -43,7 +43,7 @@ function draw() {
   if (mode == 'orbit') {
     shapeSize = zoom;
     el('message').textContent = "orbit: " + (orbit * 10).toFixed(1);
-    updateSetting('orbit', orbit + elapsed / speed * (rewind ? -1 : 1));
+    updateSetting('orbit', orbit + elapsed / orbitSpeed * (rewind ? -1 : 1));
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {

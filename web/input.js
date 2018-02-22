@@ -2,7 +2,7 @@ window.addEventListener('keydown', e => {
   // console.log(e.key, e.keyCode);
   switch(e.keyCode) {
     case 27: // esc
-      el('controls').classList.toggle('closed');
+      el('mode').classList.toggle('closed');
       break;
     case 32: // space
       updateSetting('playing', !playing);

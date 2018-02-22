@@ -11,35 +11,40 @@
   </head>
 
   <body>
-    <div id="controls">
+    <div id="mode" class="controls">
       <div id="playback">
         <div class="controlHeader">playback</div>
         <div class="controlPanel">
           <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play/pause</div>
-          <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />rewind</div>
+          <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />reverse</div>
           <div id="stepBack" class="button" onclick="stepBack()">&lt; step back</div>
           <div id="stepForward" class="button" onclick="stepForward()">step forward &gt;</div>
-          <div id="speedControl">speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" /></div>
+          <div id="speedControl">
+            speed
+            <input type="range" id="spinSpeed" class="spinMode" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+            <input type="range" id="patternSpeed" class="patternMode" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+            <input type="range" id="orbitSpeed" class="orbitMode" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
         </div>
       </div>
-      <div id="mode">
+      <div id="modeControls">
         <div id="modeTabs">
           <div class="controlHeader" onclick="updateSetting('mode', 'spin')">spin</div><!--
        --><div class="controlHeader" onclick="updateSetting('mode', 'pattern')">pattern</div><!--
        --><div class="controlHeader" onclick="updateSetting('mode', 'orbit')">orbit</div>
         </div>
-        <div id="modeControls" class="controlPanel">
-          <div>
+        <div class="controlPanel">
+          <div class="spinMode">
             tile size <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
             tile scale <input type="range" id="tileScale" min=".7" max="2.8" step=".1" oninput="updateSetting(this.id, this.value)" />
             <br>
             margin <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
             shape <input type="range" id="shapeIterations" min="2" max="10" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div>
+          <div class="patternMode">
             spin x <input type="range" id="spinGridX" min="2" max="50" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div>
+          <div class="orbitMode">
             zoom <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
             <br>
             radius <input type="range" id="radius" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />

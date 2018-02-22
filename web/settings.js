@@ -1,11 +1,13 @@
 var el = document.getElementById.bind(document);
 
 var settings = {
-  'mode': {default: 'spin', parse: x => x, attr: 'class'},
+  'mode': {default: 'spin', parse: x => x, attr: 'value'},
   // playback
-  'speed': {default: 40, parse: parseInt, attr: 'value'},
   'rewind': {default: false, parse: parseBool, attr: 'value'},
   'playing': {default: true, parse: parseBool, attr: 'value'},
+  'spinSpeed': {default: 40, parse: parseInt, attr: 'value'},
+  'patternSpeed': {default: 40, parse: parseInt, attr: 'value'},
+  'orbitSpeed': {default: 40, parse: parseInt, attr: 'value'},
   // colors
   'color1a': {default: '#000000', parse: x => x, attr: 'value'},
   'color2a': {default: '#ffffff', parse: x => x, attr: 'value'},
