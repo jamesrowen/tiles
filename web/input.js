@@ -1,22 +1,18 @@
-function keyPressed() {
-  // console.log(key, keyCode);
-}
-
 window.addEventListener('keydown', e => {
-  console.log(e.key, e.keyCode);
+  // console.log(e.key, e.keyCode);
   switch(e.keyCode) {
     case 27: // esc
       el('controls').classList.toggle('closed');
       break;
     case 32: // space
-      updateSetting('pause', !pause);
+      updateSetting('playing', !playing);
       e.preventDefault();
       break;
     case 37: // left arrow
-      step = -1;
+      stepBack();
       break;
     case 39: // right arrow
-      step = 1;
+      stepForward();
       break;
     case 82: // R
       if (!e.ctrlKey && !e.metaKey)
@@ -40,3 +36,10 @@ window.addEventListener('wheel', e => {
   }
   e.preventDefault();
 });
+
+function stepBack() {
+  step = -1;
+}
+function stepForward() {
+  step = 1;
+}

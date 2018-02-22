@@ -15,10 +15,11 @@
       <div id="playback">
         <div class="controlHeader">playback</div>
         <div class="controlPanel">
-          <div id="rewinda">🔄</div>
-          <div id="stepBack">⏪</div>
-          <div id="pause"></div>
-          <div id="stepForward">⏩</div>
+          <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play/pause</div>
+          <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />rewind</div>
+          <div id="stepBack" class="button" onclick="stepBack()">&lt; step back</div>
+          <div id="stepForward" class="button" onclick="stepForward()">step forward &gt;</div>
+          <div id="speedControl">speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" /></div>
         </div>
       </div>
       <div id="mode">
@@ -30,7 +31,8 @@
         <div id="modeControls" class="controlPanel">
           <div>
             tile size <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
-            tile scale <input type="range" id="tileScale" min=".7" max="3" step=".1" oninput="updateSetting(this.id, this.value)" />
+            tile scale <input type="range" id="tileScale" min=".7" max="2.8" step=".1" oninput="updateSetting(this.id, this.value)" />
+            <br>
             margin <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
             shape <input type="range" id="shapeIterations" min="2" max="10" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
@@ -39,10 +41,9 @@
           </div>
           <div>
             zoom <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+            <br>
             radius <input type="range" id="radius" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />
             bodies <input type="range" id="bodies" min="10" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
-            speed <input type="range" id="speed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
-            rewind <input type="checkbox" id="rewind" onchange="updateSetting(this.id, this.checked)" />
             <button type="button" id="defaults" onclick="loadDefaults()">defaults</button>
           </div>
         </div>
@@ -65,7 +66,7 @@
         </div>
       </div>
       <div id="msg">
-        <div id="msgHeader" class="controlHeader">message</div>
+        <div id="msgHeader" class="controlHeader">tile stee</div>
         <div id="message" class="controlPanel">
         </div>
       </div>

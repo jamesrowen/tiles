@@ -1,11 +1,11 @@
 var el = document.getElementById.bind(document);
 
 var settings = {
-  'mode': {default: 'spin', parse: x => x, attr: 'className'},
+  'mode': {default: 'spin', parse: x => x, attr: 'class'},
   // playback
   'speed': {default: 40, parse: parseInt, attr: 'value'},
-  'rewind': {default: false, parse: parseBool, attr: 'checked'},
-  'pause': {default: false, parse: parseBool, attr: 'className'},
+  'rewind': {default: false, parse: parseBool, attr: 'value'},
+  'playing': {default: true, parse: parseBool, attr: 'value'},
   // colors
   'color1a': {default: '#000000', parse: x => x, attr: 'value'},
   'color2a': {default: '#ffffff', parse: x => x, attr: 'value'},
@@ -40,8 +40,11 @@ function updateSetting(name, value) {
   const val = settings[name].parse(value);
   this[name] = val;
   window.localStorage.setItem(name, val);
-  if (settings[name].attr)
-    el(name)[settings[name].attr] = val;
+  if (settings[name].attr) {
+    el(name).setAttribute(settings[name].attr, val);
+    if (settings[name].attr == 'value')
+      el(name).value = val;
+  }
 }
 
 function loadDefaults() {
@@ -50,4 +53,4 @@ function loadDefaults() {
 
 // load available settings from storage
 Object.entries(settings).map(s => updateSetting(s[0],
-  s[1].parse(window.localStorage.getItem(s[0])) || s[1].default));
+  s[1].parse(window.localStorage.getItem(s[0]) || s[1].default)));

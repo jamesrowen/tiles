@@ -15,7 +15,7 @@ function windowResized() {
 
 function draw() {
   const time = millis() / 1000.0;
-  const elapsed = pause ? (step != 0 ? (time - lastTime) * step : 0) : time - lastTime;
+  const elapsed = playing ? time - lastTime : (step != 0 ? (time - lastTime) * step : 0);
   step = 0;
   lastTime = time;
   resetMatrix();

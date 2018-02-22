@@ -31,6 +31,7 @@ body {
   color: #333;
   background-color: #333333aa;
   padding: 3px;
+  margin-bottom: 5px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   transition: bottom .4s ease 0s;
@@ -51,6 +52,7 @@ body {
   padding: 2px 5px;
   border-radius: 1px;
   margin-bottom: 3px;
+  background-color: #e6e4d0;
 }
 #modeTabs { display: flex; flex-flow: row; }
 #modeTabs div {
@@ -61,42 +63,44 @@ body {
   flex: 1 1 auto;
 }
 #modeTabs div:last-child { margin-right: 0; }
-
-#msgHeader { background-color: #ece9dd; }
-#color .controlHeader,
-#playback .controlHeader,
 #mode.spin #modeTabs div:nth-child(1),
 #mode.pattern #modeTabs div:nth-child(2),
 #mode.orbit #modeTabs div:nth-child(3) {
-  background-color: #bee0f1;
+  background-color: #e6e4d0;
 }
 #modeControls div {
   display: none;
 }
-#playback .controlPanel div { display: inline-block; }
 
 .controlPanel {
   background-color: #a5a5a5;
   border-radius: 1px;
   padding: 5px;
   flex: 1 1 auto;
+  font-size: .9em;
 }
-#pause {
-    width: 0;
-    height: 0;
-    border-top: 12px solid transparent;
-    border-left: 22px solid #000;
-    border-bottom: 12px solid transparent;
-    border-right: none;
+.button {
+  display: inline-block;
+  cursor: pointer;
+  padding: 2px;
+  border: 1px solid #7b7b7b;
+  border-radius: 2px;
+  text-align: center;
+  user-select: none;
+  transition: background-color .1s ease 0s;
 }
-#pause.false {
-    width: 6px;
-    height: 24px;
-    border-right: 8px solid #000;
-    border-left: 8px solid #000;
-    border-bottom: none;
-    border-top: none;
+.button:active,
+.button[value=true] {
+  background-color: #b2e2f9;
 }
+#playback .controlPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3px;
+  grid-auto-rows: auto;
+  padding: 3px;
+}
+#speedControl { grid-column: 1 / 3; }
 #mode.spin #modeControls div:nth-child(1),
 #mode.pattern #modeControls div:nth-child(2),
 #mode.orbit #modeControls div:nth-child(3) {
