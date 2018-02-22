@@ -24,15 +24,17 @@ function draw() {
   if (mode == 'spin') {
     const nx = parseInt((windowWidth - margin * 1.8) / tileSize);
     const ny = parseInt((windowHeight - margin * 1.8) / tileSize);
+    // expand to fill space if possible
     let newSize = tileSize + parseInt(((windowWidth - margin * 1.8) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
+    updateSetting('spin', spin + elapsed * Math.pow((spinSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
 
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
         updateColors(x / (nx - 1), y / (ny - 1), tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
-        rotate(tilePct * time);
+        rotate(tilePct * spin);
         translate(-shapeSize / 2, -shapeSize / 2);
         drawTile();
         resetMatrix();
@@ -43,7 +45,7 @@ function draw() {
   if (mode == 'orbit') {
     shapeSize = zoom;
     el('message').textContent = "orbit: " + (orbit * 10).toFixed(1);
-    updateSetting('orbit', orbit + elapsed / orbitSpeed * (rewind ? -1 : 1));
+    updateSetting('orbit', orbit + elapsed * Math.pow(orbitSpeed / 100, 2) * (rewind ? -1 : 1));
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {

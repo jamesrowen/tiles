@@ -17,11 +17,13 @@
         <div class="controlPanel">
           <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play/pause</div>
           <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />reverse</div>
-          <div id="stepBack" class="button" onclick="stepBack()">&lt; step back</div>
-          <div id="stepForward" class="button" onclick="stepForward()">step forward &gt;</div>
+          <div id="stepBack10" class="button" onclick="setStep(-10)">&lt; 10</div>
+          <div id="stepBack" class="button" onclick="setStep(-1)">&lt; 1</div>
+          <div id="stepForward" class="button" onclick="setStep(1)">1 &gt;</div>
+          <div id="stepForward10" class="button" onclick="setStep(10)">10 &gt;</div>
           <div id="speedControl">
             speed
-            <input type="range" id="spinSpeed" class="spinMode" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+            <input type="range" id="spinSpeed" class="spinMode" min="1" max="85" step="1" oninput="updateSetting(this.id, this.value)" />
             <input type="range" id="patternSpeed" class="patternMode" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
             <input type="range" id="orbitSpeed" class="orbitMode" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
@@ -66,6 +68,7 @@
           y1 <input type="checkbox" id="g1y" onchange="updateSetting(this.id, this.checked)" />
           x2 <input type="checkbox" id="g2x" onchange="updateSetting(this.id, this.checked)" />
           y2 <input type="checkbox" id="g2y" onchange="updateSetting(this.id, this.checked)" />
+          <br>
           alpha1 <input type="range" id="c1alpha" min="0" max="255" step="1" oninput="updateSetting(this.id, this.value)" />
           alpha2 <input type="range" id="c2alpha" min="0" max="255" step="1" oninput="updateSetting(this.id, this.value)" />
         </div>

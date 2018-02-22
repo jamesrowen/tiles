@@ -9,10 +9,10 @@ window.addEventListener('keydown', e => {
       e.preventDefault();
       break;
     case 37: // left arrow
-      stepBack();
+      setStep(-1);
       break;
     case 39: // right arrow
-      stepForward();
+      setStep(1);
       break;
     case 82: // R
       if (!e.ctrlKey && !e.metaKey)
@@ -37,9 +37,6 @@ window.addEventListener('wheel', e => {
   e.preventDefault();
 });
 
-function stepBack() {
-  step = -1;
-}
-function stepForward() {
-  step = 1;
+function setStep(val) {
+  step = val;
 }

@@ -21,6 +21,7 @@ var settings = {
   'c2alpha': {default: 160, parse: parseInt, attr: 'value'},
   'bgColor': {default: '#f0f0f0', parse: x => x, attr: 'value'},
   // spin mode
+  'spin': {default: 0, parse: parseFloat},
   'tileSize' : {default: 30, parse: parseInt, attr: 'value'},
   'tileScale': {default: 1, parse: parseFloat, attr: 'value'},
   'margin': {default: 30, parse: parseInt, attr: 'value'},
