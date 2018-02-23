@@ -6,6 +6,7 @@ body {
   font-family: system-ui, sans-serif;
   font-size: .9em;
 }
+:focus { outline: none; }
 #canvas {
   position: absolute;
   top: 50%;
@@ -22,7 +23,7 @@ body {
 .controls {
   position: fixed;
   display: grid;
-  grid-template-columns: 190px 3fr 1fr 1fr;
+  grid-template-columns: 190px 2fr 1fr 1fr;
   grid-gap: 5px;
   grid-auto-rows: auto;
   bottom: 0px;
@@ -38,7 +39,7 @@ body {
   user-select: none;
 }
 .controls.closed {
-  bottom: -120px;
+  bottom: -150px;
 }
 .controls > div {
   display: flex;
@@ -100,7 +101,7 @@ body {
 }
 #playing { grid-column: 1 / 3 }
 #rewind { grid-column: 3 / 5 }
-.speedControl { grid-column: 1 / 5; }
+.speedControl, .positionControl { grid-column: 1 / 5; }
 
 #modeControls .controlPanel {
   display: grid;
@@ -108,6 +109,7 @@ body {
   grid-gap: 5px;
   grid-auto-rows: auto;
 }
+#modeControls .slider.orbitMode { grid-column: 1 / 2; }
 #color .controlPanel {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -164,16 +166,19 @@ input[type=range]::-webkit-slider-thumb {
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  background: #eaeaea;
+  background: #efefef;
   border: 1px solid #888;
   cursor: pointer;
   margin-top: -15px;
+}
+input[type=range]::-webkit-slider-thumb:active {
+  background-color: #f7f6ea;
 }
 input[type=range]::-moz-range-thumb {
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  background: #eaeaea;
+  background: #efefef;
   border: 1px solid #888;
   cursor: pointer;
   margin-top: -15px;
@@ -182,7 +187,7 @@ input[type=range]::-ms-thumb {
   height: 16px;
   width: 16px;
   border-radius: 2px;
-  background: #eaeaea;
+  background: #efefef;
   border: 1px solid #888;
   cursor: pointer;
   margin-top: -15px;
@@ -210,7 +215,7 @@ input[type=range]::-ms-thumb {
 .slider label span {
   height: 19px;
   width: 24px;
-  background-color: #c4c4c4;
+  background-color: #c8c8c8;
   color: #636363;
   border-left: 1px solid #b4b4b4;
   display: inline-block;
@@ -219,13 +224,15 @@ input[type=range]::-ms-thumb {
 }
 .slider input { flex: 1 1 auto; }
 
-.slider.speedControl label { flex-basis: 91px; }
+.slider.speedControl label { flex-basis: 93px; }
 .slider.speedControl label div { width: 44px; }
-.slider.speedControl label span { padding: 2px 2px 0px 0px; }
+.slider.speedControl label span { padding: 2px 3px 0px 0px; }
 #color .slider label { flex-basis: 90px; }
 #color .slider label div { width: 50px; }
 
-:focus { outline: none; }
+input[type="number"] {
+  width: 50px;
+}
 
 .spinMode,
 .patternMode,

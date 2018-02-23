@@ -33,6 +33,18 @@
             <label for="orbitSpeed"><div>speed</div><span></span></label>
             <input type="range" id="orbitSpeed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
+          <div class="positionControl spinMode">
+            <label for="spin">position</label>
+            <input type="number" id="spin" onchange="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="positionControl patternMode">
+            <label for="patternProg">position</label>
+            <input type="number" id="patternProg" onchange="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="positionControl orbitMode">
+            <label for="orbit">orbit</label>
+            <input type="number" id="orbit" onchange="updateSetting(this.id, this.value)" />
+          </div>
         </div>
       </div>
       <div id="modeControls">
@@ -48,7 +60,7 @@
           </div>
           <div class="slider spinMode">
             <label for="tileScale"><div>tile scale</div><span></span></label>
-            <input type="range" id="tileScale" min=".7" max="2.8" step=".1" oninput="updateSetting(this.id, this.value)" />
+            <input type="range" id="tileScale" min=".7" max="2.8" step=".02" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider spinMode">
             <label for="margin"><div>margin</div><span></span></label>
@@ -58,23 +70,19 @@
             <label for="shapeIterations"><div>shape</div><span></span></label>
             <input type="range" id="shapeIterations" min="2" max="10" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider patternMode">
-            <label for="spinGridX"><div>spin x</div><span></span></label>
-            <input type="range" id="spinGridX" min="2" max="50" step="1" oninput="updateSetting(this.id, this.value)" />
-          </div>
+          <div class="patternMode"> not implemented yet</div>
           <div class="slider orbitMode">
             <label for="zoom"><div>zoom</div><span></span></label>
             <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider orbitMode">
-            <label for="radius"><div>radius</div><span></span></label>
+            <label for="radius"><div>curl</div><span></span></label>
             <input type="range" id="radius" min="3" max="25" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider orbitMode">
             <label for="bodies"><div>bodies</div><span></span></label>
             <input type="range" id="bodies" min="10" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div id="defaults" class="button orbitMode" onclick="loadDefaults()">defaults</div>
         </div>
       </div>
       <div id="color">
@@ -85,10 +93,10 @@
           <input type="color" id="color2a" onchange="updateSetting(this.id, this.value)" />
           <input type="color" id="color2b" onchange="updateSetting(this.id, this.value)" />
           <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
-          x1 <input type="checkbox" id="g1x" onchange="updateSetting(this.id, this.checked)" />
-          y1 <input type="checkbox" id="g1y" onchange="updateSetting(this.id, this.checked)" />
-          x2 <input type="checkbox" id="g2x" onchange="updateSetting(this.id, this.checked)" />
-          y2 <input type="checkbox" id="g2y" onchange="updateSetting(this.id, this.checked)" />
+          <div>x1 <input type="checkbox" id="g1x" onchange="updateSetting(this.id, this.checked)" /></div>
+          <div>y1 <input type="checkbox" id="g1y" onchange="updateSetting(this.id, this.checked)" /></div>
+          <div>x2 <input type="checkbox" id="g2x" onchange="updateSetting(this.id, this.checked)" /></div>
+          <div>y2 <input type="checkbox" id="g2y" onchange="updateSetting(this.id, this.checked)" /></div>
           <div class="slider">
             <label for="c1alpha"><div>alpha1</div><span></span></label>
             <input type="range" id="c1alpha" min="0" max="255" step="1" oninput="updateSetting(this.id, this.value)" />

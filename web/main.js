@@ -15,7 +15,7 @@ function windowResized() {
 
 function draw() {
   const time = millis() / 1000.0;
-  const elapsed = playing ? time - lastTime : (step != 0 ? (time - lastTime) * step : 0);
+  const tick = playing ? time - lastTime : (step != 0 ? (time - lastTime) * step : 0);
   step = 0;
   lastTime = time;
   resetMatrix();
@@ -27,7 +27,8 @@ function draw() {
     // expand to fill space if possible
     let newSize = tileSize + parseInt(((windowWidth - margin * 1.8) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
-    updateSetting('spin', spin + elapsed * Math.pow((spinSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+    if (tick != 0)
+      updateSetting('spin', spin + tick * Math.pow((spinSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
 
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
@@ -44,8 +45,8 @@ function draw() {
 
   if (mode == 'orbit') {
     shapeSize = zoom;
-    el('message').textContent = "orbit: " + (orbit * 10).toFixed(1);
-    updateSetting('orbit', orbit + elapsed * Math.pow(orbitSpeed / 100, 2) * (rewind ? -1 : 1));
+    if (tick != 0)
+      updateSetting('orbit', orbit + tick * Math.pow(orbitSpeed / 100, 2) * (rewind ? -1 : 1));
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {
