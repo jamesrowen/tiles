@@ -43,9 +43,12 @@ function parseBool(val) {
 }
 
 function updateSetting(name, value) {
-  const val = settings[name].parse(value);
+  let val = settings[name].parse(value);
   this[name] = val;
   window.localStorage.setItem(name, val);
+  if (name == 'spin' || name == 'pattern' || name == 'orbit') {
+    val = val.toFixed(1);
+  }
   if (el(name)) {
     el(name).setAttribute('value', val);
     el(name).value = val;

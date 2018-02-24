@@ -72,7 +72,7 @@ body {
 }
 
 .controlPanel {
-  background-color: #cecece;
+  background-color: #c5c5c5;
   border-radius: 1px;
   padding: 5px;
   flex: 1 1 auto;
@@ -218,7 +218,7 @@ input[type=range]::-ms-thumb {
 .slider label span {
   height: 20px;
   width: 24px;
-  background-color: #c8c8c8;
+  background-color: #c1c1c1;
   color: #636363;
   border-left: 1px solid #b4b4b4;
   display: inline-block;
@@ -227,8 +227,8 @@ input[type=range]::-ms-thumb {
 }
 .slider input { flex: 1 1 auto; }
 
-.slider.fourdig label span { padding: 2px 16px 0px 6px }
-.slider.fourdig label div { width: 53px;}
+.slider.fourdig label span { width: 33px; }
+.slider.fourdig label div { width: 55px;}
 .slider.speedControl label { flex-basis: 93px; }
 .slider.speedControl label div { width: 44px; }
 .slider.speedControl label span { padding: 2px 3px 0px 0px; }
@@ -239,7 +239,7 @@ input[type=range]::-ms-thumb {
 input[type="text"] {
   width: 50px;
   -webkit-appearance: none;
-  background-color: #c8c8c8;
+  background-color: #c1c1c1;
   padding: 2px 4px;
   border: none;
   border-left: 1px solid #b4b4b4;

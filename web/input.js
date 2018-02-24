@@ -8,10 +8,10 @@ window.addEventListener('keydown', e => {
       updateSetting('playing', !playing);
       e.preventDefault();
       break;
-    case 37: // left arrow
+    case 188: // comma (<)
       setStep(-1);
       break;
-    case 39: // right arrow
+    case 190: // period (>)
       setStep(1);
       break;
     case 82: // R
