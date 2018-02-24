@@ -1,5 +1,5 @@
 window.addEventListener('keydown', e => {
-  // console.log(e.key, e.keyCode);
+  console.log(e.key, e.keyCode);
   switch(e.keyCode) {
     case 27: // esc
       el('mode').classList.toggle('closed');

@@ -47,15 +47,15 @@ function draw() {
     shapeSize = zoom;
     if (tick != 0)
       updateSetting('orbit', orbit + tick * Math.pow(orbitSpeed / 100, 2) * (rewind ? -1 : 1));
-    let rows = Math.ceil(bodies / radius);
+    let rows = Math.ceil(bodies / curl);
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {
-      updateColors((b % radius) / (radius - 1), Math.floor(b / radius) / (rows - 1), b / (bodies - 1));
-      translate(zoom * (b % radius), zoom * Math.floor(b / radius));
+      updateColors((b % curl) / (curl - 1), Math.floor(b / curl) / (rows - 1), b / (bodies - 1));
+      translate(zoom * (b % curl) * growth / 100, zoom * Math.floor(b / curl) * growth / 100);
       rotate(b / (bodies - 1) * orbit);
       drawTile();
-      translate(-zoom * (b % radius), -zoom * Math.floor(b / (radius)));
+      translate(-zoom * (b % curl) * growth / 100, -zoom * Math.floor(b / curl) * growth / 100);
     }
   }
 }

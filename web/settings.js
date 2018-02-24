@@ -26,11 +26,14 @@ var settings = {
   'tileScale': {default: 1, parse: parseFloat, type: 'slider'},
   'margin': {default: 30, parse: parseInt, type: 'slider'},
   'shapeIterations': {default: 7, parse: parseInt, type: 'slider'},
+  // patternMode
+  'pattern': {default: 0, parse: parseFloat},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},
-  'radius': {default: 20, parse: parseInt, type: 'slider'},
+  'curl': {default: 20, parse: parseInt, type: 'slider'},
   'bodies': {default: 30, parse: parseInt, type: 'slider'},
   'zoom': {default: 10, parse: parseInt, type: 'slider'},
+  'growth': {default: 50, parse: parseInt, type: 'slider'},
   'camX': {default: 0, parse: parseInt},
   'camY': {default: 0, parse: parseInt}
 };

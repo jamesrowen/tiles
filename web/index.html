@@ -33,18 +33,19 @@
             <label for="orbitSpeed"><div>speed</div><span></span></label>
             <input type="range" id="orbitSpeed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="positionControl spinMode">
+          <div class="input positionControl spinMode">
             <label for="spin">position</label>
-            <input type="number" id="spin" onchange="updateSetting(this.id, this.value)" />
+            <input type="text" id="spin" onchange="updateSetting(this.id, this.value)" />
           </div>
-          <div class="positionControl patternMode">
-            <label for="patternProg">position</label>
-            <input type="number" id="patternProg" onchange="updateSetting(this.id, this.value)" />
+          <div class="input positionControl patternMode">
+            <label for="pattern">position</label>
+            <input type="text" id="pattern" onchange="updateSetting(this.id, this.value)" />
           </div>
-          <div class="positionControl orbitMode">
+          <div class="input positionControl orbitMode">
             <label for="orbit">orbit</label>
-            <input type="number" id="orbit" onchange="updateSetting(this.id, this.value)" />
+            <input type="text" id="orbit" onchange="updateSetting(this.id, this.value)" />
           </div>
+          <div id="resetPos" class="button" onclick="updateSetting(mode, 0)">reset</div>
         </div>
       </div>
       <div id="modeControls">
@@ -76,12 +77,16 @@
             <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider orbitMode">
-            <label for="radius"><div>curl</div><span></span></label>
-            <input type="range" id="radius" min="1" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
+            <label for="curl"><div>curl</div><span></span></label>
+            <input type="range" id="curl" min="1" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="slider orbitMode fourdig">
+            <label for="bodies"><div>bodies</div><span></span></label>
+            <input type="range" id="bodies" min="100" max="1990" step="10" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider orbitMode">
-            <label for="bodies"><div>bodies</div><span></span></label>
-            <input type="range" id="bodies" min="10" max="2000" step="10" oninput="updateSetting(this.id, this.value)" />
+            <label for="growth"><div>growth</div><span></span></label>
+            <input type="range" id="growth" min="1" max="130" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
         </div>
       </div>
