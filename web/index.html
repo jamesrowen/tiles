@@ -45,7 +45,7 @@
             <label for="orbit">orbit</label>
             <input type="text" id="orbit" onchange="updateSetting(this.id, this.value)" />
           </div>
-          <div id="resetPos" class="button" onclick="updateSetting(mode, 0)">reset</div>
+          <div id="resetPos" class="button" onclick="resetPos(mode)">reset</div>
         </div>
       </div>
       <div id="modeControls">
@@ -70,6 +70,14 @@
           <div class="slider spinMode">
             <label for="shapeIterations"><div>shape</div><span></span></label>
             <input type="range" id="shapeIterations" min="2" max="7" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="slider spinMode">
+            <label for="spinYSpeed"><div>y spin</div><span></span></label>
+            <input type="range" id="spinYSpeed" min="0" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="slider spinMode">
+            <label for="spinXSpeed"><div>z spin</div><span></span></label>
+            <input type="range" id="spinXSpeed" min="0" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="patternMode"> not implemented yet</div>
           <div class="slider orbitMode">

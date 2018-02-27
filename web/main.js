@@ -2,7 +2,8 @@
 var lastTime = 0, tileColors, shapeSize, step = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  ortho(0, windowWidth, -windowHeight, 0, -100, 100);
   el('defaultCanvas0').addEventListener('click', e => {
     el('mode').classList.toggle('closed');
   });
@@ -11,6 +12,7 @@ function setup() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  ortho(0, windowWidth, -windowHeight, 0, -100, 100);
 }
 
 function draw() {
@@ -22,13 +24,18 @@ function draw() {
   background(bgColor);
 
   if (mode == 'spin') {
-    const nx = parseInt((windowWidth - margin * 1.8) / tileSize);
-    const ny = parseInt((windowHeight - margin * 1.8) / tileSize);
+    const nx = parseInt((windowWidth - margin * 1.9) / tileSize);
+    const ny = parseInt((windowHeight - margin * 1.9) / tileSize);
     // expand to fill space if possible
-    let newSize = tileSize + parseInt(((windowWidth - margin * 1.8) % tileSize) / nx);
+    let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
-    if (tick != 0)
+    if (tick != 0) {
       updateSetting('spin', spin + tick * Math.pow((spinSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+      if (spinYSpeed != 0)
+        updateSetting('spinY', spinY + tick * Math.pow((spinYSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+      if (spinXSpeed != 0)
+        updateSetting('spinX', spinX + tick * Math.pow((spinXSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+    }
 
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
@@ -36,6 +43,8 @@ function draw() {
         updateColors(x / (nx - 1), y / (ny - 1), tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
         rotate(tilePct * spin);
+        rotateY(tilePct * spinY);
+        rotateX(tilePct * spinX);
         translate(-shapeSize / 2, -shapeSize / 2);
         drawTile();
         resetMatrix();

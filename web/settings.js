@@ -22,7 +22,11 @@ var settings = {
   'bgColor': {default: '#f0f0f0', parse: x => x},
   // spin mode
   'spin': {default: 0, parse: parseFloat},
-  'tileSize' : {default: 30, parse: parseInt, type: 'slider'},
+  'spinY': {default: 0, parse: parseFloat},
+  'spinYSpeed': {default: 0, parse: parseInt, type: 'slider'},
+  'spinX': {default: 0, parse: parseFloat},
+  'spinXSpeed': {default: 0, parse: parseInt, type: 'slider'},
+  'tileSize': {default: 30, parse: parseInt, type: 'slider'},
   'tileScale': {default: 1, parse: parseFloat, type: 'slider'},
   'margin': {default: 30, parse: parseInt, type: 'slider'},
   'shapeIterations': {default: 7, parse: parseInt, type: 'slider'},
@@ -62,7 +66,7 @@ function updateSetting(name, value) {
     if (settings[name].parse == parseFloat)
       str = str.toFixed(1);
     str = "" + str;
-    if (str[0] == '0')
+    if (str[0] == '0' && str[1] == '.')
       str = str.slice(1);
     el(name).parentNode.querySelector('span').textContent = str;
   }

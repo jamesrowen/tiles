@@ -40,3 +40,11 @@ window.addEventListener('wheel', e => {
 function setStep(val) {
   step = val;
 }
+
+function resetPos(mode) {
+  updateSetting(mode, 0);
+  if (mode == 'spin') {
+    updateSetting('spinY', 0);
+    updateSetting('spinX', 0);
+  }
+}
