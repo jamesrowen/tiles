@@ -20,11 +20,11 @@ window.addEventListener('keydown', e => {
       break;
     case 187: // equal/plus
       mode == 'spin' ? updateSetting('tileSize', min(tileSize + 1, 180)) :
-        updateSetting('zoom', min(zoom + 1, 80));
+        updateZoom(min(zoom + 1, 80));
       break;
     case 189: // minus
       mode == 'spin' ? updateSetting('tileSize', max(tileSize - 1, 40)) :
-        updateSetting('zoom', max(zoom - 1, 5));
+        updateZoom(max(zoom - 1, 5));
       break;
   }
 });
@@ -66,4 +66,9 @@ function updateZoom(val) {
   updateSetting('camX', camX + (camX - width / 2) / zoom * (val - zoom));
   updateSetting('camY', camY + (camY - height / 2) / zoom * (val - zoom));
   updateSetting('zoom', val);
+}
+
+function resetCamPos() {
+  updateSetting('camX', 0);
+  updateSetting('camY', 0);
 }

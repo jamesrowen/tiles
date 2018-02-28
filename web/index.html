@@ -78,22 +78,23 @@
             <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="patternMode"> not implemented yet</div>
-          <div class="slider left orbitMode">
-            <label for="zoom"><div>zoom</div><span></span></label>
-            <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateZoom(this.value)" />
+          <div class="slider left orbitMode fourdig">
+            <label for="bodies"><div>tiles</div><span></span></label>
+            <input type="range" id="bodies" min="100" max="1990" step="10" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider right orbitMode">
             <label for="curl"><div>curl</div><span></span></label>
             <input type="range" id="curl" min="1" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider left orbitMode fourdig">
-            <label for="bodies"><div>bodies</div><span></span></label>
-            <input type="range" id="bodies" min="100" max="1990" step="10" oninput="updateSetting(this.id, this.value)" />
-          </div>
-          <div class="slider right orbitMode">
+          <div class="slider left orbitMode">
             <label for="growth"><div>growth</div><span></span></label>
             <input type="range" id="growth" min="1" max="130" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
+          <div class="slider right orbitMode">
+            <label for="zoom"><div>zoom</div><span></span></label>
+            <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateZoom(this.value)" />
+          </div>
+          <div id="origin" class="button orbitMode" onclick="resetCamPos()">origin</div>
         </div>
       </div>
       <div id="color">
