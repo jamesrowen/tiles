@@ -13,17 +13,17 @@
   <body>
     <div id="mode" class="controls">
       <div id="playback">
-        <div class="controlHeader">playback</div>
+        <div class="controlHeader">general</div>
         <div class="controlPanel">
           <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play/pause</div>
           <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />reverse</div>
-          <div id="stepBack10" class="button" onclick="setStep(-10)">&lt; 10</div>
-          <div id="stepBack" class="button" onclick="setStep(-1)">&lt; 1</div>
-          <div id="stepForward" class="button" onclick="setStep(1)">1 &gt;</div>
-          <div id="stepForward10" class="button" onclick="setStep(10)">10 &gt;</div>
+          <div class="slider">
+            <label for="shapeIterations"><div>shape</div><span></span></label>
+            <input type="range" id="shapeIterations" min="2" max="8" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
           <div class="slider speedControl spinMode">
             <label for="spinSpeed"><div>speed</div><span></span></label>
-            <input type="range" id="spinSpeed" min="1" max="85" step="1" oninput="updateSetting(this.id, this.value)" />
+            <input type="range" id="spinSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider speedControl patternMode">
             <label for="patternSpeed"><div>speed</div><span></span></label>
@@ -34,7 +34,7 @@
             <input type="range" id="orbitSpeed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="input positionControl spinMode">
-            <label for="spin">position</label>
+            <label for="spin">rotation</label>
             <input type="text" id="spin" onchange="updateSetting(this.id, this.value)" />
           </div>
           <div class="input positionControl patternMode">
@@ -45,7 +45,7 @@
             <label for="orbit">orbit</label>
             <input type="text" id="orbit" onchange="updateSetting(this.id, this.value)" />
           </div>
-          <div id="resetPos" class="button" onclick="resetPos(mode)">reset</div>
+          <div id="resetPos" class="button" onclick="resetPos()">reset</div>
         </div>
       </div>
       <div id="modeControls">
@@ -55,44 +55,42 @@
        --><div class="controlHeader" onclick="updateSetting('mode', 'orbit')">orbit</div>
         </div>
         <div class="controlPanel">
-          <div class="slider spinMode">
+          <div class="slider left spinMode">
             <label for="tileSize"><div>tile size</div><span></span></label>
             <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider spinMode">
+          <div class="slider right spinMode">
+            <label for="spinXSpeed"><div>flip x</div><span></span></label>
+            <input type="range" id="spinXSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div id="clearX" class="button spinMode" onclick="clearSpinX()">clear</div>
+          <div class="slider left spinMode">
             <label for="tileScale"><div>tile scale</div><span></span></label>
             <input type="range" id="tileScale" min=".7" max="2.8" step=".02" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider spinMode">
+          <div class="slider right spinMode">
+            <label for="spinYSpeed"><div>flip y</div><span></span></label>
+            <input type="range" id="spinYSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div id="clearY" class="button spinMode" onclick="clearSpinY()">clear</div>
+          <div class="slider left spinMode">
             <label for="margin"><div>margin</div><span></span></label>
             <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider spinMode">
-            <label for="shapeIterations"><div>shape</div><span></span></label>
-            <input type="range" id="shapeIterations" min="2" max="7" step="1" oninput="updateSetting(this.id, this.value)" />
-          </div>
-          <div class="slider spinMode">
-            <label for="spinYSpeed"><div>y spin</div><span></span></label>
-            <input type="range" id="spinYSpeed" min="0" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
-          </div>
-          <div class="slider spinMode">
-            <label for="spinXSpeed"><div>z spin</div><span></span></label>
-            <input type="range" id="spinXSpeed" min="0" max="100" step="1" oninput="updateSetting(this.id, this.value)" />
-          </div>
           <div class="patternMode"> not implemented yet</div>
-          <div class="slider orbitMode">
+          <div class="slider left orbitMode">
             <label for="zoom"><div>zoom</div><span></span></label>
             <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider orbitMode">
+          <div class="slider right orbitMode">
             <label for="curl"><div>curl</div><span></span></label>
             <input type="range" id="curl" min="1" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider orbitMode fourdig">
+          <div class="slider left orbitMode fourdig">
             <label for="bodies"><div>bodies</div><span></span></label>
             <input type="range" id="bodies" min="100" max="1990" step="10" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider orbitMode">
+          <div class="slider right orbitMode">
             <label for="growth"><div>growth</div><span></span></label>
             <input type="range" id="growth" min="1" max="130" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
@@ -106,10 +104,10 @@
           <input type="color" id="color2a" onchange="updateSetting(this.id, this.value)" />
           <input type="color" id="color2b" onchange="updateSetting(this.id, this.value)" />
           <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
-          <div>x1 <input type="checkbox" id="g1x" onchange="updateSetting(this.id, this.checked)" /></div>
-          <div>y1 <input type="checkbox" id="g1y" onchange="updateSetting(this.id, this.checked)" /></div>
-          <div>x2 <input type="checkbox" id="g2x" onchange="updateSetting(this.id, this.checked)" /></div>
-          <div>y2 <input type="checkbox" id="g2y" onchange="updateSetting(this.id, this.checked)" /></div>
+          <div id="g1x" class="button" onclick="updateSetting(this.id, !this.value)">x1</div>
+          <div id="g1y" class="button" onclick="updateSetting(this.id, !this.value)">y1</div>
+          <div id="g2x" class="button" onclick="updateSetting(this.id, !this.value)">x2</div>
+          <div id="g2y" class="button" onclick="updateSetting(this.id, !this.value)">y2</div>
           <div class="slider">
             <label for="c1alpha"><div>alpha1</div><span></span></label>
             <input type="range" id="c1alpha" min="0" max="255" step="1" oninput="updateSetting(this.id, this.value)" />

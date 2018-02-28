@@ -30,11 +30,11 @@ function draw() {
     let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
     if (tick != 0) {
-      updateSetting('spin', spin + tick * Math.pow((spinSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+      updateSetting('spin', spin + tick * spinSpeed / 99 * 6 * (rewind ? -1 : 1));
       if (spinYSpeed != 0)
-        updateSetting('spinY', spinY + tick * Math.pow((spinYSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+        updateSetting('spinY', spinY + tick * spinYSpeed / 99 * 6 * (rewind ? -1 : 1));
       if (spinXSpeed != 0)
-        updateSetting('spinX', spinX + tick * Math.pow((spinXSpeed + 15) / 100, 2) * 5 * (rewind ? -1 : 1));
+        updateSetting('spinX', spinX + tick * spinXSpeed / 99 * 6 * (rewind ? -1 : 1));
     }
 
     for (let y = 0; y < ny; y++) {

@@ -30,6 +30,10 @@ window.addEventListener('keydown', e => {
 });
 
 window.addEventListener('wheel', e => {
+  if (mode == 'spin' && playing == false) {
+    updateSetting('spinY', spinY - e.deltaX / 500);
+    updateSetting('spinX', spinX - e.deltaY / 500);
+  }
   if (mode == 'orbit') {
     updateSetting('camX', camX - e.deltaX);
     updateSetting('camY', camY - e.deltaY);
@@ -41,10 +45,19 @@ function setStep(val) {
   step = val;
 }
 
-function resetPos(mode) {
+function resetPos() {
   updateSetting(mode, 0);
   if (mode == 'spin') {
-    updateSetting('spinY', 0);
     updateSetting('spinX', 0);
+    updateSetting('spinY', 0);
   }
+}
+
+function clearSpinX() {
+  updateSetting('spinX', 0);
+  updateSetting('spinXSpeed', 0);
+}
+function clearSpinY() {
+  updateSetting('spinY', 0);
+  updateSetting('spinYSpeed', 0);
 }

@@ -3,8 +3,8 @@ var el = document.getElementById.bind(document);
 var settings = {
   'mode': {default: 'spin', parse: x => x},
   // playback
-  'rewind': {default: false, parse: parseBool},
   'playing': {default: true, parse: parseBool},
+  'rewind': {default: false, parse: parseBool},
   'spinSpeed': {default: 40, parse: parseInt, type: 'slider'},
   'patternSpeed': {default: 40, parse: parseInt, type: 'slider'},
   'orbitSpeed': {default: 40, parse: parseInt, type: 'slider'},
@@ -13,10 +13,10 @@ var settings = {
   'color2a': {default: '#ffffff', parse: x => x},
   'color1b': {default: '#222222', parse: x => x},
   'color2b': {default: '#dddddd', parse: x => x},
-  'g1x': {default: true, parse: parseBool, type: 'check'},
-  'g1y': {default: false, parse: parseBool, type: 'check'},
-  'g2x': {default: false, parse: parseBool, type: 'check'},
-  'g2y': {default: true, parse: parseBool, type: 'check'},
+  'g1x': {default: true, parse: parseBool},
+  'g1y': {default: false, parse: parseBool},
+  'g2x': {default: false, parse: parseBool},
+  'g2y': {default: true, parse: parseBool},
   'c1alpha': {default: 160, parse: parseInt, type: 'slider'},
   'c2alpha': {default: 160, parse: parseInt, type: 'slider'},
   'bgColor': {default: '#f0f0f0', parse: x => x},
@@ -48,26 +48,29 @@ function parseBool(val) {
 
 function updateSetting(name, value) {
   let val = settings[name].parse(value);
+  let str = val;
+  if (settings[name].parse == parseFloat)
+    str = str.toFixed(1);
+  str = "" + str;
+  if (str[0] == '0' && str[1] == '.')
+    str = str.slice(1);
+
   this[name] = val;
   window.localStorage.setItem(name, val);
+
   if (name == 'spin' || name == 'pattern' || name == 'orbit') {
     val = val.toFixed(1);
   }
+
   if (el(name)) {
     el(name).setAttribute('value', val);
     el(name).value = val;
   }
 
-  if (settings[name].type == 'check') {
-    el(name).checked = val;
+  if (settings[name].type == 'label') {
+    el(name).textContent = str;
   }
   if (settings[name].type == 'slider') {
-    let str = val;
-    if (settings[name].parse == parseFloat)
-      str = str.toFixed(1);
-    str = "" + str;
-    if (str[0] == '0' && str[1] == '.')
-      str = str.slice(1);
     el(name).parentNode.querySelector('span').textContent = str;
   }
 }
