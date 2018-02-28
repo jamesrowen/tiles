@@ -38,8 +38,8 @@ var settings = {
   'bodies': {default: 30, parse: parseInt, type: 'slider'},
   'zoom': {default: 10, parse: parseInt, type: 'slider'},
   'growth': {default: 50, parse: parseInt, type: 'slider'},
-  'camX': {default: 0, parse: parseInt},
-  'camY': {default: 0, parse: parseInt}
+  'camX': {default: 0, parse: parseFloat},
+  'camY': {default: 0, parse: parseFloat}
 };
 
 function parseBool(val) {

@@ -61,3 +61,9 @@ function clearSpinY() {
   updateSetting('spinY', 0);
   updateSetting('spinYSpeed', 0);
 }
+
+function updateZoom(val) {
+  updateSetting('camX', camX + (camX - width / 2) / zoom * (val - zoom));
+  updateSetting('camY', camY + (camY - height / 2) / zoom * (val - zoom));
+  updateSetting('zoom', val);
+}
