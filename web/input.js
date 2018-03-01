@@ -1,5 +1,5 @@
+// keyboard handler
 window.addEventListener('keydown', e => {
-  console.log(e.key, e.keyCode);
   switch(e.keyCode) {
     case 27: // esc
       el('mode').classList.toggle('closed');
@@ -29,6 +29,8 @@ window.addEventListener('keydown', e => {
   }
 });
 
+
+// scroll handler
 window.addEventListener('wheel', e => {
   if (mode == 'spin' && playing == false) {
     updateSetting('spinY', spinY - e.deltaX / 500);
@@ -41,6 +43,8 @@ window.addEventListener('wheel', e => {
   e.preventDefault();
 });
 
+
+// general actions
 function setStep(val) {
   step = val;
 }
@@ -53,15 +57,28 @@ function resetPos() {
   }
 }
 
+
+// spin mode actions
 function clearSpinX() {
   updateSetting('spinX', 0);
   updateSetting('spinXSpeed', 0);
 }
+
 function clearSpinY() {
   updateSetting('spinY', 0);
   updateSetting('spinYSpeed', 0);
 }
 
+
+// pattern mode actions
+function nextPattern() {
+  updateSetting('pattern', 0);
+  updateSetting('oldPattern', curPattern);
+  updateSetting('curPattern', (curPattern + 1) % Object.keys(patterns).length);
+}
+
+
+// orbit mode actions
 function updateZoom(val) {
   updateSetting('camX', camX + (camX - width / 2) / zoom * (val - zoom));
   updateSetting('camY', camY + (camY - height / 2) / zoom * (val - zoom));

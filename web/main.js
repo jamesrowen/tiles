@@ -52,6 +52,38 @@ function draw() {
     }
   }
 
+  if (mode == 'pattern') {
+    const nx = parseInt((windowWidth - margin * 1.9) / tileSize);
+    const ny = parseInt((windowHeight - margin * 1.9) / tileSize);
+    // expand to fill space if possible
+    let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
+    shapeSize = parseInt(newSize * tileScale);
+    if (pattern < 1) {
+      updateSetting('pattern', min(pattern + tick * transitionSpeed, 1));
+    } else {
+      nextPattern();
+    }
+    el('message').innerHTML = Object.entries(patterns)[curPattern][0] + '<br>prog: ' + pattern.toFixed(2);
+
+    for (let y = 0; y < ny; y++) {
+      for (let x = 0; x < nx; x++) {
+        const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
+        const animProg = min(pattern / animationLength, 1);
+        const rot = lerp(mod(Object.entries(patterns)[oldPattern][1](x, y, nx, ny), 4),
+          mod(Object.entries(patterns)[curPattern][1](x, y, nx, ny), 4), animProg);
+        updateColors(x / (nx - 1), y / (ny - 1), tilePct);
+        translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
+        rotate(PI / 2 * rot);
+        // rotateY(tilePct);
+        // rotateX(tilePct);
+        translate(-shapeSize / 2, -shapeSize / 2);
+        drawTile();
+        resetMatrix();
+      }
+    }
+
+  }
+
   if (mode == 'orbit') {
     shapeSize = zoom;
     if (tick != 0)
@@ -89,3 +121,7 @@ function updateColors(xpct, ypct, pct) {
   tileColors[0].setAlpha(c1alpha);
   tileColors[1].setAlpha(c2alpha);
 }
+
+function mod(x, n) {
+    return ((x % n) + n) % n;
+};

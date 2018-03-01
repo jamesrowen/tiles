@@ -77,7 +77,17 @@
             <label for="margin"><div>margin</div><span></span></label>
             <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="patternMode"> not implemented yet</div>
+
+          <div class="slider left patternMode">
+            <label for="transitionSpeed"><div>transitionSpeed</div><span></span></label>
+            <input type="range" id="transitionSpeed" min=".01" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="slider right patternMode">
+            <label for="animationLength"><div>animationLength</div><span></span></label>
+            <input type="range" id="animationLength" min=".01" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div id="origin" class="button patternMode" onclick="nextPattern()">next</div>
+
           <div class="slider left orbitMode fourdig">
             <label for="bodies"><div>tiles</div><span></span></label>
             <input type="range" id="bodies" min="100" max="1990" step="10" oninput="updateSetting(this.id, this.value)" />
@@ -128,6 +138,7 @@
 
     <script src="lib/p5.min.js" type="text/javascript"></script>
     <script src="settings.js" type="text/javascript"></script>
+    <script src="patterns.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
     <script src="input.js" type="text/javascript"></script>
   </body>

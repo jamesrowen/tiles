@@ -32,6 +32,11 @@ var settings = {
   'shapeIterations': {default: 7, parse: parseInt, type: 'slider'},
   // patternMode
   'pattern': {default: 0, parse: parseFloat},
+  'numPatterns': {default: 0, parse: parseInt},
+  'oldPattern': {default: 0, parse: parseInt},
+  'curPattern': {default: 0, parse: parseInt},
+  'transitionSpeed': {default: .11, parse: parseFloat, type: 'slider'},
+  'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},
   'curl': {default: 20, parse: parseInt, type: 'slider'},
