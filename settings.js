@@ -35,6 +35,7 @@ var settings = {
   'numPatterns': {default: 0, parse: parseInt},
   'oldPattern': {default: 0, parse: parseInt},
   'curPattern': {default: 0, parse: parseInt},
+  'curTransition': {default: 0, parse: parseInt},
   'transitionSpeed': {default: .11, parse: parseFloat, type: 'slider'},
   'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
   // orbit mode

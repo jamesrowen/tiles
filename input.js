@@ -75,6 +75,7 @@ function nextPattern() {
   updateSetting('pattern', 0);
   updateSetting('oldPattern', curPattern);
   updateSetting('curPattern', (curPattern + 1) % Object.keys(patterns).length);
+  updateSetting('curTransition', (curTransition + 1) % Object.keys(transitions).length);
 }
 
 

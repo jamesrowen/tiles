@@ -68,9 +68,11 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        const animProg = min(pattern / animationLength, 1);
+        const delay = Object.entries(transitions)[curTransition][1](x, y, nx, ny);
+        const animProg = min(max(pattern - delay * (1 - animationLength), 0) / animationLength, 1);
         const rot = lerp(mod(Object.entries(patterns)[oldPattern][1](x, y, nx, ny), 4),
           mod(Object.entries(patterns)[curPattern][1](x, y, nx, ny), 4), animProg);
+
         updateColors(x / (nx - 1), y / (ny - 1), tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
         rotate(PI / 2 * rot);
@@ -81,7 +83,6 @@ function draw() {
         resetMatrix();
       }
     }
-
   }
 
   if (mode == 'orbit') {
