@@ -38,6 +38,9 @@ var settings = {
   'curTransition': {default: 0, parse: parseInt},
   'transitionSpeed': {default: .11, parse: parseFloat, type: 'slider'},
   'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
+  'shortRotations': {default: false, parse: parseBool},
+  'rotX': {default: false, parse: parseBool},
+  'rotY': {default: false, parse: parseBool},
   // orbit mode
   'orbit': {default: 0, parse: parseFloat},
   'curl': {default: 20, parse: parseInt, type: 'slider'},

@@ -63,7 +63,7 @@
             <label for="spinXSpeed"><div>flip x</div><span></span></label>
             <input type="range" id="spinXSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div id="clearX" class="button spinMode" onclick="clearSpinX()">clear</div>
+          <div class="button spinMode" onclick="clearSpinX()">clear</div>
           <div class="slider left spinMode">
             <label for="tileScale"><div>tile scale</div><span></span></label>
             <input type="range" id="tileScale" min=".7" max="2.8" step=".02" oninput="updateSetting(this.id, this.value)" />
@@ -72,7 +72,7 @@
             <label for="spinYSpeed"><div>flip y</div><span></span></label>
             <input type="range" id="spinYSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div id="clearY" class="button spinMode" onclick="clearSpinY()">clear</div>
+          <div class="button spinMode" onclick="clearSpinY()">clear</div>
           <div class="slider left spinMode">
             <label for="margin"><div>margin</div><span></span></label>
             <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
@@ -86,7 +86,10 @@
             <label for="animationLength"><div>animationLength</div><span></span></label>
             <input type="range" id="animationLength" min=".01" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div id="origin" class="button patternMode" onclick="nextPattern()">next</div>
+          <div class="button patternMode" onclick="nextPattern()">next</div>
+          <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short spin</div>
+          <div id="rotX" class="button patternMode" onclick="updateSetting(this.id, !this.value)">rot x</div>
+          <div id="rotY" class="button patternMode" onclick="updateSetting(this.id, !this.value)">rot y</div>
 
           <div class="slider left orbitMode fourdig">
             <label for="bodies"><div>tiles</div><span></span></label>
@@ -104,7 +107,7 @@
             <label for="zoom"><div>zoom</div><span></span></label>
             <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateZoom(this.value)" />
           </div>
-          <div id="origin" class="button orbitMode" onclick="resetCamPos()">origin</div>
+          <div class="button orbitMode" onclick="resetCamPos()">origin</div>
         </div>
       </div>
       <div id="color">

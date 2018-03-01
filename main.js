@@ -68,16 +68,29 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        const delay = Object.entries(transitions)[curTransition][1](x, y, nx, ny);
-        const animProg = min(max(pattern - delay * (1 - animationLength), 0) / animationLength, 1);
-        const rot = lerp(mod(Object.entries(patterns)[oldPattern][1](x, y, nx, ny), 4),
-          mod(Object.entries(patterns)[curPattern][1](x, y, nx, ny), 4), animProg);
+        const tileDelay = Object.entries(transitions)[curTransition][1](x, y, nx, ny);
+        const tileTransitionProg = min(max(pattern - tileDelay * (1 - animationLength), 0) / animationLength, 1);
+        let oldRot = mod(Object.entries(patterns)[oldPattern][1](x, y, nx, ny), 4);
+        let newRot = mod(Object.entries(patterns)[curPattern][1](x, y, nx, ny), 4);
+        if (shortRotations) {
+          // if tile would rotate 270, make it 90 the other direction
+          if (newRot == 0 && oldRot == 3)
+            newRot = 4;
+          if (newRot == 3 && oldRot == 0)
+            oldRot = 4;
+        } else {
+          // make all rotations same direction
+          if (newRot < oldRot)
+            newRot += 4;
+        }
 
         updateColors(x / (nx - 1), y / (ny - 1), tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
-        rotate(PI / 2 * rot);
-        // rotateY(tilePct);
-        // rotateX(tilePct);
+        rotate(PI / 2 * lerp(oldRot, newRot, tileTransitionProg));
+        if (rotY)
+          rotateY(PI * lerp(oldRot, newRot, tileTransitionProg));
+        if (rotX)
+          rotateX(PI * lerp(oldRot, newRot, tileTransitionProg));
         translate(-shapeSize / 2, -shapeSize / 2);
         drawTile();
         resetMatrix();
