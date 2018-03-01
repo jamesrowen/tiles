@@ -33,10 +33,8 @@ var settings = {
   // patternMode
   'pattern': {default: 0, parse: parseFloat},
   'numPatterns': {default: 0, parse: parseInt},
-  'oldPattern': {default: 0, parse: parseInt},
-  'curPattern': {default: 0, parse: parseInt},
-  'curTransition': {default: 0, parse: parseInt},
-  'transitionSpeed': {default: .11, parse: parseFloat, type: 'slider'},
+  'curPattern': {default: 'default', parse: x => x},
+  'curTransition': {default: 'ltr', parse: x => x},
   'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
   'shortRotations': {default: false, parse: parseBool},
   'rotX': {default: false, parse: parseBool},

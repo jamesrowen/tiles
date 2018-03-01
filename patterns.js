@@ -1,5 +1,5 @@
 var patterns = {
-  'default':
+  'sine':
     (x, y) => 0,
   'icebergs':
     (x, y) => (x + (y % 2)) % 2,

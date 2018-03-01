@@ -63,6 +63,10 @@ body {
   margin-right: 3px;
   text-align: center;
   flex: 1 1 auto;
+  transition: background-color .1s ease 0s;
+}
+#modeTabs div:hover {
+  background-color: #c5c5c5;
 }
 #modeTabs div:last-child { margin-right: 0; }
 #mode[value="spin"] #modeTabs div:nth-child(1),
@@ -79,7 +83,7 @@ body {
   font-size: .9em;
 }
 .button {
-  background-color: #d6d6d6;
+  background-color: #b4b4b4;
   display: inline-block;
   cursor: pointer;
   padding: 2px;
@@ -88,6 +92,9 @@ body {
   text-align: center;
   user-select: none;
   transition: background-color .1s ease 0s;
+}
+.button:hover {
+  background-color: #bababa;
 }
 .button:active,
 .button[value=true] {

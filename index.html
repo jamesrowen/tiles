@@ -18,7 +18,7 @@
           <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play/pause</div>
           <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />reverse</div>
           <div class="slider">
-            <label for="shapeIterations"><div>shape</div><span></span></label>
+            <label for="shapeIterations"><div>curve</div><span></span></label>
             <input type="range" id="shapeIterations" min="2" max="8" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider speedControl spinMode">
@@ -79,14 +79,10 @@
           </div>
 
           <div class="slider left patternMode">
-            <label for="transitionSpeed"><div>transitionSpeed</div><span></span></label>
-            <input type="range" id="transitionSpeed" min=".01" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
+            <label for="animationLength"><div>spread</div><span></span></label>
+            <input type="range" id="animationLength" min=".01" max=".5" step=".01" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider right patternMode">
-            <label for="animationLength"><div>animationLength</div><span></span></label>
-            <input type="range" id="animationLength" min=".01" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
-          </div>
-          <div class="button patternMode" onclick="nextPattern()">next</div>
+          <div class="button patternMode" onclick="addTransition()">next</div>
           <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short spin</div>
           <div id="rotX" class="button patternMode" onclick="updateSetting(this.id, !this.value)">rot x</div>
           <div id="rotY" class="button patternMode" onclick="updateSetting(this.id, !this.value)">rot y</div>
