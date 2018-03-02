@@ -34,7 +34,10 @@ var settings = {
   'pattern': {default: 0, parse: parseFloat},
   'numPatterns': {default: 0, parse: parseInt},
   'curPattern': {default: 'default', parse: x => x},
-  'curTransition': {default: 'ltr', parse: x => x},
+  'loopTrans': {default: false, parse: parseBool},
+  'curTransitions': {default: [
+      ['concentric asym', 'ltr', .75],['sine', 'ltr', .5],['h-zags', 'ltr', .25],['v-zags', 'ltr', 0]
+    ], parse: JSON.parse},
   'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
   'shortRotations': {default: false, parse: parseBool},
   'rotX': {default: false, parse: parseBool},
@@ -54,13 +57,13 @@ function parseBool(val) {
 }
 
 function updateSetting(name, value) {
+  if (settings[name].parse == JSON.parse) {
+    this[name] = value;
+    window.localStorage.setItem(name, JSON.stringify(value));
+    return;
+  }
   let val = settings[name].parse(value);
   let str = val;
-  if (settings[name].parse == parseFloat)
-    str = str.toFixed(1);
-  str = "" + str;
-  if (str[0] == '0' && str[1] == '.')
-    str = str.slice(1);
 
   this[name] = val;
   window.localStorage.setItem(name, val);
@@ -73,6 +76,12 @@ function updateSetting(name, value) {
     el(name).setAttribute('value', val);
     el(name).value = val;
   }
+
+  if (settings[name].parse == parseFloat)
+    str = str.toFixed(1);
+  str = "" + str;
+  if (str[0] == '0' && str[1] == '.')
+    str = str.slice(1);
 
   if (settings[name].type == 'label') {
     el(name).textContent = str;
@@ -87,5 +96,8 @@ function loadDefaults() {
 }
 
 // load available settings from storage
-Object.entries(settings).map(s => updateSetting(s[0],
-  s[1].parse(window.localStorage.getItem(s[0]) || s[1].default)));
+Object.entries(settings).map(s => {
+  let val = window.localStorage.getItem(s[0]);
+  val = val ? s[1].parse(val) : s[1].default;
+  updateSetting(s[0], val);
+});

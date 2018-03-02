@@ -1,9 +1,6 @@
 // globals
 var lastTime = 0, tileColors, shapeSize, step = 0;
 
-var curTransitions = [['concentric asym', 'ltr', .75],['sine', 'ltr', .5],['h-zags', 'ltr', .25],['v-zags', 'ltr', 0]];
-curPattern = 'diamonds';
-
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   ortho(0, windowWidth, -windowHeight, 0, -100, 100);
@@ -56,10 +53,10 @@ function draw() {
   }
 
   if (mode == 'pattern') {
-    const nx = parseInt((windowWidth - margin * 1.9) / tileSize);
-    const ny = parseInt((windowHeight - margin * 1.9) / tileSize);
+    const nx = parseInt(windowWidth / tileSize);
+    const ny = parseInt(windowHeight / tileSize);
     // expand to fill space if possible
-    let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
+    let newSize = tileSize + parseInt((windowWidth % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
 
     updateTransitions(tick);
@@ -81,7 +78,7 @@ function draw() {
           prevPosition = nextPosition;
         }
 
-        translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
+        translate(newSize * (x + .5), newSize * (y + .5));
         rotate(PI / 2 * rotation);
         if (rotY)
           rotateY(PI * rotation);
@@ -159,14 +156,14 @@ function getRotation(current, next) {
 
 function updateTransitions(tick) {
   for (let t of curTransitions) {
-    t[2] += tick * patternSpeed / 99;
+    t[2] += tick * (patternSpeed + 2) / 200;
     if (t[2] >= 1) {
       curPattern = t[0];
-      addTransition(
-        chooseRandom(Object.keys(patterns), curTransitions[curTransitions.length - 1][0]),
-        curTransition
-      );
+      if (loopTrans) {
+        addTransition(t[1]);
+      }
     }
   }
   curTransitions = curTransitions.filter(t => t[2] < 1);
+  window.localStorage.setItem('curTransitions', JSON.stringify(curTransitions));
 }

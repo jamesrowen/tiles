@@ -71,10 +71,11 @@ function clearSpinY() {
 
 
 // pattern mode actions
-function addTransition(pattern, transition) {
-  curTransitions.push([pattern || chooseRandom(Object.keys(patterns), curPattern),
-    transition || chooseRandom(Object.keys(transitions), curTransition),
-    0]);
+function addTransition(transition) {
+  let exclude = '';
+  if (curTransitions.length > 0)
+    exclude = curTransitions[curTransitions.length - 1][0];
+  curTransitions.push([chooseRandom(Object.keys(patterns), exclude), transition, 0]);
 }
 
 

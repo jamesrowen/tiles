@@ -27,7 +27,7 @@
           </div>
           <div class="slider speedControl patternMode">
             <label for="patternSpeed"><div>speed</div><span></span></label>
-            <input type="range" id="patternSpeed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
+            <input type="range" id="patternSpeed" min="1" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="slider speedControl orbitMode">
             <label for="orbitSpeed"><div>speed</div><span></span></label>
@@ -55,19 +55,27 @@
        --><div class="controlHeader" onclick="updateSetting('mode', 'orbit')">orbit</div>
         </div>
         <div class="controlPanel">
-          <div class="slider left spinMode">
+          <div class="slider left spinMode patternMode">
             <label for="tileSize"><div>tile size</div><span></span></label>
             <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
+          <div id="loopTrans" class="button patternMode" onclick="updateSetting(this.id, !this.value)">loop</div>
+          <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short</div>
+          <div id="rotX" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip x</div>
+          <div id="rotY" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip y</div>
           <div class="slider right spinMode">
             <label for="spinXSpeed"><div>flip x</div><span></span></label>
             <input type="range" id="spinXSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="button spinMode" onclick="clearSpinX()">clear</div>
-          <div class="slider left spinMode">
+          <div class="slider left spinMode patternMode">
             <label for="tileScale"><div>tile scale</div><span></span></label>
             <input type="range" id="tileScale" min=".7" max="2.8" step=".02" oninput="updateSetting(this.id, this.value)" />
           </div>
+          <div class="button patternMode" onclick="addTransition('ltr')">ltr</div>
+          <div class="button patternMode" onclick="addTransition('rtl')">rtl</div>
+          <div class="button patternMode" onclick="addTransition('cascade up')">btt</div>
+          <div class="button patternMode" onclick="addTransition('cascade down')">ttb</div>
           <div class="slider right spinMode">
             <label for="spinYSpeed"><div>flip y</div><span></span></label>
             <input type="range" id="spinYSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
@@ -82,10 +90,9 @@
             <label for="animationLength"><div>spread</div><span></span></label>
             <input type="range" id="animationLength" min=".01" max=".5" step=".01" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="button patternMode" onclick="addTransition()">next</div>
-          <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short spin</div>
-          <div id="rotX" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip x</div>
-          <div id="rotY" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip y</div>
+          <div class="button patternMode" onclick="addTransition('diagonal rtl')">d-rtl</div>
+          <div class="button patternMode" onclick="addTransition('diagonal skew')">d-ltr</div>
+          <div class="button patternMode" onclick="addTransition('center-circle')">circle</div>
 
           <div class="slider left orbitMode fourdig">
             <label for="bodies"><div>tiles</div><span></span></label>
@@ -129,7 +136,7 @@
         </div>
       </div>
       <div id="msg">
-        <div id="msgHeader" class="controlHeader">tile stee</div>
+        <div id="msgHeader" class="controlHeader">tiles</div>
         <div id="message" class="controlPanel"></div>
       </div>
     </div>
