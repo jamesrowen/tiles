@@ -1,7 +1,8 @@
 // globals
 var lastTime = 0, tileColors, shapeSize, step = 0;
-var activeTransitions = [['h-zags', 'center-circle', .5],['icebergs', 'rtl', 0]];
-curPattern = 'sine';
+
+var curTransitions = [['concentric asym', 'ltr', .75],['sine', 'ltr', .5],['h-zags', 'ltr', .25],['v-zags', 'ltr', 0]];
+curPattern = 'diamonds';
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -60,48 +61,32 @@ function draw() {
     // expand to fill space if possible
     let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
-    el('message').innerHTML = curPattern + '<br>';
-    for (let t of activeTransitions) {
-      t[2] += tick * patternSpeed / 99;
-      if (t[2] >= 1) {
-        curPattern = t[0];
-        addTransition(chooseRandom(Object.keys(patterns)), curTransition);
-      }
-      el('message').innerHTML += t[0] + ', ' + t[1] + ': ' + parseInt(t[2] * 100) + '<br>';
-    }
-    activeTransitions = activeTransitions.filter(t => t[2] < 1);
 
+    updateTransitions(tick);
 
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-
-        let rot = mod(patterns[curPattern](x, y, nx, ny), 4);
-        for (let t of activeTransitions) {
-          let nextRot = mod(patterns[t[0]](x, y, nx, ny), 4);
+        updateColors(x / (nx - 1), y / (ny - 1), tilePct);
+        // calculate tile rotation - start with the current pattern's rotation
+        let rotation = mod(patterns[curPattern](x, y, nx, ny), 4);
+        // each transition looks at the previous one to calc its rotation contribution
+        let prevPosition = rotation;
+        for (let t of curTransitions) {
           const delay = transitions[t[1]](x, y, nx, ny);
           const transitionProg = min(max(t[2] - delay * (1 - animationLength), 0) / animationLength, 1);
-          if (shortRotations) {
-            // if tile would rotate 270, make it 90 the other direction
-            if (nextRot == 0 && rot == 3)
-              nextRot = 4;
-            if (nextRot == 3 && rot == 0)
-              rot = 4;
-          } else {
-            // make all rotations same direction
-            if (nextRot < rot)
-              nextRot += 4;
-          }
-          rot = lerp(rot, nextRot, transitionProg);
+          const nextPosition = mod(patterns[t[0]](x, y, nx, ny), 4);
+
+          rotation += lerp(0, getRotation(prevPosition, nextPosition), transitionProg);
+          prevPosition = nextPosition;
         }
 
-        updateColors(x / (nx - 1), y / (ny - 1), tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
-        rotate(PI / 2 * rot);
+        rotate(PI / 2 * rotation);
         if (rotY)
-          rotateY(PI * rot);
+          rotateY(PI * rotation);
         if (rotX)
-          rotateX(PI * rot);
+          rotateX(PI * rotation);
         translate(-shapeSize / 2, -shapeSize / 2);
         drawTile();
         resetMatrix();
@@ -154,4 +139,34 @@ function mod(x, n) {
 function chooseRandom(list, exclude) {
   let result = list.filter(i => i != exclude);
   return result[Math.floor(Math.random() * result.length)];
+}
+
+function getRotation(current, next) {
+  let newNext = next;
+  if (shortRotations) {
+    // if tile would rotate 270, make it 90 the other direction
+    if (current == 3 && next == 0)
+      newNext = 4;
+    if (current == 0 && next == 3)
+      newNext = -1;
+  }
+  else if (next < current) {
+    // make all rotations same direction
+    newNext = next + 4;
+  }
+  return newNext - current;
+}
+
+function updateTransitions(tick) {
+  for (let t of curTransitions) {
+    t[2] += tick * patternSpeed / 99;
+    if (t[2] >= 1) {
+      curPattern = t[0];
+      addTransition(
+        chooseRandom(Object.keys(patterns), curTransitions[curTransitions.length - 1][0]),
+        curTransition
+      );
+    }
+  }
+  curTransitions = curTransitions.filter(t => t[2] < 1);
 }

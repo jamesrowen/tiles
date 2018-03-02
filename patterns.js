@@ -26,20 +26,20 @@ var patterns = {
 };
 
 var transitions = {
+  'ltr':
+    (x, y, nx, ny) => x / nx,
+  'rtl':
+    (x, y, nx, ny) => 1 - x / nx,
+  'cascade down':
+    (x, y, nx, ny) => (x + y * (nx + 1)) / ((nx + 1) * ny),
+  'cascade up':
+    (x, y, nx, ny) => 1 - (x + y * (nx + 1)) / ((nx + 1) * ny),
   'diagonal rtl':
     (x, y, nx, ny) => (nx - x + ny - y) / (nx + ny),
   'diagonal skew':
     (x, y, nx, ny) => (x / nx * ny + y) / (ny * 2),
-  'cascade up':
-    (x, y, nx, ny) => 1 - (x + y * (nx + 1)) / ((nx + 1) * ny),
-  'rtl':
-    (x, y, nx, ny) => 1 - x / nx,
   'center-circle':
-    (x, y, nx, ny) => (Math.pow(x - nx / 2, 2) + Math.pow(y - ny / 2, 2)) / (Math.pow(nx/2, 2) + Math.pow(ny/2, 2)),
-  'ltr':
-    (x, y, nx, ny) => x / nx,
-  'cascade down':
-    (x, y, nx, ny) => (x + y * (nx + 1)) / ((nx + 1) * ny)
+    (x, y, nx, ny) => (Math.pow(x - nx / 2, 2) + Math.pow(y - ny / 2, 2)) / (Math.pow(nx/2, 2) + Math.pow(ny/2, 2))
 };
 
 function getQuadrant(x, y) {
