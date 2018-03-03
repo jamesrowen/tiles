@@ -6,6 +6,9 @@ body {
   font-family: system-ui, sans-serif;
   font-size: .9em;
 }
+label {
+  background-color: #bfbfbf;
+}
 :focus { outline: none; }
 #canvas {
   position: absolute;
@@ -30,7 +33,6 @@ body {
   left: 50px;
   right: 50px;
   color: #333;
-  background-color: #33333322;
   padding: 2px;
   margin-bottom: 5px;
   border-top-left-radius: 4px;
@@ -44,8 +46,8 @@ body {
 .controls > div {
   display: flex;
   flex-flow: column;
-  padding: 5px;
-  background-color: #717171cc;
+  padding: 2px;
+  background-color: #5c5c5c;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -53,23 +55,23 @@ body {
 .controlHeader {
   padding: 2px 5px;
   border-radius: 1px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   background-color: #e6e4d0;
 }
 #modeTabs { display: flex; flex-flow: row; }
 #modeTabs div {
-  background-color: #b9b9b9;
+  background-color: #aaa;
   cursor: pointer;
-  margin-right: 3px;
+  margin-right: 2px;
   text-align: center;
   flex: 1 1 auto;
   transition: background-color .1s ease 0s;
 }
+#modeTabs div:last-child { margin-right: 0; }
 #modeTabs div:hover {
-  background-color: #c1c1c1;
+  background-color: #b6b6b6;
   color: #000;
 }
-#modeTabs div:last-child { margin-right: 0; }
 #mode[value="spin"] #modeTabs div:nth-child(1),
 #mode[value="pattern"] #modeTabs div:nth-child(2),
 #mode[value="orbit"] #modeTabs div:nth-child(3) {
@@ -77,34 +79,35 @@ body {
 }
 
 .controlPanel {
-  background-color: #c1c1c1;
+  background-color: #999;
   border-radius: 1px;
   padding: 5px;
   flex: 1 1 auto;
   font-size: .9em;
 }
 .button {
-  background-color: #b0b0b0;
+  background-color: #c8c8c8;
   display: inline-block;
   cursor: pointer;
   padding: 2px;
-  border: 1px solid #888;
-  border-radius: 2px;
+  border: 1px solid #7a7a7a;
+  border-radius: 3px;
   text-align: center;
   user-select: none;
   transition: background-color .1s ease 0s;
 }
 .button.trans {
   border-radius: 12px;
-  background-color: #a6a6a6;
+  background-color: #c0c0c0;
 }
 .button:hover {
-  background-color: #b8b8b8;
+  background-color: #e8e8e5;
   color: #000;
 }
 .button:active,
 .button[value=true] {
   background-color: #b2e2f9;
+  color: #000;
 }
 
 #playback .controlPanel {
@@ -162,8 +165,8 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 6px;
   cursor: pointer;
-  background: #b8b8b8;
-  border: 1px solid #888;
+  background: #b4b4b4;
+  border: 1px solid #7a7a7a;
   border-radius: 2px;
   padding: 2px;
 }
@@ -176,7 +179,7 @@ input[type=range]::-ms-track {
   height: 6px;
   cursor: pointer;
   background: #b8b8b8;
-  border: 1px solid #888;
+  border: 1px solid #7a7a7a;
   border-radius: 2px;
   padding: 2px;
 }
@@ -185,20 +188,25 @@ input[type=range]::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
   border-radius: 2px;
-  background: #efefef;
-  border: 1px solid #888;
+  background: #ddd;
+  border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: -15px;
 }
+input[type=range]:hover::-webkit-slider-thumb,
 input[type=range]::-webkit-slider-thumb:active {
   background-color: #f7f6ea;
+}
+input[type=range]:focus::-webkit-slider-thumb {
+  background-color: #f7f6ea;
+  border-color: #ccc;
 }
 input[type=range]::-moz-range-thumb {
   height: 15px;
   width: 15px;
   border-radius: 2px;
-  background: #efefef;
-  border: 1px solid #888;
+  background: #eaeaea;
+  border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: -15px;
 }
@@ -206,8 +214,8 @@ input[type=range]::-ms-thumb {
   height: 15px;
   width: 15px;
   border-radius: 2px;
-  background: #efefef;
-  border: 1px solid #888;
+  background: #eaeaea;
+  border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: -15px;
 }
@@ -217,7 +225,7 @@ input[type=range]::-ms-thumb {
 }
 .slider label {
   margin-right: -8px;
-  border: 1px solid #888;
+  border: 1px solid #7a7a7a;
   border-radius: 2px;
   flex-basis: 100px;
 }
@@ -229,9 +237,9 @@ input[type=range]::-ms-thumb {
 .slider label span {
   height: 20px;
   width: 24px;
-  background-color: #c1c1c1;
-  color: #636363;
-  border-left: 1px solid #b4b4b4;
+  background-color: #b6b6b6;
+  color: #5a5a5a;
+  border-left: 1px solid #a7a7a7;
   display: inline-block;
   padding: 2px 6px 0px 4px;
   text-align: center;
@@ -262,7 +270,7 @@ input[type="text"]:focus {
   background: #eaeaea;
 }
 .input {
-  border: 1px solid #888;
+  border: 1px solid #7a7a7a;
   border-radius: 2px;
   display: flex;
   flex-flow: row;

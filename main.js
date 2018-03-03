@@ -17,7 +17,8 @@ function windowResized() {
 
 function draw() {
   const time = millis() / 1000.0;
-  const tick = playing ? time - lastTime : (step != 0 ? (time - lastTime) * step : 0);
+  let tick = playing ? time - lastTime : (step != 0 ? (time - lastTime) * step : 0);
+  tick *=  rewind ? -1 : 1;
   step = 0;
   lastTime = time;
   resetMatrix();
@@ -30,11 +31,11 @@ function draw() {
     let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
     if (tick != 0) {
-      updateSetting('spin', spin + tick * spinSpeed / 99 * 6 * (rewind ? -1 : 1));
+      updateSetting('spin', spin + tick * spinSpeed / 99 * 6);
       if (spinYSpeed != 0)
-        updateSetting('spinY', spinY + tick * spinYSpeed / 99 * 6 * (rewind ? -1 : 1));
+        updateSetting('spinY', spinY + tick * spinYSpeed / 99 * 6);
       if (spinXSpeed != 0)
-        updateSetting('spinX', spinX + tick * spinXSpeed / 99 * 6 * (rewind ? -1 : 1));
+        updateSetting('spinX', spinX + tick * spinXSpeed / 99 * 6);
     }
 
     for (let y = 0; y < ny; y++) {
@@ -94,7 +95,7 @@ function draw() {
   if (mode == 'orbit') {
     shapeSize = zoom;
     if (tick != 0)
-      updateSetting('orbit', orbit + tick * Math.pow(orbitSpeed / 100, 2) * (rewind ? -1 : 1));
+      updateSetting('orbit', orbit + tick * Math.pow(orbitSpeed / 100, 2));
     let rows = Math.ceil(bodies / curl);
     translate(camX, camY);
 
@@ -155,15 +156,21 @@ function getRotation(current, next) {
 }
 
 function updateTransitions(tick) {
-  for (let t of curTransitions) {
+  // loop over a copy because we may modify the list
+  let transitions = curTransitions.slice();
+  for (let t of transitions) {
     t[2] += tick * (patternSpeed + 2) / 200;
-    if (t[2] >= 1) {
-      updateSetting('curPattern', t[0]);
+    // check if complete
+    if (t[2] > 1 || t[2] < 0) {
+      // set base pattern only when moving in the positive direction
+      if (t[2] > 1)
+        updateSetting('curPattern', t[0]);
       if (loopTrans) {
-        addTransition(t[1]);
+        // pass any overtime to the next to stay in sync
+        addTransition(t[1], t[2]);
       }
     }
   }
-  curTransitions = curTransitions.filter(t => t[2] < 1);
+  curTransitions = curTransitions.filter(t => t[2] >= 0 && t[2] <= 1);
   window.localStorage.setItem('curTransitions', JSON.stringify(curTransitions));
 }

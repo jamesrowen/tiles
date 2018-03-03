@@ -95,21 +95,21 @@
           <div class="button patternMode trans" onclick="addTransition('center-circle')">O</div>
           <div class="button patternMode trans" onclick="addTransition('scroll')">\\</div>
 
-          <div class="slider left orbitMode fourdig">
+          <div class="slider left orbitMode">
+            <label for="zoom"><div>zoom</div><span></span></label>
+            <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateZoom(this.value)" />
+          </div>
+          <div class="slider right orbitMode fourdig">
             <label for="bodies"><div>tiles</div><span></span></label>
             <input type="range" id="bodies" min="100" max="1990" step="10" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider right orbitMode">
-            <label for="curl"><div>curl</div><span></span></label>
+          <div class="slider left orbitMode">
+            <label for="curl"><div>cols</div><span></span></label>
             <input type="range" id="curl" min="1" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider left orbitMode">
+          <div class="slider right orbitMode">
             <label for="growth"><div>growth</div><span></span></label>
             <input type="range" id="growth" min="1" max="130" step="1" oninput="updateSetting(this.id, this.value)" />
-          </div>
-          <div class="slider right orbitMode">
-            <label for="zoom"><div>zoom</div><span></span></label>
-            <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateZoom(this.value)" />
           </div>
           <div class="button orbitMode" onclick="resetCamPos()">origin</div>
         </div>
