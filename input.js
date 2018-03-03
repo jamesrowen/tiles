@@ -72,7 +72,10 @@ function clearSpinY() {
 
 // pattern mode actions
 function addTransition(transition, time) {
-  let newPattern = chooseRandom(Object.keys(patterns));
+  if (patternList.length == 0) {
+    patternList = shuffle(Object.keys(patterns));
+  }
+  let newPattern = patternList.pop();
 
   // by default start at the beginning or end (ok if time == 0)
   if (!time)
@@ -83,7 +86,6 @@ function addTransition(transition, time) {
   if (time > 1)
     time -= 1;
 
-  // if starting from the end, swap the start/end pattern
   if (rewind) {
     let lastPattern = curPattern;
     updateSetting('curPattern', newPattern);
@@ -92,7 +94,6 @@ function addTransition(transition, time) {
   } else {
     curTransitions.push([newPattern, transition, time]);
   }
-  curTransitions.map(t => console.log(t[0], t[2]));
 }
 
 

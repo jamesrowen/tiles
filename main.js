@@ -1,5 +1,5 @@
 // globals
-var lastTime = 0, tileColors, shapeSize, step = 0;
+var lastTime = 0, tileColors, shapeSize, step = 0, patternList = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -130,15 +130,6 @@ function updateColors(xpct, ypct, pct) {
   tileColors[1].setAlpha(c2alpha);
 }
 
-function mod(x, n) {
-    return ((x % n) + n) % n;
-};
-
-function chooseRandom(list, exclude) {
-  let result = list.filter(i => i != exclude);
-  return result[Math.floor(Math.random() * result.length)];
-}
-
 function getRotation(current, next) {
   let newNext = next;
   if (shortRotations) {
@@ -173,4 +164,15 @@ function updateTransitions(tick) {
   }
   curTransitions = curTransitions.filter(t => t[2] >= 0 && t[2] <= 1);
   window.localStorage.setItem('curTransitions', JSON.stringify(curTransitions));
+}
+
+function mod(x, n) {
+    return ((x % n) + n) % n;
+};
+
+function shuffle(list) {
+  for (let i = list.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
 }
