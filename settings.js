@@ -33,7 +33,7 @@ var settings = {
   // patternMode
   'pattern': {default: 0, parse: parseFloat},
   'numPatterns': {default: 0, parse: parseInt},
-  'curPattern': {default: 'default', parse: x => x},
+  'curPattern': {default: 'sine', parse: x => x},
   'loopTrans': {default: false, parse: parseBool},
   'curTransitions': {default: [
       ['concentric asym', 'ltr', .75],['sine', 'ltr', .5],['h-zags', 'ltr', .25],['v-zags', 'ltr', 0]

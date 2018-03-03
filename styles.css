@@ -66,7 +66,8 @@ body {
   transition: background-color .1s ease 0s;
 }
 #modeTabs div:hover {
-  background-color: #c5c5c5;
+  background-color: #c1c1c1;
+  color: #000;
 }
 #modeTabs div:last-child { margin-right: 0; }
 #mode[value="spin"] #modeTabs div:nth-child(1),
@@ -76,14 +77,14 @@ body {
 }
 
 .controlPanel {
-  background-color: #c5c5c5;
+  background-color: #c1c1c1;
   border-radius: 1px;
   padding: 5px;
   flex: 1 1 auto;
   font-size: .9em;
 }
 .button {
-  background-color: #b4b4b4;
+  background-color: #b0b0b0;
   display: inline-block;
   cursor: pointer;
   padding: 2px;
@@ -93,13 +94,19 @@ body {
   user-select: none;
   transition: background-color .1s ease 0s;
 }
+.button.trans {
+  border-radius: 12px;
+  background-color: #a6a6a6;
+}
 .button:hover {
-  background-color: #bababa;
+  background-color: #b8b8b8;
+  color: #000;
 }
 .button:active,
 .button[value=true] {
   background-color: #b2e2f9;
 }
+
 #playback .controlPanel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -158,7 +158,7 @@ function updateTransitions(tick) {
   for (let t of curTransitions) {
     t[2] += tick * (patternSpeed + 2) / 200;
     if (t[2] >= 1) {
-      curPattern = t[0];
+      updateSetting('curPattern', t[0]);
       if (loopTrans) {
         addTransition(t[1]);
       }
