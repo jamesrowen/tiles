@@ -13,10 +13,8 @@ var settings = {
   'color2a': {default: '#ffffff', parse: x => x},
   'color1b': {default: '#222222', parse: x => x},
   'color2b': {default: '#dddddd', parse: x => x},
-  'g1x': {default: true, parse: parseBool},
-  'g1y': {default: false, parse: parseBool},
-  'g2x': {default: false, parse: parseBool},
-  'g2y': {default: true, parse: parseBool},
+  'c1mode': {default: 0, parse: parseInt},
+  'c2mode': {default: 0, parse: parseInt},
   'c1alpha': {default: 160, parse: parseInt, type: 'slider'},
   'c2alpha': {default: 160, parse: parseInt, type: 'slider'},
   'bgColor': {default: '#f0f0f0', parse: x => x},
@@ -36,7 +34,7 @@ var settings = {
   'curPattern': {default: 'sine', parse: x => x},
   'loopTrans': {default: false, parse: parseBool},
   'curTransitions': {default: [
-      ['concentric asym', 'ltr', .75],['sine', 'ltr', .5],['h-zags', 'ltr', .25],['v-zags', 'ltr', 0]
+      ['concentric asym', 'ltr', .5],['v-zags', 'ltr', 0]
     ], parse: JSON.parse},
   'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
   'shortRotations': {default: false, parse: parseBool},

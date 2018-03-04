@@ -93,11 +93,11 @@
           <div class="button patternMode trans" onclick="addTransition('diagonal rtl')">&lt;\</div>
           <div class="button patternMode trans" onclick="addTransition('diagonal skew')">/&gt;</div>
           <div class="button patternMode trans" onclick="addTransition('center-circle')">O</div>
-          <div class="button patternMode trans" onclick="addTransition('scroll')">\\</div>
+          <div class="button patternMode trans" onclick="addTransition('scroll')">//</div>
 
           <div class="slider left orbitMode">
             <label for="zoom"><div>zoom</div><span></span></label>
-            <input type="range" id="zoom" min="5" max="80" step="1" oninput="updateZoom(this.value)" />
+            <input type="range" id="zoom" min="4" max="70" step="1" oninput="updateZoom(this.value)" />
           </div>
           <div class="slider right orbitMode fourdig">
             <label for="bodies"><div>tiles</div><span></span></label>
@@ -117,23 +117,26 @@
       <div id="color">
         <div class="controlHeader">color</div>
         <div class="controlPanel">
-          <input type="color" id="color1a" onchange="updateSetting(this.id, this.value)" />
-          <input type="color" id="color1b" onchange="updateSetting(this.id, this.value)" />
-          <input type="color" id="color2a" onchange="updateSetting(this.id, this.value)" />
-          <input type="color" id="color2b" onchange="updateSetting(this.id, this.value)" />
-          <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
-          <div id="g1x" class="button" onclick="updateSetting(this.id, !this.value)">x1</div>
-          <div id="g1y" class="button" onclick="updateSetting(this.id, !this.value)">y1</div>
-          <div id="g2x" class="button" onclick="updateSetting(this.id, !this.value)">x2</div>
-          <div id="g2y" class="button" onclick="updateSetting(this.id, !this.value)">y2</div>
-          <div class="slider">
-            <label for="c1alpha"><div>alpha1</div><span></span></label>
+          <div>
+            <input type="color" id="color1a" onchange="updateSetting(this.id, this.value)" />
+            <input type="color" id="color1b" onchange="updateSetting(this.id, this.value)" />
+          </div>
+          <div id="c1mode" class="button" onclick="updateSetting(this.id, (this.value + 1) % 5)">mode</div>
+
+          <div>
+            <input type="color" id="color2a" onchange="updateSetting(this.id, this.value)" />
+            <input type="color" id="color2b" onchange="updateSetting(this.id, this.value)" />
+          </div>
+          <div id="c2mode" class="button" onclick="updateSetting(this.id, (this.value + 1) % 5)">mode</div>
+          <div class="slider left">
+            <label for="c1alpha"><div>α</div><span></span></label>
             <input type="range" id="c1alpha" min="0" max="255" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="slider">
-            <label for="c2alpha"><div>alpha2</div><span></span></label>
+          <div class="slider right">
+            <label for="c2alpha"><div>α</div><span></span></label>
             <input type="range" id="c2alpha" min="0" max="255" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
+          <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
         </div>
       </div>
       <div id="msg">

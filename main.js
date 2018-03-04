@@ -8,6 +8,7 @@ function setup() {
     el('mode').classList.toggle('closed');
   });
   noStroke();
+  tileColors = [color('red'), color('white')];
 }
 
 function windowResized() {
@@ -41,7 +42,7 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        updateColors(x / (nx - 1), y / (ny - 1), tilePct);
+        updateColors(x, y, nx, ny, tilePct);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
         rotate(tilePct * spin);
         rotateY(tilePct * spinY);
@@ -65,7 +66,7 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        updateColors(x / (nx - 1), y / (ny - 1), tilePct);
+        updateColors(x, y, nx, ny, tilePct);
         // calculate tile rotation - start with the current pattern's rotation
         let rotation = mod(patterns[curPattern](x, y, nx, ny), 4);
         // each transition looks at the previous one to calc its rotation contribution
@@ -100,7 +101,7 @@ function draw() {
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {
-      updateColors((b % curl) / (curl - 1), Math.floor(b / curl) / (rows - 1), b / (bodies - 1));
+      updateColors(b % curl, Math.floor(b / curl), curl, rows, b / (bodies - 1));
       translate(zoom * (b % curl) * growth / 100, zoom * Math.floor(b / curl) * growth / 100);
       rotate(b / (bodies - 1) * orbit);
       drawTile();
@@ -123,11 +124,24 @@ function drawTile() {
   }
 }
 
-function updateColors(xpct, ypct, pct) {
-  tileColors = [lerpColor(color(color1a), color(color1b), g1x ? (g1y ? pct : xpct) : (g1y ? ypct : 0)),
-    lerpColor(color(color2a), color(color2b), g2x ? (g2y ? pct : xpct) : (g2y ? ypct : 0))];
-  tileColors[0].setAlpha(c1alpha);
-  tileColors[1].setAlpha(c2alpha);
+function updateColors(x, y, nx, ny, pct) {
+  let colors = [[color1a, color1b, c1mode, c1alpha], [color2a, color2b, c2mode, c2alpha]];
+  for (let i = 0; i < 2; i++) {
+    let amount = 0;
+    // each mode sets a different gradient
+    switch (colors[i][2]) {
+      case 1: amount = x / (nx - 1);
+              break;
+      case 2: amount = y / (ny - 1);
+              break;
+      case 3: amount = pct;
+              break;
+      case 4: amount = (x + y) % 2;
+              break;
+    }
+    tileColors[i] = lerpColor(color(colors[i][0]), color(colors[i][1]), amount);
+    tileColors[i].setAlpha(colors[i][3]);
+  }
 }
 
 function getRotation(current, next) {
