@@ -1,12 +1,11 @@
 // globals
+
 var lastTime = 0, tileColors, shapeSize, step = 0, patternList = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   ortho(0, windowWidth, -windowHeight, 0, -100, 100);
-  el('defaultCanvas0').addEventListener('click', e => {
-    el('mode').classList.toggle('closed');
-  });
+  setMouseListeners(el('defaultCanvas0'));
   noStroke();
   tileColors = [color('red'), color('white')];
 }

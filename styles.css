@@ -19,7 +19,7 @@ label {
 .controls {
   position: fixed;
   display: grid;
-  grid-template-columns: 190px 2fr 1fr 90px 180px;
+  grid-template-columns: 190px 2fr 250px 90px 180px;
   grid-gap: 5px;
   grid-auto-rows: auto;
   bottom: 0px;

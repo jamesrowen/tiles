@@ -30,18 +30,24 @@ window.addEventListener('keydown', e => {
 });
 
 
-// scroll handler
-window.addEventListener('wheel', e => {
-  if (mode == 'spin' && playing == false) {
-    updateSetting('spinY', spinY - e.deltaX / 500);
-    updateSetting('spinX', spinX - e.deltaY / 500);
-  }
-  if (mode == 'orbit') {
-    updateSetting('camX', camX - e.deltaX);
-    updateSetting('camY', camY - e.deltaY);
-  }
-  e.preventDefault();
-});
+// mouse handler
+function setMouseListeners(element) {
+  element.addEventListener('wheel', e => {
+    if (mode == 'spin' && playing == false) {
+      updateSetting('spinY', spinY - e.deltaX / 500);
+      updateSetting('spinX', spinX - e.deltaY / 500);
+    }
+    if (mode == 'orbit') {
+      updateSetting('camX', camX - e.deltaX);
+      updateSetting('camY', camY - e.deltaY);
+    }
+    e.preventDefault();
+  });
+
+  element.addEventListener('click', e => {
+    el('mode').classList.toggle('closed');
+  });
+}
 
 
 // general actions
