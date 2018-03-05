@@ -164,7 +164,7 @@ function updateTransitions(tick) {
   // loop over a copy because we may modify the list
   let transitions = curTransitions.slice();
   for (let t of transitions) {
-    t[2] += tick * (patternSpeed + 2) / 200;
+    t[2] += tick * (patternSpeed + 2) / 250;
     // check if complete
     if (t[2] > 1 || t[2] < 0) {
       // set base pattern only when moving in the positive direction

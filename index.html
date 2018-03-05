@@ -11,16 +11,14 @@
   </head>
 
   <body>
+    <div id="exportText"></div>
+
     <div id="mode" class="controls">
       <div id="playback">
-        <div class="controlHeader">general</div>
+        <div class="controlHeader">playback</div>
         <div class="controlPanel">
           <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play/pause</div>
           <div id="rewind" class="button" onclick="updateSetting(this.id, !this.value)" />reverse</div>
-          <div class="slider twodig">
-            <label for="shapeIterations"><div>curve</div><span></span></label>
-            <input type="range" id="shapeIterations" min="2" max="8" step="1" oninput="updateSetting(this.id, this.value)" />
-          </div>
           <div class="slider speedControl spinMode twodig">
             <label for="spinSpeed"><div>speed</div><span></span></label>
             <input type="range" id="spinSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
@@ -48,7 +46,7 @@
           <div id="resetPos" class="button" onclick="resetPos()">reset</div>
         </div>
       </div>
-      <div id="modeControls">
+      <div id="modes">
         <div id="modeTabs">
           <div class="controlHeader" onclick="updateSetting('mode', 'spin')">spin</div><!--
        --><div class="controlHeader" onclick="updateSetting('mode', 'pattern')">pattern</div><!--
@@ -84,6 +82,10 @@
           <div class="slider left spinMode">
             <label for="margin"><div>margin</div><span></span></label>
             <input type="range" id="margin" min="0" max="60" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="slider right spinMode twodig">
+            <label for="shapeIterations"><div>curve</div><span></span></label>
+            <input type="range" id="shapeIterations" min="2" max="8" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
 
           <div class="slider left patternMode">
@@ -137,11 +139,20 @@
             <input type="range" id="c2alpha" min="0" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
           </div>
           <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
+          <!-- <div class="button" onclick="exportPreset('color')">export</div> -->
+          <div class="button" onclick="loadPreset(4)">1</div>
+          <div class="button" onclick="loadPreset(5)">2</div>
+          <div class="button" onclick="loadPreset(6)">3</div>
         </div>
       </div>
       <div id="presets">
         <div class="controlHeader">presets</div>
         <div class="controlPanel">
+          <!-- <div class="button" onclick="exportPreset(mode)">export</div> -->
+          <div class="button spinMode" onclick="loadPreset(0)">1</div>
+          <div class="button patternMode" onclick="loadPreset(1)">1</div>
+          <div class="button orbitMode" onclick="loadPreset(2)">1</div>
+          <div class="button orbitMode" onclick="loadPreset(3)">2</div>
         </div>
       </div>
       <div id="msg">
@@ -152,6 +163,7 @@
 
     <script src="lib/p5.min.js" type="text/javascript"></script>
     <script src="settings.js" type="text/javascript"></script>
+    <script src="presets.js" type="text/javascript"></script>
     <script src="patterns.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
     <script src="input.js" type="text/javascript"></script>

@@ -30,7 +30,6 @@ var settings = {
   'shapeIterations': {default: 7, parse: parseInt, type: 'slider'},
   // patternMode
   'pattern': {default: 0, parse: parseFloat},
-  'numPatterns': {default: 0, parse: parseInt},
   'curPattern': {default: 'sine', parse: x => x},
   'loopTrans': {default: false, parse: parseBool},
   'curTransitions': {default: [
