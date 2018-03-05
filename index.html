@@ -7,6 +7,7 @@
     <meta name="author" content="James Rowen">
     <meta name="description" content="Tile spinner">
     <meta name="keywords" content="tiles, math, canvas, patterns">
+    <link rel="stylesheet" href="styles-input.css" type="text/css">
     <link rel="stylesheet" href="styles.css" type="text/css">
   </head>
 
@@ -139,10 +140,12 @@
             <input type="range" id="c2alpha" min="0" max="1" step=".01" oninput="updateSetting(this.id, this.value)" />
           </div>
           <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
+          <div id="colorPresets">
           <!-- <div class="button" onclick="exportPreset('color')">export</div> -->
-          <div class="button" onclick="loadPreset(4)">1</div>
-          <div class="button" onclick="loadPreset(5)">2</div>
-          <div class="button" onclick="loadPreset(6)">3</div>
+            <div class="button" onclick="loadPreset(4)">1</div>
+            <div class="button" onclick="loadPreset(5)">2</div>
+            <div class="button" onclick="loadPreset(6)">3</div>
+          </div>
         </div>
       </div>
       <div id="presets">
