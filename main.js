@@ -140,7 +140,7 @@ function updateColors(x, y, nx, ny, pct) {
               break;
     }
     tileColors[i] = lerpColor(color(colors[i][0]), color(colors[i][1]), amount);
-    tileColors[i].setAlpha(colors[i][3]);
+    tileColors[i].setAlpha(parseInt(colors[i][3] * 255));
   }
 }
 

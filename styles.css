@@ -26,7 +26,7 @@ label {
 .controls {
   position: fixed;
   display: grid;
-  grid-template-columns: 190px 2fr 1fr 1fr;
+  grid-template-columns: 190px 2fr 1fr 100px 1fr;
   grid-gap: 5px;
   grid-auto-rows: auto;
   bottom: 0px;
@@ -131,7 +131,7 @@ label {
 #modeControls .slider.left { grid-column: 1 / 5; }
 #modeControls .slider.right { grid-column: 5 / 9; }
 #modeControls .slider.right.spinMode { grid-column: 5 / 8; }
-#modeControls .slider.right.spinMode label div { width: 53px; }
+#modeControls .slider.right.spinMode label div { width: 48px; }
 #color .controlPanel {
   display: grid;
   grid-template-columns: 1fr 50px 1fr 50px;
@@ -147,7 +147,7 @@ input[type="color"] {
 	border: none;
   background: none;
   height: 20px;
-  width: 32px;
+  width: 40%;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
 	padding: 0;
@@ -229,12 +229,12 @@ input[type=range]::-ms-thumb {
   margin-right: -8px;
   border: 1px solid #7a7a7a;
   border-radius: 2px;
-  flex-basis: 100px;
+  flex-basis: 90px;
 }
 .slider label div {
   text-align: center;
   display: inline-block;
-  width: 65px;
+  width: 55px;
 }
 .slider label span {
   height: 20px;
@@ -249,10 +249,10 @@ input[type=range]::-ms-thumb {
 .slider input { flex: 1 1 auto; }
 
 .slider.fourdig label span { width: 33px; }
-.slider.fourdig label div { width: 55px;}
+.slider.fourdig label div { width: 46px;}
+.slider.twodig label span { padding: 2px 3px 0px 0px; }
 #playback .slider label { flex-basis: 93px; }
 #playback .slider label div { width: 46px; }
-#playback .slider label span { padding: 2px 3px 0px 0px; }
 #color .slider label { flex-basis: 90px; }
 
 

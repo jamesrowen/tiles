@@ -15,8 +15,8 @@ var settings = {
   'color2b': {default: '#dddddd', parse: x => x},
   'c1mode': {default: 0, parse: parseInt},
   'c2mode': {default: 0, parse: parseInt},
-  'c1alpha': {default: 160, parse: parseInt, type: 'slider'},
-  'c2alpha': {default: 160, parse: parseInt, type: 'slider'},
+  'c1alpha': {default: .5, parse: parseFloat, type: 'slider'},
+  'c2alpha': {default: .5, parse: parseFloat, type: 'slider'},
   'bgColor': {default: '#f0f0f0', parse: x => x},
   // spin mode
   'spin': {default: 0, parse: parseFloat},
