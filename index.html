@@ -47,6 +47,7 @@
           <div id="resetPos" class="button" onclick="resetPos()">reset</div>
         </div>
       </div>
+
       <div id="modes">
         <div id="modeTabs">
           <div class="controlHeader" onclick="updateSetting('mode', 'spin')">spin</div><!--
@@ -54,27 +55,19 @@
        --><div class="controlHeader" onclick="updateSetting('mode', 'orbit')">orbit</div>
         </div>
         <div class="controlPanel">
-          <div class="slider left spinMode patternMode">
+          <div class="slider left spinMode">
             <label for="tileSize"><div>size</div><span></span></label>
             <input type="range" id="tileSize" min="40" max="180" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div id="loopTrans" class="button patternMode" onclick="updateSetting(this.id, !this.value)">loop</div>
-          <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short</div>
-          <div id="rotX" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip x</div>
-          <div id="rotY" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip y</div>
           <div class="slider right spinMode twodig">
             <label for="spinXSpeed"><div>flip x</div><span></span></label>
             <input type="range" id="spinXSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="button spinMode" onclick="clearSpinX()">clear</div>
-          <div class="slider left spinMode patternMode">
+          <div class="slider left spinMode">
             <label for="tileScale"><div>scale</div><span></span></label>
             <input type="range" id="tileScale" min=".7" max="2.8" step=".02" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="button patternMode trans" onclick="addTransition('rtl')">&lt;</div>
-          <div class="button patternMode trans" onclick="addTransition('ltr')">&gt;</div>
-          <div class="button patternMode trans" onclick="addTransition('cascade up')">^</div>
-          <div class="button patternMode trans" onclick="addTransition('cascade down')">v</div>
           <div class="slider right spinMode twodig">
             <label for="spinYSpeed"><div>flip y</div><span></span></label>
             <input type="range" id="spinYSpeed" min="0" max="99" step="1" oninput="updateSetting(this.id, this.value)" />
@@ -92,6 +85,22 @@
           <div class="slider left patternMode">
             <label for="animationLength"><div>spread</div><span></span></label>
             <input type="range" id="animationLength" min=".01" max=".5" step=".01" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div id="loopTrans" class="button patternMode" onclick="updateSetting(this.id, !this.value)">loop</div>
+          <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short</div>
+          <div id="rotX" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip x</div>
+          <div id="rotY" class="button patternMode" onclick="updateSetting(this.id, !this.value)">flip y</div>
+          <div class="slider left patternMode">
+            <label for="patTileSize"><div>size</div><span></span></label>
+            <input type="range" id="patTileSize" min="30" max="150" step="1" oninput="updateSetting(this.id, this.value)" />
+          </div>
+          <div class="button patternMode trans" onclick="addTransition('rtl')">&lt;</div>
+          <div class="button patternMode trans" onclick="addTransition('ltr')">&gt;</div>
+          <div class="button patternMode trans" onclick="addTransition('cascade up')">^</div>
+          <div class="button patternMode trans" onclick="addTransition('cascade down')">v</div>
+          <div class="slider left patternMode">
+            <label for="patTileScale"><div>scale</div><span></span></label>
+            <input type="range" id="patTileScale" min=".7" max="2" step=".02" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="button patternMode trans" onclick="addTransition('diagonal rtl')">&lt;\</div>
           <div class="button patternMode trans" onclick="addTransition('diagonal skew')">/&gt;</div>
@@ -117,6 +126,7 @@
           <div class="button orbitMode" onclick="resetCamPos()">origin</div>
         </div>
       </div>
+
       <div id="color">
         <div class="controlHeader">color</div>
         <div class="controlPanel">
@@ -125,7 +135,6 @@
             <input type="color" id="color1b" onchange="updateSetting(this.id, this.value)" />
           </div>
           <div id="c1mode" class="button" onclick="updateSetting(this.id, (this.value + 1) % 5)">mode</div>
-
           <div>
             <input type="color" id="color2a" onchange="updateSetting(this.id, this.value)" />
             <input type="color" id="color2b" onchange="updateSetting(this.id, this.value)" />
@@ -148,14 +157,18 @@
           </div>
         </div>
       </div>
+
       <div id="presets">
         <div class="controlHeader">presets</div>
         <div class="controlPanel">
           <!-- <div class="button" onclick="exportPreset(mode)">export</div> -->
           <div class="button spinMode" onclick="loadPreset(0)">1</div>
           <div class="button patternMode" onclick="loadPreset(1)">1</div>
+          <div class="button patternMode" onclick="loadPreset(7)">2</div>
+          <div class="button patternMode" onclick="loadPreset(8)">3</div>
           <div class="button orbitMode" onclick="loadPreset(2)">1</div>
           <div class="button orbitMode" onclick="loadPreset(3)">2</div>
+          <div class="button orbitMode" onclick="loadPreset(9)">3</div>
         </div>
       </div>
       <div id="msg">

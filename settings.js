@@ -24,7 +24,7 @@ var settings = {
   'spinYSpeed': {default: 0, parse: parseInt, type: 'slider'},
   'spinX': {default: 0, parse: parseFloat},
   'spinXSpeed': {default: 0, parse: parseInt, type: 'slider'},
-  'tileSize': {default: 30, parse: parseInt, type: 'slider'},
+  'tileSize': {default: 60, parse: parseInt, type: 'slider'},
   'tileScale': {default: 1, parse: parseFloat, type: 'slider'},
   'margin': {default: 30, parse: parseInt, type: 'slider'},
   'shapeIterations': {default: 7, parse: parseInt, type: 'slider'},
@@ -35,6 +35,8 @@ var settings = {
   'curTransitions': {default: [
       ['concentric asym', 'ltr', .5],['v-zags', 'ltr', 0]
     ], parse: JSON.parse},
+  'patTileSize': {default: 40, parse: parseInt, type: 'slider'},
+  'patTileScale': {default: .9, parse: parseFloat, type: 'slider'},
   'animationLength': {default: .55, parse: parseFloat, type: 'slider'},
   'shortRotations': {default: false, parse: parseBool},
   'rotX': {default: false, parse: parseBool},

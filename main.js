@@ -54,11 +54,11 @@ function draw() {
   }
 
   if (mode == 'pattern') {
-    const nx = parseInt(windowWidth / tileSize);
-    const ny = parseInt(windowHeight / tileSize);
+    const nx = parseInt(windowWidth / patTileSize);
+    const ny = parseInt(windowHeight / patTileSize);
     // expand to fill space if possible
-    let newSize = tileSize + parseInt((windowWidth % tileSize) / nx);
-    shapeSize = parseInt(newSize * tileScale);
+    let newSize = patTileSize + parseInt((windowWidth % patTileSize) / nx);
+    shapeSize = parseInt(newSize * patTileScale);
 
     updateTransitions(tick);
 
