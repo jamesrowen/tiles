@@ -109,7 +109,7 @@
 
           <div class="slider left orbitMode">
             <label for="zoom"><div>zoom</div><span></span></label>
-            <input type="range" id="zoom" min="4" max="70" step="1" oninput="updateZoom(this.value)" />
+            <input type="range" id="zoom" min="4" max="100" step="1" oninput="updateZoom(this.value)" />
           </div>
           <div class="slider right orbitMode fourdig">
             <label for="bodies"><div>tiles</div><span></span></label>
@@ -150,7 +150,6 @@
           </div>
           <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
           <div id="colorPresets">
-            <!-- <div class="button" onclick="exportPreset('color')">export</div> -->
             <div class="button" onclick="loadPreset('c1')">1</div>
             <div class="button" onclick="loadPreset('c2')">2</div>
             <div class="button" onclick="loadPreset('c3')">3</div>
@@ -162,8 +161,10 @@
       <div id="presets">
         <div class="controlHeader">presets</div>
         <div class="controlPanel">
-          <!-- <div class="button" onclick="exportPreset(mode)">export</div> -->
           <div class="button spinMode" onclick="loadPreset('s1')">s1</div>
+          <div class="button spinMode" onclick="loadPreset('s2')">s2</div>
+          <div class="button spinMode" onclick="loadPreset('s3')">s3</div>
+          <div class="button spinMode" onclick="loadPreset('s4')">s4</div>
           <div class="button patternMode" onclick="loadPreset('p1')">p1</div>
           <div class="button patternMode" onclick="loadPreset('p2')">p2</div>
           <div class="button patternMode" onclick="loadPreset('p3')">p3</div>
@@ -171,11 +172,16 @@
           <div class="button orbitMode" onclick="loadPreset('o2')">o2</div>
           <div class="button orbitMode" onclick="loadPreset('o3')">o3</div>
           <div class="button orbitMode" onclick="loadPreset('o4')">o4</div>
+          <div class="button orbitMode" onclick="loadPreset('o5')">o5</div>
+          <div class="button orbitMode" onclick="loadPreset('o6')">o6</div>
         </div>
       </div>
       <div id="msg">
         <div id="msgHeader" class="controlHeader">tiles</div>
-        <div id="message" class="controlPanel"></div>
+        <div id="message" class="controlPanel">
+          <!-- <div class="button" onclick="exportPreset(mode)">export</div>
+          <div class="button" onclick="exportPreset('color')">export color</div> -->
+        </div>
       </div>
     </div>
 

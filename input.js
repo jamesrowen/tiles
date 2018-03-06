@@ -20,11 +20,11 @@ window.addEventListener('keydown', e => {
       break;
     case 187: // equal/plus
       mode == 'spin' ? updateSetting('tileSize', min(tileSize + 1, 180)) :
-        updateZoom(min(zoom + 1, 80));
+        updateZoom(min(zoom + 1, 100));
       break;
     case 189: // minus
       mode == 'spin' ? updateSetting('tileSize', max(tileSize - 1, 40)) :
-        updateZoom(max(zoom - 1, 5));
+        updateZoom(max(zoom - 1, 4));
       break;
   }
 });
