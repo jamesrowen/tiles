@@ -17,8 +17,9 @@ function windowResized() {
 
 function draw() {
   const time = millis() / 1000.0;
+  updateTweens(time - lastTime);
   let tick = playing ? time - lastTime : (step != 0 ? (time - lastTime) * step : 0);
-  tick *=  rewind ? -1 : 1;
+  tick *= rewind ? -1 : 1;
   step = 0;
   lastTime = time;
   resetMatrix();
@@ -60,7 +61,8 @@ function draw() {
     let newSize = patTileSize + parseInt((windowWidth % patTileSize) / nx);
     shapeSize = parseInt(newSize * patTileScale);
 
-    updateTransitions(tick);
+    if (tick != 0)
+      updateTransitions(tick);
 
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {

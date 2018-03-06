@@ -15,8 +15,25 @@ function exportPreset(type) {
 
 function loadPreset(name) {
   Object.entries(presets[name]).map(s => {
-    updateSetting(s[0], s[1]);
+    if (this[s[0]] != s[1]) {
+      if (settings[s[0]].tween)
+        tweens.push([s[0], this[s[0]], s[1], 0]);
+      else
+        updateSetting(s[0], s[1]);
+    }
   });
+}
+
+var tweens = [];
+function updateTweens(tick) {
+  for (let t of tweens) {
+    t[3] += tick / 3;
+    if (['color1a', 'color1b', 'color2a', 'color2b', 'bgColor'].includes(t[0]))
+      updateSetting(t[0], lerpColor(color(t[1]), color(t[2]), min(t[3], 1)).toString('#rrggbb'));
+    else
+      updateSetting(t[0], lerp(t[1], t[2], min(t[3], 1)));
+  }
+  tweens = tweens.filter(t => t[3] < 1);
 }
 
 var presets = {
