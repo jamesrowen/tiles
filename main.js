@@ -42,7 +42,7 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        updateColors(x, y, nx, ny, tilePct);
+        updateColors(x, y, nx, ny);
         translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
         rotate(tilePct * spin);
         rotateY(tilePct * spinY);
@@ -67,7 +67,7 @@ function draw() {
     for (let y = 0; y < ny; y++) {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
-        updateColors(x, y, nx, ny, tilePct);
+        updateColors(x, y, nx, ny);
         // calculate tile rotation - start with the current pattern's rotation
         let rotation = mod(patterns[curPattern](x, y, nx, ny), 4);
         // each transition looks at the previous one to calc its rotation contribution
@@ -102,7 +102,7 @@ function draw() {
     translate(camX, camY);
 
     for (let b = 0; b < bodies; b++) {
-      updateColors(b % curl, Math.floor(b / curl), curl, rows, b / (bodies - 1));
+      updateColors(b % curl, Math.floor(b / curl), curl, rows);
       translate(zoom * (b % curl) * growth / 100, zoom * Math.floor(b / curl) * growth / 100);
       rotate(b / (bodies - 1) * orbit);
       drawTile();
@@ -125,7 +125,7 @@ function drawTile() {
   }
 }
 
-function updateColors(x, y, nx, ny, pct) {
+function updateColors(x, y, nx, ny) {
   let colors = [[color1a, color1b, c1mode, c1alpha], [color2a, color2b, c2mode, c2alpha]];
   for (let i = 0; i < 2; i++) {
     let amount = 0;
@@ -135,7 +135,7 @@ function updateColors(x, y, nx, ny, pct) {
               break;
       case 2: amount = y / (ny - 1);
               break;
-      case 3: amount = pct;
+      case 3: amount = (x / (nx - 1) + y / (ny - 1)) / 2;
               break;
       case 4: amount = (x + y) % 2;
               break;
