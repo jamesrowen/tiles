@@ -20,7 +20,7 @@ window.addEventListener('keydown', e => {
       break;
     case 187: // equal/plus
       mode == 'spin' ? updateSetting('tileSize', min(tileSize + 1, 180)) :
-        updateZoom(min(zoom + 1, 100));
+        updateZoom(min(zoom + 1, 120));
       break;
     case 189: // minus
       mode == 'spin' ? updateSetting('tileSize', max(tileSize - 1, 40)) :
