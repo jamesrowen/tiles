@@ -83,8 +83,8 @@
           </div>
 
           <div class="slider left patternMode">
-            <label for="animationLength"><div>spread</div><span></span></label>
-            <input type="range" id="animationLength" min=".01" max=".5" step=".01" oninput="updateSetting(this.id, this.value)" />
+            <label for="transLength"><div>spread</div><span></span></label>
+            <input type="range" id="transLength" min=".01" max=".5" step=".01" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div id="loopTrans" class="button patternMode" onclick="updateSetting(this.id, !this.value)">loop</div>
           <div id="shortRotations" class="button patternMode" onclick="updateSetting(this.id, !this.value)">short</div>
@@ -168,6 +168,7 @@
           <div class="button patternMode" onclick="loadPreset('p1')">p1</div>
           <div class="button patternMode" onclick="loadPreset('p2')">p2</div>
           <div class="button patternMode" onclick="loadPreset('p3')">p3</div>
+          <div class="button patternMode" onclick="loadPreset('p4')">p4</div>
           <div class="button orbitMode" onclick="loadPreset('o1')">o1</div>
           <div class="button orbitMode" onclick="loadPreset('o2')">o2</div>
           <div class="button orbitMode" onclick="loadPreset('o3')">o3</div>

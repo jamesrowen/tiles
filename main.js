@@ -26,10 +26,10 @@ function draw() {
   background(bgColor);
 
   if (mode == 'spin') {
-    const nx = parseInt((windowWidth - margin * 1.9) / tileSize);
-    const ny = parseInt((windowHeight - margin * 1.9) / tileSize);
+    const nx = parseInt((windowWidth - margin * 2) / tileSize);
+    const ny = parseInt((windowHeight - margin * 2) / tileSize);
     // expand to fill space if possible
-    let newSize = tileSize + parseInt(((windowWidth - margin * 1.9) % tileSize) / nx);
+    let newSize = tileSize + parseInt(((windowWidth - margin * 2) % tileSize) / nx);
     shapeSize = parseInt(newSize * tileScale);
     if (tick != 0) {
       updateSetting('spin', spin + tick * spinSpeed / 99 * 6);
@@ -43,7 +43,8 @@ function draw() {
       for (let x = 0; x < nx; x++) {
         const tilePct = (x + y * nx) / (nx - 1) / (ny - 1);
         updateColors(x, y, nx, ny);
-        translate(margin + newSize * (x + .5), margin + newSize * (y + .5));
+        translate(newSize * (x + .5) + (width - nx * newSize) / 2,
+          newSize * (y + .5) + (width - nx * newSize) / 2);
         rotate(tilePct * spin);
         rotateY(tilePct * spinY);
         rotateX(tilePct * spinX);
@@ -74,14 +75,15 @@ function draw() {
         let prevPosition = rotation;
         for (let t of curTransitions) {
           const delay = transitions[t[1]](x, y, nx, ny);
-          const transitionProg = min(max(t[2] - delay * (1 - animationLength), 0) / animationLength, 1);
+          const transProg = min(max(t[2] - delay * (1 - transLength), 0) / transLength, 1);
           const nextPosition = mod(patterns[t[0]](x, y, nx, ny), 4);
 
-          rotation += lerp(0, getRotation(prevPosition, nextPosition), transitionProg);
+          rotation += lerp(0, getRotation(prevPosition, nextPosition), transProg);
           prevPosition = nextPosition;
         }
 
-        translate(newSize * (x + .5), newSize * (y + .5));
+        translate(newSize * (x + .5) + (width - nx * newSize) / 2,
+          newSize * (y + .5) + (height - ny * newSize) / 2);
         rotate(PI / 2 * rotation);
         if (rotY)
           rotateY(PI * rotation);
@@ -103,10 +105,12 @@ function draw() {
 
     for (let b = 0; b < bodies; b++) {
       updateColors(b % curl, Math.floor(b / curl), curl, rows);
-      translate(zoom * (b % curl) * growth / 100, zoom * Math.floor(b / curl) * growth / 100);
+      translate(zoom * (b % curl) * growth / 100,
+        zoom * Math.floor(b / curl) * growth / 100);
       rotate(b / (bodies - 1) * orbit);
       drawTile();
-      translate(-zoom * (b % curl) * growth / 100, -zoom * Math.floor(b / curl) * growth / 100);
+      translate(-zoom * (b % curl) * growth / 100,
+        -zoom * Math.floor(b / curl) * growth / 100);
     }
   }
 }

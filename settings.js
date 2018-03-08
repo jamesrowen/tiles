@@ -37,7 +37,7 @@ var settings = {
     ], parse: JSON.parse},
   'patTileSize': {default: 40, parse: parseInt, type: 'slider', tween: true},
   'patTileScale': {default: .9, parse: parseFloat, type: 'slider', tween: true},
-  'animationLength': {default: .55, parse: parseFloat, type: 'slider', tween: true},
+  'transLength': {default: .55, parse: parseFloat, type: 'slider', tween: true},
   'shortRotations': {default: false, parse: parseBool},
   'rotX': {default: false, parse: parseBool},
   'rotY': {default: false, parse: parseBool},
@@ -82,9 +82,6 @@ function updateSetting(name, value) {
   if (str[0] == '0' && str[1] == '.')
     str = str.slice(1);
 
-  if (settings[name].type == 'label') {
-    el(name).textContent = str;
-  }
   if (settings[name].type == 'slider') {
     el(name).parentNode.querySelector('span').textContent = str;
   }
