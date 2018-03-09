@@ -3,11 +3,11 @@ var el = document.getElementById.bind(document);
 var settings = {
   'mode': {default: 'spin', parse: x => x},
   // playback
-  'playing': {default: true, parse: parseBool},
-  'rewind': {default: false, parse: parseBool},
-  'spinSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true},
-  'patternSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true},
-  'orbitSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true},
+  'playing': {default: true, parse: parseBool, title: 'play button', text: 'Start or stop the animation.<br>Hotkey: Spacebar'},
+  'rewind': {default: false, parse: parseBool, title: 'rewind button', text: 'Run the animation in reverse.<br>Hotkey: R'},
+  'spinSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true, title: 'speed control', text: 'Controls animation speed.'},
+  'patternSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true, title: 'speed control', text: 'Controls animation speed.'},
+  'orbitSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true, title: 'speed control', text: 'Controls animation speed.'},
   // colors
   'color1a': {default: '#000000', parse: x => x, tween: true},
   'color2a': {default: '#ffffff', parse: x => x, tween: true},
@@ -19,7 +19,7 @@ var settings = {
   'c2alpha': {default: .5, parse: parseFloat, type: 'slider', tween: true},
   'bgColor': {default: '#f0f0f0', parse: x => x, tween: true},
   // spin mode
-  'spin': {default: 0, parse: parseFloat, tween: true},
+  'spin': {default: 0, parse: parseFloat, type: 'input', tween: true, title: 'position', text: 'Animation position. Click reset to go back to the start. Can enter a value if paused.'},
   'spinY': {default: 0, parse: parseFloat, tween: true},
   'spinYSpeed': {default: 0, parse: parseInt, type: 'slider', tween: true},
   'spinX': {default: 0, parse: parseFloat, tween: true},
@@ -29,7 +29,7 @@ var settings = {
   'margin': {default: 30, parse: parseInt, type: 'slider', tween: true},
   'shapeIterations': {default: 7, parse: parseInt, type: 'slider', tween: true},
   // patternMode
-  'pattern': {default: 0, parse: parseFloat, tween: true},
+  'pattern': {default: 0, parse: parseFloat, type: 'input', tween: true, title: 'position', text: 'Not relevant in this mode.'},
   'curPattern': {default: 'sine', parse: x => x},
   'loopTrans': {default: false, parse: parseBool},
   'curTransitions': {default: [
@@ -42,7 +42,7 @@ var settings = {
   'rotX': {default: false, parse: parseBool},
   'rotY': {default: false, parse: parseBool},
   // orbit mode
-  'orbit': {default: 0, parse: parseFloat, tween: true},
+  'orbit': {default: 0, parse: parseFloat, type: 'input', tween: true, title: 'position', text: 'Animation position. Click reset to go back to the start. Can enter a value if paused.'},
   'curl': {default: 20, parse: parseInt, type: 'slider', tween: true},
   'bodies': {default: 30, parse: parseInt, type: 'slider', tween: true},
   'zoom': {default: 10, parse: parseInt, type: 'slider', tween: true},
@@ -87,13 +87,22 @@ function updateSetting(name, value) {
   }
 }
 
-function loadDefaults() {
-  Object.entries(settings).map(s => updateSetting([s[0]], s[1].default));
-}
-
 // load available settings from storage
 Object.entries(settings).map(s => {
   let val = window.localStorage.getItem(s[0]);
   val = val ? s[1].parse(val) : s[1].default;
   updateSetting(s[0], val);
+
+  if (s[1].text) {
+    let elem = el(s[0]);
+    if (s[1].type == 'slider' || s[1].type == 'input')
+      elem = elem.parentNode;
+    elem.addEventListener('mouseover', e => setMessage(s[1].title, s[1].text));
+    elem.addEventListener('mouseout', e => setMessage('welcome', 'try the different modes, click the presets!'));
+  }
 });
+
+function setMessage(title, text) {
+  el('msgHeader').innerHTML = title;
+  el('message').innerHTML = text;
+}

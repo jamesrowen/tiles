@@ -2,13 +2,16 @@
 .button {
   background-color: #c4c4c4;
   display: inline-block;
-  cursor: pointer;
   padding: 2px;
   border: 1px solid #7a7a7a;
   border-radius: 3px;
+  cursor: pointer;
   text-align: center;
-  user-select: none;
   transition: background-color .1s ease 0s;
+}
+.button.trans {
+  border-radius: 12px;
+  background-color: #c0c0c0;
 }
 .button:hover {
   background-color: #e8e8e5;

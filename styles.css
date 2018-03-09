@@ -96,10 +96,6 @@ label {
 #modes .slider.right { grid-column: 5 / 9; }
 #modes .slider.right.spinMode { grid-column: 5 / 8; }
 #modes .slider.right.spinMode label div { width: 48px; }
-#modes .button.trans {
-  border-radius: 12px;
-  background-color: #c0c0c0;
-}
 
 #color .controlPanel { grid-template-columns: 1fr 50px 1fr 50px; }
 #color .slider.right { grid-column: 3 / 5; }
@@ -108,9 +104,14 @@ label {
 #color .slider label div { width: 20px; }
 #bgColor { width: 95% }
 #colorPresets { grid-column: 2 / 5; }
-#colorPresets div { padding: 2px 8px; }
+#colorPresets div { width: 19px; }
 
 #presets .controlPanel { grid-template-columns: 1fr 1fr; }
+
+#msg .controlPanel {
+  color: #000;
+  background-color: #aaa;
+}
 
 /* control display of mode-specific ui elements */
 .spinMode,
