@@ -19,7 +19,7 @@
 }
 .button:active,
 .button[value=true] {
-  background-color: #b2e2f9;
+  background-color: #c9e8f7;
   color: #000;
 }
 

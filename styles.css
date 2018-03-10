@@ -19,7 +19,7 @@ label {
 .controls {
   position: fixed;
   display: grid;
-  grid-template-columns: 190px 2fr 250px 90px 180px;
+  grid-template-columns: 190px 512px 100px 250px;
   grid-gap: 5px;
   grid-auto-rows: auto;
   bottom: 0px;
@@ -107,11 +107,6 @@ label {
 #colorPresets div { width: 19px; }
 
 #presets .controlPanel { grid-template-columns: 1fr 1fr; }
-
-#msg .controlPanel {
-  color: #000;
-  background-color: #aaa;
-}
 
 /* control display of mode-specific ui elements */
 .spinMode,

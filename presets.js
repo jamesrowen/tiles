@@ -40,7 +40,7 @@ function updateTweens(tick) {
 var presets = {
   's1': {mode:"spin",playing:true,rewind:false,shapeIterations:8,spinSpeed:57,spin:4.950363636429591,spinY:0,spinYSpeed:0,spinX:0,spinXSpeed:0,tileSize:110,tileScale:1.48,margin:11},
   's2': {mode:"spin",playing:true,rewind:false,shapeIterations:2,spinSpeed:60,spin:73.81578787890348,spinY:0,spinYSpeed:0,spinX:0,spinXSpeed:0,tileSize:47,tileScale:0.76,margin:11},
-  's3': {mode:"spin",playing:true,rewind:true,shapeIterations:7,spinSpeed:0,spin:0,spinY:0,spinYSpeed:0,spinX:-32.574575757519604,spinXSpeed:80,tileSize:47,tileScale:2.72,margin:11},
+  's3': {mode:"spin",playing:true,rewind:true,shapeIterations:7,spinSpeed:0,spin:0,spinY:0,spinYSpeed:0,spinX:-9.266,spinXSpeed:80,tileSize:47,tileScale:2.72,margin:11},
   's4': {mode:"spin",playing:true,rewind:false,shapeIterations:8,spinSpeed:15,spin:0,spinY:0,spinYSpeed:0,spinX:0,spinXSpeed:0,tileSize:63,tileScale:0.96,margin:32},
   'p1': {mode:"pattern",playing:true,rewind:false,shapeIterations:7,patternSpeed:21,pattern:0,loopTrans:true,curTransitions:[["sine","ltr",0],["birds","rtl",0],["diamonds","cascade down",0],["v-zags","cascade up",0]],patTileSize:47,patTileScale:0.96,transLength:0.04,shortRotations:false,rotX:false,rotY:false},
   'p2': {mode:"pattern",playing:true,rewind:false,shapeIterations:2,patternSpeed:24,pattern:0,curPattern:"h-zags",loopTrans:true,curTransitions:[["herringbone","ltr",0.5],["diamonds","ltr",0]],patTileSize:61,patTileScale:0.94,transLength:0.34,shortRotations:true,rotX:true,rotY:false},
@@ -57,6 +57,6 @@ var presets = {
   'c2': {color1a:"#7999bc",color2a:"#b5ffe8",color1b:"#314c90",color2b:"#fff0cb",c1mode:4,c2mode:4,c1alpha:0.84,c2alpha:0.87,bgColor:"#9eaeb2"},
   'c3': {color1a:"#4ee7e5",color2a:"#fbfc83",color1b:"#c0f3cb",color2b:"#c14447",c1mode:1,c2mode:1,c1alpha:0.8,c2alpha:0.81,bgColor:"#232523"},
   'c4': {color1a:"#f45730",color2a:"#292c34",color1b:"#d92638",color2b:"#292c34",c1mode:4,c2mode:0,c1alpha:1,c2alpha:0,bgColor:"#282c34"},
-  'c5': {color1a:"#101010",color2a:"#f0f0f0",color1b:"#101010",color2b:"#f0f0f0",c1mode:0,c2mode:0,c1alpha:1,c2alpha:1,bgColor:"#5b5b5b"},
+  'c5': {color1a:"#82ff30",color2a:"#f000ab",color1b:"#feff00",color2b:"#f0003b",c1mode:1,c2mode:1,c1alpha:1,c2alpha:1,bgColor:"#000985"},
   'c6': {color1a:"#101010",color2a:"#f0f0f0",color1b:"#101010",color2b:"#f0f0f0",c1mode:0,c2mode:0,c1alpha:1,c2alpha:1,bgColor:"#5b5b5b"},
 };
