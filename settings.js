@@ -1,4 +1,7 @@
 var el = document.getElementById.bind(document);
+function elements(selector) {
+  return Array.prototype.slice.call(document.querySelectorAll(selector));
+}
 
 var settings = {
   'mode': {default: 'spin', parse: x => x},
@@ -48,7 +51,11 @@ var settings = {
   'zoom': {default: 10, parse: parseInt, type: 'slider', tween: true},
   'growth': {default: 50, parse: parseInt, type: 'slider', tween: true},
   'camX': {default: 0, parse: parseFloat, tween: true},
-  'camY': {default: 0, parse: parseFloat, tween: true}
+  'camY': {default: 0, parse: parseFloat, tween: true},
+  // manage glowing buttons
+  'changedMode': {default: false, parse: parseBool},
+  'usedPreset': {default: false, parse: parseBool},
+  'usedColorPreset': {default: false, parse: parseBool}
 };
 
 function parseBool(val) {
@@ -93,3 +100,13 @@ Object.entries(settings).map(s => {
   val = val ? s[1].parse(val) : s[1].default;
   updateSetting(s[0], val);
 });
+
+if (changedMode) {
+  elements('#modeTabs div').map(e => e.classList.remove('pulse'));
+}
+if (usedPreset) {
+  elements('#presets .controlPanel div').map(e => e.classList.remove('pulse'));
+}
+if (usedColorPreset) {
+  elements('#colorPresets div').map(e => e.classList.remove('pulse'));
+}

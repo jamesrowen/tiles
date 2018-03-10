@@ -50,9 +50,9 @@
 
       <div id="modes">
         <div id="modeTabs">
-          <div class="controlHeader" onclick="updateSetting('mode', 'spin')">spin</div><!--
-       --><div class="controlHeader" onclick="updateSetting('mode', 'pattern')">pattern</div><!--
-       --><div class="controlHeader" onclick="updateSetting('mode', 'orbit')">orbit</div>
+          <div class="controlHeader" onclick="setMode('spin')">spin</div><!--
+       --><div class="controlHeader pulse" onclick="setMode('pattern')">pattern</div><!--
+       --><div class="controlHeader pulse" onclick="setMode('orbit')">orbit</div>
         </div>
         <div class="controlPanel">
           <div class="slider left spinMode">
@@ -130,21 +130,21 @@
       <div id="presets">
         <div class="controlHeader">presets</div>
         <div class="controlPanel">
-          <div class="button spinMode" onclick="loadPreset('s1')">s1</div>
-          <div class="button spinMode" onclick="loadPreset('s2')">s2</div>
-          <div class="button spinMode" onclick="loadPreset('s3')">s3</div>
-          <div class="button spinMode" onclick="loadPreset('s4')">s4</div>
-          <div class="button patternMode" onclick="loadPreset('p1')">p1</div>
-          <div class="button patternMode" onclick="loadPreset('p2')">p2</div>
-          <div class="button patternMode" onclick="loadPreset('p3')">p3</div>
-          <div class="button patternMode" onclick="loadPreset('p4')">p4</div>
-          <div class="button patternMode" onclick="loadPreset('p5')">p5</div>
-          <div class="button orbitMode" onclick="loadPreset('o1')">o1</div>
-          <div class="button orbitMode" onclick="loadPreset('o2')">o2</div>
-          <div class="button orbitMode" onclick="loadPreset('o3')">o3</div>
-          <div class="button orbitMode" onclick="loadPreset('o4')">o4</div>
-          <div class="button orbitMode" onclick="loadPreset('o5')">o5</div>
-          <div class="button orbitMode" onclick="loadPreset('o6')">o6</div>
+          <div class="button pulse spinMode" onclick="loadPreset('s1')">s1</div>
+          <div class="button pulse spinMode" onclick="loadPreset('s2')">s2</div>
+          <div class="button pulse spinMode" onclick="loadPreset('s3')">s3</div>
+          <div class="button pulse spinMode" onclick="loadPreset('s4')">s4</div>
+          <div class="button pulse patternMode" onclick="loadPreset('p1')">p1</div>
+          <div class="button pulse patternMode" onclick="loadPreset('p2')">p2</div>
+          <div class="button pulse patternMode" onclick="loadPreset('p3')">p3</div>
+          <div class="button pulse patternMode" onclick="loadPreset('p4')">p4</div>
+          <div class="button pulse patternMode" onclick="loadPreset('p5')">p5</div>
+          <div class="button pulse orbitMode" onclick="loadPreset('o1')">o1</div>
+          <div class="button pulse orbitMode" onclick="loadPreset('o2')">o2</div>
+          <div class="button pulse orbitMode" onclick="loadPreset('o3')">o3</div>
+          <div class="button pulse orbitMode" onclick="loadPreset('o4')">o4</div>
+          <div class="button pulse orbitMode" onclick="loadPreset('o5')">o5</div>
+          <div class="button pulse orbitMode" onclick="loadPreset('o6')">o6</div>
         </div>
       </div>
 
@@ -171,12 +171,12 @@
           </div>
           <input type="color" id="bgColor" onchange="updateSetting(this.id, this.value)" />
           <div id="colorPresets">
-            <div class="button" onclick="loadPreset('c1')">1</div>
-            <div class="button" onclick="loadPreset('c2')">2</div>
-            <div class="button" onclick="loadPreset('c3')">3</div>
-            <div class="button" onclick="loadPreset('c4')">4</div>
-            <div class="button" onclick="loadPreset('c5')">5</div>
-            <div class="button" onclick="loadPreset('c6')">6</div>
+            <div class="button pulse" onclick="loadPreset('c1')">1</div>
+            <div class="button pulse" onclick="loadPreset('c2')">2</div>
+            <div class="button pulse" onclick="loadPreset('c3')">3</div>
+            <div class="button pulse" onclick="loadPreset('c4')">4</div>
+            <div class="button pulse" onclick="loadPreset('c5')">5</div>
+            <div class="button pulse" onclick="loadPreset('c6')">6</div>
           </div>
         </div>
       </div>

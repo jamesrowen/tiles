@@ -51,6 +51,14 @@ function setMouseListeners(element) {
 
 
 // general actions
+function setMode(mode) {
+  if (!changedMode) {
+    updateSetting('changedMode', true);
+    elements('#modeTabs div').map(e => e.classList.remove('pulse'));
+  }
+  updateSetting('mode', mode);
+}
+
 function setStep(val) {
   step = val;
 }
