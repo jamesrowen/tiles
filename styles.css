@@ -18,13 +18,13 @@ label {
 
 .controls {
   position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
   display: grid;
   grid-template-columns: 190px 512px 100px 250px;
-  grid-gap: 5px;
+  grid-gap: 4px;
   grid-auto-rows: auto;
   bottom: 0px;
-  left: 50px;
-  right: 50px;
   color: #333;
   padding: 2px;
   margin-bottom: 5px;
@@ -62,7 +62,7 @@ label {
 }
 #modeTabs div:last-child { margin-right: 0; }
 #modeTabs div:hover {
-  background-color: #b6b6b6;
+  background-color: #bababa;
   color: #000;
 }
 #mode[value="spin"] #modeTabs div:nth-child(1),
