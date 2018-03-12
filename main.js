@@ -1,5 +1,4 @@
 // globals
-
 var lastTime = 0, tileColors, shapeSize, step = 0, patternList = [];
 
 function setup() {
@@ -100,17 +99,17 @@ function draw() {
     shapeSize = zoom;
     if (tick != 0)
       updateSetting('orbit', orbit + tick * Math.pow(orbitSpeed / 100, 2));
-    let rows = Math.ceil(bodies / curl);
+    let rows = Math.ceil(numTiles / curl);
     translate(camX, camY);
 
-    for (let b = 0; b < bodies; b++) {
-      updateColors(b % curl, Math.floor(b / curl), curl, rows);
-      translate(zoom * (b % curl) * growth / 100,
-        zoom * Math.floor(b / curl) * growth / 100);
-      rotate(b / (bodies - 1) * orbit);
+    for (let t = 0; t < numTiles; t++) {
+      updateColors(t % curl, Math.floor(t / curl), curl, rows);
+      translate(zoom * (t % curl) * growth / 100,
+        zoom * Math.floor(t / curl) * growth / 100);
+      rotate(t / (numTiles - 1) * orbit);
       drawTile();
-      translate(-zoom * (b % curl) * growth / 100,
-        -zoom * Math.floor(b / curl) * growth / 100);
+      translate(-zoom * (t % curl) * growth / 100,
+        -zoom * Math.floor(t / curl) * growth / 100);
     }
   }
 }

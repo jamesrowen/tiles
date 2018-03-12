@@ -47,7 +47,7 @@ var settings = {
   // orbit mode
   'orbit': {default: 5.2276, parse: parseFloat, type: 'input', tween: true},
   'curl': {default: 22, parse: parseInt, type: 'slider', tween: true},
-  'bodies': {default: 270, parse: parseInt, type: 'slider', tween: true},
+  'numTiles': {default: 270, parse: parseInt, type: 'slider', tween: true},
   'zoom': {default: 63, parse: parseInt, type: 'slider', tween: true},
   'growth': {default: 100, parse: parseInt, type: 'slider', tween: true},
   'camX': {default: 22, parse: parseFloat, tween: true},
