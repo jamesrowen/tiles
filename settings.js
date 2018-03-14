@@ -9,7 +9,7 @@ var settings = {
   'playing': {default: true, parse: parseBool},
   'rewind': {default: false, parse: parseBool},
   'spinSpeed': {default: 15, parse: parseInt, type: 'slider', tween: true},
-  'patternSpeed': {default: 19, parse: parseInt, type: 'slider', tween: true},
+  'patternSpeed': {default: 12, parse: parseInt, type: 'slider', tween: true},
   'orbitSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true},
   // colors
   'color1a': {default: '#101010', parse: x => x, tween: true},
@@ -36,11 +36,11 @@ var settings = {
   'curPattern': {default: 'sine', parse: x => x},
   'loopTrans': {default: true, parse: parseBool},
   'curTransitions': {default: [
-      ['sine', 'diagonal skew', 0],
+      ["birds", "diagonal skew", .5],["sine", "diagonal skew", 0]
     ], parse: JSON.parse},
   'patTileSize': {default: 56, parse: parseInt, type: 'slider', tween: true},
   'patTileScale': {default: 1, parse: parseFloat, type: 'slider', tween: true},
-  'transLength': {default: .46, parse: parseFloat, type: 'slider', tween: true},
+  'transLength': {default: .37, parse: parseFloat, type: 'slider', tween: true},
   'shortRotations': {default: true, parse: parseBool},
   'rotX': {default: false, parse: parseBool},
   'rotY': {default: false, parse: parseBool},
