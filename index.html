@@ -33,7 +33,7 @@
             <input type="range" id="orbitSpeed" min="1" max="80" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
           <div class="input positionControl spinMode">
-            <label for="spin">rotation</label>
+            <label for="spin">position</label>
             <input type="text" id="spin" onchange="updateSetting(this.id, this.value)" />
           </div>
           <div class="input positionControl patternMode">
@@ -94,18 +94,18 @@
             <label for="patTileSize"><div>size</div><span></span></label>
             <input type="range" id="patTileSize" min="30" max="150" step="1" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="button patternMode trans" onclick="addTransition('rtl')">&lt;</div>
-          <div class="button patternMode trans" onclick="addTransition('ltr')">&gt;</div>
-          <div class="button patternMode trans" onclick="addTransition('cascade up')">^</div>
-          <div class="button patternMode trans" onclick="addTransition('cascade down')">v</div>
+          <div class="button patternMode trans" onclick="addTransition('rtl')">&lt;-</div>
+          <div class="button patternMode trans" onclick="addTransition('center-circle')">O</div>
+          <div class="button patternMode trans" onclick="addTransition('diagonal rtl')">&lt;//</div>
+          <div class="button patternMode trans" onclick="addTransition('cascade up')">/\</div>
           <div class="slider left patternMode">
             <label for="patTileScale"><div>scale</div><span></span></label>
             <input type="range" id="patTileScale" min=".7" max="2" step=".02" oninput="updateSetting(this.id, this.value)" />
           </div>
-          <div class="button patternMode trans" onclick="addTransition('diagonal rtl')">&lt;\</div>
-          <div class="button patternMode trans" onclick="addTransition('diagonal skew')">/&gt;</div>
-          <div class="button patternMode trans" onclick="addTransition('center-circle')">O</div>
-          <div class="button patternMode trans" onclick="addTransition('scroll')">//</div>
+          <div class="button patternMode trans" onclick="addTransition('ltr')">-&gt;</div>
+          <div class="button patternMode trans" onclick="addTransition('diamond')">&lt;&gt;</div>
+          <div class="button patternMode trans" onclick="addTransition('diagonal skew')">//&gt;</div>
+          <div class="button patternMode trans" onclick="addTransition('cascade down')">\/</div>
 
           <div class="slider left orbitMode">
             <label for="zoom"><div>zoom</div><span></span></label>

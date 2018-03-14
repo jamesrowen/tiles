@@ -57,8 +57,8 @@ var transitions = {
     (x, y, nx, ny) => (x / nx * ny + y) / (ny * 2),
   'center-circle':
     (x, y, nx, ny) => (Math.pow(x - nx / 2, 2) + Math.pow(y - ny / 2, 2)) / (Math.pow(nx/2, 2) + Math.pow(ny/2, 2)),
-  'scroll':
-    (x, y, nx, ny) => ((x + y * (nx + 1)) % 4) * .25
+  'diamond':
+    (x, y, nx, ny) => Math.abs((x - nx / 2) / nx) + Math.abs((y - ny / 2) / ny)
 };
 
 function getQuadrant(x, y) {

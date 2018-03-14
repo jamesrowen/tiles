@@ -11,12 +11,12 @@
 }
 .button.trans {
   border-radius: 12px;
-  background-color: #c0c0c0;
+  background-color: #ccc;
 }
 .pulse { animation: 1s infinite alternate pulse }
 @keyframes pulse {
-  0% { background-color: #c0c0c0; }
-  100% { background-color: #d4d4d4; }
+  0% { background-color: #bbb; }
+  100% { background-color: #e8e8e8; }
 }
 .button:hover {
   background-color: #e8e8e5;
