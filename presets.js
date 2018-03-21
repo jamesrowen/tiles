@@ -61,7 +61,7 @@ var presets = {
   'o3': {mode:"orbit",playing:true,rewind:true,shapeIterations:6,orbitSpeed:13,orbit:-0.17414040000207986,curl:6,numTiles:1150,zoom:60,growth:110,camX:15.711408762684869,camY:-109.01611520438132},
   'o4': {mode:"orbit",playing:true,rewind:true,shapeIterations:6,orbitSpeed:3,orbit:3.0024883100007376,curl:17,numTiles:1510,zoom:15,growth:101,camX:258.11844328981726,camY:130.69523230436613},
   'o5': {mode:"orbit",playing:true,rewind:true,shapeIterations:7,orbitSpeed:8,orbit:-1.3994882899948389,curl:48,numTiles:1110,zoom:10,growth:130,camX:1617.7737519782931,camY:756.1278401613095},
-  'o6': {mode:"orbit",playing:true,rewind:true,shapeIterations:6,orbitSpeed:40,orbit:5.22760357996852,curl:22,numTiles:270,zoom:63,growth:100,camX:22,camY:22},
+  'o6': {mode:"orbit",playing:true,rewind:true,shapeIterations:6,orbitSpeed:40,orbit:4.22760357996852,curl:22,numTiles:270,zoom:63,growth:100,camX:22,camY:22},
   'c1': {color1a:"#0a0a0a",color2a:"#ffffff",color1b:"#182538",color2b:"#fff9d9",c1mode:2,c2mode:1,c1alpha:0.82,c2alpha:0.89,bgColor:"#2e312e"},
   'c2': {color1a:"#7999bc",color2a:"#b5ffe8",color1b:"#314c90",color2b:"#fff0cb",c1mode:4,c2mode:4,c1alpha:0.84,c2alpha:0.87,bgColor:"#9eaeb2"},
   'c3': {color1a:"#4ee7e5",color2a:"#fbfc83",color1b:"#c0f3cb",color2b:"#c14447",c1mode:1,c2mode:1,c1alpha:0.8,c2alpha:0.81,bgColor:"#232523"},

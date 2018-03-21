@@ -8,6 +8,7 @@
   cursor: pointer;
   text-align: center;
   transition: background-color .1s ease 0s;
+  line-height: 18px;
 }
 .button.trans {
   border-radius: 12px;
@@ -53,6 +54,7 @@ input[type="text"]:focus {
   flex: 1 1 auto;
   text-align: center;
   padding-top: 2px;
+  line-height: 19px;
 }
 
 /* color input */
@@ -81,36 +83,16 @@ input[type="color"]::-moz-color-swatch {
 input[type=range] {
   -webkit-appearance: none;
   background: transparent;
-  margin-top: 13px;
   min-width: 30px;
+  margin-top: 4px;
 }
+
 input[type=range]::-webkit-slider-runnable-track {
+  margin-top: 9px;
   width: 100%;
   height: 6px;
   cursor: pointer;
   background: #b4b4b4;
-  border: 1px solid #7a7a7a;
-  border-radius: 2px;
-  padding: 2px;
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 1px;
-  cursor: pointer;
-  background: #b4b4b4;
-  border: 1px solid #7a7a7a;
-  border-radius: 2px;
-  padding: 2px;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-  height: 6px;
-  cursor: pointer;
-  background: #b8b8b8;
   border: 1px solid #7a7a7a;
   border-radius: 2px;
   padding: 2px;
@@ -133,6 +115,17 @@ input[type=range]:focus::-webkit-slider-thumb {
   background-color: #f7f6ea;
   border-color: #ccc;
 }
+
+input[type=range]::-moz-range-track {
+  margin-top: 5px;
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  background: #b4b4b4;
+  border: 1px solid #7a7a7a;
+  border-radius: 2px;
+  padding: 2px;
+}
 input[type=range]::-moz-range-thumb {
   height: 14px;
   width: 14px;
@@ -140,6 +133,21 @@ input[type=range]::-moz-range-thumb {
   background: #eaeaea;
   border: 1px solid #7a7a7a;
   cursor: pointer;
+  margin-top: 15px;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+  height: 6px;
+  cursor: pointer;
+  background: #b8b8b8;
+  border: 1px solid #7a7a7a;
+  border-radius: 2px;
+  padding: 2px;
 }
 input[type=range]::-ms-thumb {
   height: 15px;
@@ -159,11 +167,13 @@ input[type=range]::-ms-thumb {
   border: 1px solid #7a7a7a;
   border-radius: 2px;
   flex-basis: 90px;
+  height: 22px;
 }
 .slider label div {
   text-align: center;
   display: inline-block;
   width: 55px;
+  line-height: 23px;
 }
 .slider label span {
   height: 20px;
@@ -174,6 +184,7 @@ input[type=range]::-ms-thumb {
   display: inline-block;
   padding: 2px 6px 0px 4px;
   text-align: center;
+  line-height: 19px;
 }
 .slider input { flex: 1 1 auto; }
 

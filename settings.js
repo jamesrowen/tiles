@@ -45,7 +45,7 @@ var settings = {
   'rotX': {default: false, parse: parseBool},
   'rotY': {default: false, parse: parseBool},
   // orbit mode
-  'orbit': {default: 5.2276, parse: parseFloat, type: 'input', tween: true},
+  'orbit': {default: 3.214, parse: parseFloat, type: 'input', tween: true},
   'curl': {default: 22, parse: parseInt, type: 'slider', tween: true},
   'numTiles': {default: 270, parse: parseInt, type: 'slider', tween: true},
   'zoom': {default: 63, parse: parseInt, type: 'slider', tween: true},

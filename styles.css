@@ -85,7 +85,6 @@ label {
 #playback .slider label { flex-basis: 93px; }
 #playback .slider label div { width: 45px; }
 .positionControl { grid-column: 1 / 4; }
-#playback .button { padding-bottom: 3px; }
 
 #modes .controlPanel { grid-template-columns: repeat(8, 1fr); }
 #modes .slider.left { grid-column: 1 / 5; }
