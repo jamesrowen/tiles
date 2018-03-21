@@ -9,6 +9,7 @@
   text-align: center;
   transition: background-color .1s ease 0s;
   line-height: 18px;
+  height: 18px;
 }
 .button.trans {
   border-radius: 12px;
@@ -34,7 +35,7 @@ input[type="text"] {
   width: 50px;
   -webkit-appearance: none;
   background-color: #c1c1c1;
-  padding: 2px 4px;
+  padding-left: 4px;
   border: none;
   border-left: 1px solid #b4b4b4;
   transition: background-color .1s ease 0s;
@@ -46,6 +47,7 @@ input[type="text"]:focus {
 }
 .input {
   border: 1px solid #7a7a7a;
+  background-color: #c1c1c1;
   border-radius: 2px;
   display: flex;
   flex-flow: row;
@@ -85,6 +87,7 @@ input[type=range] {
   background: transparent;
   min-width: 30px;
   margin-top: 4px;
+  height: 18px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -114,7 +117,7 @@ input[type=range]::-webkit-slider-thumb:active {
 }
 input[type=range]:focus::-webkit-slider-thumb {
   background-color: #f7f6ea;
-  border-color: #ccc;
+  border-color: #aaa;
 }
 
 input[type=range]::-moz-range-track {
@@ -135,6 +138,14 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: 15px;
+}
+input[type=range]:hover::-moz-range-thumb,
+input[type=range]::-moz-range-thumb:active {
+  background-color: #f7f6ea;
+}
+input[type=range]:focus::-moz-range-thumb {
+  background-color: #f7f6ea;
+  border-color: #aaa;
 }
 input[type=range]::-moz-focus-outer {
   border: 0;
