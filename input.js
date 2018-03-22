@@ -5,6 +5,9 @@ window.addEventListener('keydown', e => {
       el('mode').classList.toggle('closed');
       break;
     case 32: // space
+      if (msgIndex == 1) {
+        nextHelpMsg(2000);
+      }
       updateSetting('playing', !playing);
       e.preventDefault();
       break;
@@ -15,6 +18,9 @@ window.addEventListener('keydown', e => {
       setStep(1);
       break;
     case 82: // R
+      if (msgIndex == 2) {
+        nextHelpMsg(2000);
+      }
       if (!e.ctrlKey && !e.metaKey)
         updateSetting('rewind', !rewind);
       break;
@@ -52,10 +58,9 @@ function setMouseListeners(element) {
 
 // general actions
 function setMode(mode) {
-  if (!changedMode) {
-    updateSetting('changedMode', true);
-    elements('#modeTabs div').map(e => e.classList.remove('pulse'));
-  }
+  //
+  // update help message
+  //
   updateSetting('mode', mode);
 }
 
@@ -69,6 +74,13 @@ function resetPos() {
     updateSetting('spinX', 0);
     updateSetting('spinY', 0);
   }
+}
+
+function useModeSlider(id, value) {
+  if (msgIndex == 0) {
+    nextHelpMsg(3000);
+  }
+  updateSetting(id, value);
 }
 
 

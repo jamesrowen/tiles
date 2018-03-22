@@ -52,10 +52,9 @@ var settings = {
   'growth': {default: 100, parse: parseInt, type: 'slider', tween: true},
   'camX': {default: 22, parse: parseFloat, tween: true},
   'camY': {default: 22, parse: parseFloat, tween: true},
-  // manage glowing buttons
-  'changedMode': {default: false, parse: parseBool},
-  'usedPreset': {default: false, parse: parseBool},
-  'usedColorPreset': {default: false, parse: parseBool}
+  // help text
+  'firstTime': {default: true, parse: parseBool},
+  'msgIndex': {default: -1, parse: parseInt}
 };
 
 function parseBool(val) {
@@ -94,6 +93,37 @@ function updateSetting(name, value) {
   }
 }
 
+function showHelpMsg(msg) {
+  switch(msg) {
+    case 0:
+      el('modeHelp').classList.add('open');
+      elements('#modes .slider').map(e => e.classList.add('highlight'));
+      break;
+    case 1:
+      el('playbackHelp').classList.add('open');
+      break;
+    case 2:
+      el('playbackHelp').querySelector('.bubbleText').textContent = 'Press R to toggle rewind';
+      el('playbackHelp').classList.add('open');
+      break;
+  }
+}
+
+function nextHelpMsg(delay) {
+  switch(msgIndex) {
+    case 0:
+      el('modeHelp').classList.remove('open');
+      elements('#modes .slider').map(e => e.classList.remove('highlight'));
+      break;
+    case 1:
+    case 2:
+      el('playbackHelp').classList.remove('open');
+      break;
+  }
+  updateSetting('msgIndex', msgIndex + 1);
+  window.setTimeout(() => showHelpMsg(msgIndex), delay);
+}
+
 // load available settings from storage
 Object.entries(settings).map(s => {
   let val = window.localStorage.getItem(s[0]);
@@ -101,12 +131,11 @@ Object.entries(settings).map(s => {
   updateSetting(s[0], val);
 });
 
-if (changedMode) {
-  elements('#modeTabs div').map(e => e.classList.remove('pulse'));
-}
-if (usedPreset) {
-  elements('#presets .controlPanel div').map(e => e.classList.remove('pulse'));
-}
-if (usedColorPreset) {
-  elements('#colorPresets div').map(e => e.classList.remove('pulse'));
+if (firstTime) {
+  updateSetting('firstTime', false);
+  updateSetting('msgIndex', 0);
+  window.setTimeout(() => el('mode').classList.remove('closed'), 4000);
+  window.setTimeout(() => showHelpMsg(0), 7000);
+} else {
+  el('mode').classList.remove('closed');
 }

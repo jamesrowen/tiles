@@ -15,7 +15,6 @@
   border-radius: 12px;
   background-color: #ccc;
 }
-.pulse { border-color: #20b6ff; }
 .button:hover {
   background-color: #e8e8e5;
   color: #000;
@@ -106,6 +105,7 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: -15px;
+  transition: border-color .2s ease 0s;
 }
 input[type=range]:hover::-webkit-slider-thumb,
 input[type=range]::-webkit-slider-thumb:active {
@@ -114,6 +114,9 @@ input[type=range]::-webkit-slider-thumb:active {
 input[type=range]:focus::-webkit-slider-thumb {
   background-color: #f7f6ea;
   border-color: #aaa;
+}
+.highlight input[type=range]::-webkit-slider-thumb {
+  border-color: #3bbfff;
 }
 
 input[type=range]::-moz-range-track {

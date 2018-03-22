@@ -14,14 +14,9 @@ function exportPreset(type) {
 }
 
 function loadPreset(name) {
-  if (name[0] == 'c' && !usedColorPreset) {
-    updateSetting('usedColorPreset', true);
-    elements('#colorPresets div').map(e => e.classList.remove('pulse'));
-  }
-  if (name[0] != 'c' && !usedPreset) {
-    updateSetting('usedPreset', true);
-    elements('#presets .controlPanel div').map(e => e.classList.remove('pulse'));
-  }
+  //
+  // update help text if necessary
+  //
 
   Object.entries(presets[name]).map(s => {
     if (this[s[0]] != s[1]) {
