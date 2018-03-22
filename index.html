@@ -16,6 +16,10 @@
 
     <div id="mode" class="controls">
       <div id="playback">
+        <div id="playbackHelp" class="bubble">
+          <div class="bubbleInner">Press Space to pause</div>
+          <div class="bubbleArrow"></div>
+        </div>
         <div class="controlHeader">playback</div>
         <div class="controlPanel">
           <div id="playing" class="button" onclick="updateSetting(this.id, !this.value)">play</div>
@@ -49,6 +53,10 @@
       </div>
 
       <div id="modes">
+        <div id="modeHelp" class="bubble">
+          <div class="bubbleInner">Click here to change mode</div>
+          <div class="bubbleArrow"></div>
+        </div>
         <div id="modeTabs">
           <div class="controlHeader" onclick="setMode('spin')">spin</div><!--
        --><div class="controlHeader pulse" onclick="setMode('pattern')">pattern</div><!--
@@ -128,6 +136,10 @@
       </div>
 
       <div id="presets">
+        <div id="presetHelp" class="bubble">
+          <div class="bubbleInner">Try some presets</div>
+          <div class="bubbleArrow"></div>
+        </div>
         <div class="controlHeader">presets</div>
         <div class="controlPanel">
           <div class="button pulse spinMode" onclick="loadPreset('s1')">s1</div>
@@ -149,6 +161,10 @@
       </div>
 
       <div id="color">
+        <div id="colorHelp" class="bubble">
+          <div class="bubbleInner">And the color presets</div>
+          <div class="bubbleArrow"></div>
+        </div>
         <div class="controlHeader">color</div>
         <div class="controlPanel">
           <div>

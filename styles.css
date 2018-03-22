@@ -34,6 +34,7 @@ label {
   bottom: -180px;
 }
 .controls > div {
+  position: relative;
   display: flex;
   flex-flow: column;
   padding: 2px;
@@ -105,7 +106,31 @@ label {
 
 #presets .controlPanel { grid-template-columns: 1fr 1fr; }
 
-/* control display of mode-specific ui elements */
+.bubble {
+  position: absolute;
+  top: -45px;
+}
+.bubbleInner {
+  border-radius: 20px;
+  padding: 8px;
+  background-color: #daf3ff;
+  border: 2px solid #88d8ff;
+}
+.bubbleArrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 44%;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #79d3ff;
+}
+#playbackHelp { left: 6%; }
+#modeHelp { left: 31%; }
+#presetHelp { top: -63px; }
+#colorHelp { left: 18%; }
+
+/* manage visibility of mode-specific ui elements */
 .spinMode,
 .patternMode,
 .orbitMode {
