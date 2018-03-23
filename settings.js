@@ -43,7 +43,7 @@ var settings = {
   'rotX': {default: false, parse: parseBool},
   'rotY': {default: false, parse: parseBool},
   // orbit mode
-  'orbit': {default: 3.214, parse: parseFloat, type: 'input', tween: true},
+  'orbit': {default: 4.19, parse: parseFloat, type: 'input', tween: true},
   'curl': {default: 22, parse: parseInt, type: 'slider', tween: true},
   'numTiles': {default: 270, parse: parseInt, type: 'slider', tween: true},
   'zoom': {default: 63, parse: parseInt, type: 'slider', tween: true},
@@ -99,7 +99,7 @@ let guideSteps = [
   ['-115px', 'Try the presets', '#presets .button'],
   [  '78px', 'And the color presets', '#colorPresets .button'],
   ['-469px', 'Click here to change mode', '#modeTabs div:nth-child(2)'],
-  ['-315px', 'Click the transitions', '.trans'],
+  ['-315px', 'Click some transitions', '.trans'],
   ['-444px', 'Click here to keep them looping', '#loopTrans'],
   ['-140px', 'Each mode has presets', '#presets .button'],
   ['-450px', 'Press Esc or click the canvas to hide the controls', 'none']

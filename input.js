@@ -6,7 +6,7 @@ window.addEventListener('keydown', e => {
       break;
     case 32: // space
       if (guidePos == 1) {
-        nextGuideStep(2500);
+        nextGuideStep(2000);
       }
       updateSetting('playing', !playing);
       e.preventDefault();
@@ -66,12 +66,13 @@ function setMode(mode) {
   if (guidePos == 5 && mode == 'pattern')
     nextGuideStep(1500);
   if (mode == 'orbit' && orbitHelpPos == -1) {
+    updateSetting('rewind', true);
     window.setTimeout(() => {
       if (this.mode == 'orbit') {
         updateSetting('orbitHelpPos', 0);
         el('orbitBubble').classList.add('open');
       }
-    }, 8000);
+    }, 10000);
   }
 
   updateSetting('mode', mode);
@@ -105,7 +106,7 @@ function toggleControls() {
 
 function clickPreset(name) {
   if (guidePos == 3 || guidePos == 8)
-    nextGuideStep(3000);
+    nextGuideStep(3500);
   loadPreset(name);
 }
 
