@@ -2,11 +2,11 @@
 window.addEventListener('keydown', e => {
   switch(e.keyCode) {
     case 27: // esc
-      el('mode').classList.toggle('closed');
+      toggleControls();
       break;
     case 32: // space
-      if (msgIndex == 1) {
-        nextHelpMsg(2000);
+      if (guidePos == 1) {
+        nextGuideStep(2500);
       }
       updateSetting('playing', !playing);
       e.preventDefault();
@@ -18,8 +18,8 @@ window.addEventListener('keydown', e => {
       setStep(1);
       break;
     case 82: // R
-      if (msgIndex == 2) {
-        nextHelpMsg(2000);
+      if (guidePos == 2) {
+        nextGuideStep(3000);
       }
       if (!e.ctrlKey && !e.metaKey)
         updateSetting('rewind', !rewind);
@@ -46,21 +46,34 @@ function setMouseListeners(element) {
     if (mode == 'orbit') {
       updateSetting('camX', camX - e.deltaX);
       updateSetting('camY', camY - e.deltaY);
+
+      if (orbitHelpPos == 0) {
+        updateSetting('orbitHelpPos', 1);
+        el('orbitBubble').classList.remove('open');
+      }
     }
     e.preventDefault();
   });
 
   element.addEventListener('click', e => {
-    el('mode').classList.toggle('closed');
+    toggleControls();
   });
 }
 
 
 // general actions
 function setMode(mode) {
-  //
-  // update help message
-  //
+  if (guidePos == 5 && mode == 'pattern')
+    nextGuideStep(1500);
+  if (mode == 'orbit' && orbitHelpPos == -1) {
+    window.setTimeout(() => {
+      if (this.mode == 'orbit') {
+        updateSetting('orbitHelpPos', 0);
+        el('orbitBubble').classList.add('open');
+      }
+    }, 8000);
+  }
+
   updateSetting('mode', mode);
 }
 
@@ -77,12 +90,30 @@ function resetPos() {
 }
 
 function useModeSlider(id, value) {
-  if (msgIndex == 0) {
-    nextHelpMsg(3000);
+  if (guidePos == 0) {
+    nextGuideStep(3000);
   }
   updateSetting(id, value);
 }
 
+function toggleControls() {
+  if (guidePos == 9) {
+    nextGuideStep(4000);
+  }
+  el('mode').classList.toggle('closed');
+}
+
+function clickPreset(name) {
+  if (guidePos == 3 || guidePos == 8)
+    nextGuideStep(3000);
+  loadPreset(name);
+}
+
+function clickColorPreset(name) {
+  if (guidePos == 4)
+    nextGuideStep(4000);
+  loadPreset(name);
+}
 
 // spin mode actions
 function clearSpinX() {
@@ -97,7 +128,17 @@ function clearSpinY() {
 
 
 // pattern mode actions
+function toggleLoop() {
+  if (guidePos == 7)
+    nextGuideStep(4000);
+
+  updateSetting('loopTrans', !loopTrans);
+}
+
 function addTransition(transition, time) {
+  if (guidePos == 6)
+    nextGuideStep(2000);
+
   if (patternList.length == 0) {
     patternList = shuffle(Object.keys(patterns));
   }

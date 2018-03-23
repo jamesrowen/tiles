@@ -7,7 +7,7 @@
   border-radius: 3px;
   cursor: pointer;
   text-align: center;
-  transition: background-color .1s ease 0s;
+  transition: background-color .1s ease 0s, border-color .2s ease 0s;
   line-height: 18px;
   height: 18px;
 }
@@ -105,7 +105,7 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: -15px;
-  transition: border-color .2s ease 0s;
+  transition: border-color .2s ease 0s, background-color .2s ease 0s;
 }
 input[type=range]:hover::-webkit-slider-thumb,
 input[type=range]::-webkit-slider-thumb:active {
@@ -114,9 +114,6 @@ input[type=range]::-webkit-slider-thumb:active {
 input[type=range]:focus::-webkit-slider-thumb {
   background-color: #f7f6ea;
   border-color: #aaa;
-}
-.highlight input[type=range]::-webkit-slider-thumb {
-  border-color: #3bbfff;
 }
 
 input[type=range]::-moz-range-track {
@@ -137,6 +134,7 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: 15px;
+  transition: border-color .2s ease 0s, background-color .2s ease 0s;
 }
 input[type=range]:hover::-moz-range-thumb,
 input[type=range]::-moz-range-thumb:active {
@@ -171,6 +169,7 @@ input[type=range]::-ms-thumb {
   border: 1px solid #7a7a7a;
   cursor: pointer;
   margin-top: -15px;
+  transition: border-color .2s ease 0s, background-color .2s ease 0s;
 }
 .slider {
   display: flex;
@@ -204,3 +203,9 @@ input[type=range]::-ms-thumb {
 .slider.fourdig label span { width: 33px; }
 .slider.fourdig label div { width: 46px;}
 .slider.twodig label span { padding: 2px 3px 0px 0px; }
+
+
+.highlight.button { border-color: #6bceff; background-color: #e7f8ff; }
+.highlight input[type=range]::-webkit-slider-thumb { border-color: #6bceff; background-color: #e7f8ff; }
+.highlight input[type=range]::-moz-range-thumb { border-color: #6bceff; background-color: #e7f8ff; }
+.highlight input[type=range]::-ms-thumb { border-color: #6bceff; background-color: #e7f8ff; }

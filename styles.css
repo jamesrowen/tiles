@@ -63,6 +63,9 @@ label {
   background-color: #bababa;
   color: #000;
 }
+#modeTabs div.highlight {
+  background-color: #cbeeff;
+}
 #mode[value="spin"] #modeTabs div:nth-child(1),
 #mode[value="pattern"] #modeTabs div:nth-child(2),
 #mode[value="orbit"] #modeTabs div:nth-child(3) {
@@ -112,25 +115,26 @@ label {
   opacity: 0;
   transition: opacity .7s ease 0s;
 }
+#orbitBubble {
+  top: -120px;
+  right: 0;
+}
 .bubble.open { opacity: 1; }
-.bubbleText {
+.bubble div:first-child {
   border-radius: 20px;
   padding: 8px 10px;
-  background-color: #daf3ff;
+  background-color: #e7f8ff;
   border: 2px solid #88d8ff;
 }
-.bubbleArrow {
+#bubbleArrow {
   position: absolute;
   width: 0;
   height: 0;
   left: 44%;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid #79d3ff;
+  border-top: 8px solid #88d8ff;
 }
-#modeHelp { left: 31%; }
-#presetHelp { top: -63px; }
-#colorHelp { left: 18%; }
 
 /* manage visibility of mode-specific ui elements */
 .spinMode,
