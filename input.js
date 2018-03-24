@@ -1,3 +1,5 @@
+let lastDragX, lastDragY, dragged = false;
+
 // keyboard handler
 window.addEventListener('keydown', e => {
   switch(e.keyCode) {
@@ -44,20 +46,30 @@ function setMouseListeners(element) {
       updateSetting('spinX', spinX - e.deltaY / 500);
     }
     if (mode == 'orbit') {
-      updateSetting('camX', camX - e.deltaX);
-      updateSetting('camY', camY - e.deltaY);
-
-      if (orbitHelpPos == 0) {
-        updateSetting('orbitHelpPos', 1);
-        el('orbitBubble').classList.remove('open');
-      }
+      panCam(e.deltaX, e.deltaY);
     }
     e.preventDefault();
   });
 
-  element.addEventListener('click', e => {
-    toggleControls();
-  });
+  element.onmousedown = e => {
+    dragged = false;
+    if (mode == 'orbit') {
+      lastDragX = e.clientX;
+      lastDragY = e.clientY;
+      document.onmousemove = e => {
+        dragged = true;
+        panCam(lastDragX - e.clientX, lastDragY - e.clientY);
+        lastDragX = e.clientX;
+        lastDragY = e.clientY;
+      };
+      document.onmouseup = e => document.onmousemove = null;
+    }
+  };
+
+  element.onmouseup = e => {
+    if (!dragged)
+      toggleControls();
+  };
 }
 
 
@@ -175,4 +187,14 @@ function updateZoom(val) {
 function resetCamPos() {
   updateSetting('camX', 0);
   updateSetting('camY', 0);
+}
+
+function panCam(dx, dy) {
+  updateSetting('camX', camX - dx);
+  updateSetting('camY', camY - dy);
+
+  if (orbitHelpPos == 0) {
+    updateSetting('orbitHelpPos', 1);
+    el('orbitBubble').classList.remove('open');
+  }
 }
