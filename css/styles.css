@@ -63,13 +63,13 @@ label {
   background-color: #bababa;
   color: #000;
 }
-#modeTabs div.highlight {
-  background-color: #cbeeff;
-}
 #mode[value="spin"] #modeTabs div:nth-child(1),
 #mode[value="pattern"] #modeTabs div:nth-child(2),
 #mode[value="orbit"] #modeTabs div:nth-child(3) {
   background-color: #e6e4d0;
+}
+#modeTabs div.highlight {
+  background-color: #cbeeff;
 }
 
 
