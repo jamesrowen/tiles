@@ -18,8 +18,8 @@ var settings = {
   'color2b': {default: '#f0f0f0', parse: x => x, tween: true},
   'c1mode': {default: 0, parse: parseInt},
   'c2mode': {default: 0, parse: parseInt},
-  'c1alpha': {default: 1, parse: parseFloat, type: 'slider', tween: true},
-  'c2alpha': {default: 1, parse: parseFloat, type: 'slider', tween: true},
+  'c1alpha': {default: .97, parse: parseFloat, type: 'slider', tween: true},
+  'c2alpha': {default: .97, parse: parseFloat, type: 'slider', tween: true},
   'bgColor': {default: '#5b5b5b', parse: x => x, tween: true},
   // spin mode
   'spin': {default: 0, parse: parseFloat, type: 'input', tween: true},
@@ -27,17 +27,17 @@ var settings = {
   'spinYSpeed': {default: 0, parse: parseInt, type: 'slider', tween: true},
   'spinX': {default: 0, parse: parseFloat, tween: true},
   'spinXSpeed': {default: 0, parse: parseInt, type: 'slider', tween: true},
-  'tileSize': {default: 63, parse: parseInt, type: 'slider', tween: true},
+  'tileSize': {default: 72, parse: parseInt, type: 'slider', tween: true},
   'tileScale': {default: .96, parse: parseFloat, type: 'slider', tween: true},
   'margin': {default: 32, parse: parseInt, type: 'slider', tween: true},
   'shapeIterations': {default: 8, parse: parseInt, type: 'slider', tween: true},
   // patternMode
   'pattern': {default: 0, parse: parseFloat, type: 'input', tween: true},
-  'curPattern': {default: 'herringbone', parse: x => x},
+  'curPattern': {default: 'v-zags', parse: x => x},
   'loopTrans': {default: false, parse: parseBool},
   'curTransitions': {default: [], parse: JSON.parse},
   'patTileSize': {default: 56, parse: parseInt, type: 'slider', tween: true},
-  'patTileScale': {default: 1, parse: parseFloat, type: 'slider', tween: true},
+  'patTileScale': {default: .97, parse: parseFloat, type: 'slider', tween: true},
   'transLength': {default: .3, parse: parseFloat, type: 'slider', tween: true},
   'shortRotations': {default: false, parse: parseBool},
   'rotX': {default: false, parse: parseBool},
@@ -111,18 +111,20 @@ function nextGuideStep(delay) {
   window.setTimeout(setGuide, delay);
 }
 function setGuide() {
-  let bubble = el('bubble');
-  bubble.style.left = guideSteps[guidePos][0];
-  el('bubbleText').textContent = guideSteps[guidePos][1];
-  bubble.classList.add('open');
+  if (guidePos < 10) {
+    let bubble = el('bubble');
+    bubble.style.left = guideSteps[guidePos][0];
+    el('bubbleText').textContent = guideSteps[guidePos][1];
+    bubble.classList.add('open');
 
-  elements(guideSteps[guidePos][2]).map(e => e.classList.add('highlight'));
-  if (guidePos == 2)
-    updateSetting('playing', true);
-  if (guidePos == 6)
-    updateSetting('rewind', false);
-  if (guidePos == 9)
-    el('bubbleArrow').style.display = 'none';
+    elements(guideSteps[guidePos][2]).map(e => e.classList.add('highlight'));
+    if (guidePos == 2)
+      updateSetting('playing', true);
+    if (guidePos == 6)
+      updateSetting('rewind', false);
+    if (guidePos == 9)
+      el('bubbleArrow').style.display = 'none';
+  }
 }
 
 // load available settings from storage

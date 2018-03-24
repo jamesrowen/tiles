@@ -75,8 +75,11 @@ function setMouseListeners(element) {
 
 // general actions
 function setMode(mode) {
-  if (guidePos == 5 && mode == 'pattern')
-    nextGuideStep(1500);
+  if (mode == 'pattern') {
+    if (guidePos == 5)
+      nextGuideStep(1500);
+    updateSetting('playing', true);
+  }
   if (mode == 'orbit' && orbitHelpPos == -1) {
     updateSetting('rewind', true);
     window.setTimeout(() => {
