@@ -77,7 +77,7 @@ label {
   background-color: #999;
   border-radius: 1px;
   padding: 5px;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   font-size: .9em;
   display: grid;
   grid-gap: 5px;
@@ -121,10 +121,10 @@ label {
 }
 .bubble.open { opacity: 1; }
 .bubble div:first-child {
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 8px 10px;
-  background-color: #e7f8ff;
-  border: 2px solid #88d8ff;
+  background-color: #cedee4;
+  border: 2px solid #74b8da;
 }
 #bubbleArrow {
   position: absolute;
@@ -133,7 +133,7 @@ label {
   left: 44%;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid #88d8ff;
+  border-top: 8px solid #74b8da;
 }
 
 /* manage visibility of mode-specific ui elements */

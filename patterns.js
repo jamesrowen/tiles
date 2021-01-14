@@ -38,9 +38,6 @@ var patterns = {
   'herringbone':
     (x, y) => (x % 2) + (y % 2 == 0 ? 3 : 1)
 };
-if (!patterns[curPattern]) {
-  updateSetting('curPattern', Object.keys(patterns)[0]);
-}
 
 var transitions = {
   'ltr':

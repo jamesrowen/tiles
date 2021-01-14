@@ -6,9 +6,9 @@ function elements(selector) {
 var settings = {
   'mode': {default: 'spin', parse: x => x},
   // playback
-  'playing': {default: true, parse: parseBool},
+  'playing': {default: false, parse: parseBool},
   'rewind': {default: false, parse: parseBool},
-  'spinSpeed': {default: 15, parse: parseInt, type: 'slider', tween: true},
+  'spinSpeed': {default: 26, parse: parseInt, type: 'slider', tween: true},
   'patternSpeed': {default: 30, parse: parseInt, type: 'slider', tween: true},
   'orbitSpeed': {default: 40, parse: parseInt, type: 'slider', tween: true},
   // colors
@@ -20,14 +20,14 @@ var settings = {
   'c2mode': {default: 0, parse: parseInt},
   'c1alpha': {default: .97, parse: parseFloat, type: 'slider', tween: true},
   'c2alpha': {default: .97, parse: parseFloat, type: 'slider', tween: true},
-  'bgColor': {default: '#5b5b5b', parse: x => x, tween: true},
+  'bgColor': {default: '#7c7b78', parse: x => x, tween: true},
   // spin mode
   'spin': {default: 0, parse: parseFloat, type: 'input', tween: true},
   'spinY': {default: 0, parse: parseFloat, tween: true},
   'spinYSpeed': {default: 0, parse: parseInt, type: 'slider', tween: true},
   'spinX': {default: 0, parse: parseFloat, tween: true},
   'spinXSpeed': {default: 0, parse: parseInt, type: 'slider', tween: true},
-  'tileSize': {default: 72, parse: parseInt, type: 'slider', tween: true},
+  'tileSize': {default: 62, parse: parseInt, type: 'slider', tween: true},
   'tileScale': {default: .96, parse: parseFloat, type: 'slider', tween: true},
   'margin': {default: 32, parse: parseInt, type: 'slider', tween: true},
   'shapeIterations': {default: 8, parse: parseInt, type: 'slider', tween: true},
@@ -93,15 +93,15 @@ function updateSetting(name, value) {
 }
 
 let guideSteps = [
-  ['-450px', 'Play with some sliders', '#modes .slider'],
+  ['-450px', 'Welcome! Try moving some sliders', '#modes .slider'],
   ['-836px', 'Press Space to pause', 'none'],
   ['-746px', 'Press R to rewind', 'none'],
-  ['-115px', 'Try the presets', '#presets .button'],
-  [  '78px', 'And the color presets', '#colorPresets .button'],
+  ['-115px', 'Try the presets!', '#presets .button'],
+  [  '78px', 'Color presets are here', '#colorPresets .button'],
   ['-469px', 'Click here to change mode', '#modeTabs div:nth-child(2)'],
   ['-315px', 'Click some transitions', '.trans'],
   ['-444px', 'Click here to keep them looping', '#loopTrans'],
-  ['-140px', 'Each mode has presets', '#presets .button'],
+  ['-140px', 'Try the presets in each mode!', '#presets .button'],
   ['-450px', 'Press Esc or click the canvas to hide the controls', 'none']
 ];
 function nextGuideStep(delay) {
@@ -137,9 +137,16 @@ Object.entries(settings).map(s => {
 // load guide
 if (guidePos == -1) {
   updateSetting('guidePos', 0);
-  window.setTimeout(() => el('mode').classList.remove('closed'), 4000);
-  window.setTimeout(setGuide, 6000);
+  window.setTimeout(() => el('mode').classList.remove('closed'), 4500);
+  window.setTimeout(setGuide, 6500);
 } else {
   el('mode').classList.remove('closed');
   window.setTimeout(setGuide, 1000);
+}
+// delay start of animation on first load
+if (firstTime) {
+  window.setTimeout(() => {
+    updateSetting('playing', true);
+    updateSetting('firstTime', false);
+  }, 1500);
 }
