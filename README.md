@@ -1,11 +1,12 @@
 # tiles
 ![image](https://user-images.githubusercontent.com/1694056/37859969-a6bd7d5e-2ed9-11e8-9cfb-17f2c9879319.png)
 
-- demo: http://jamesrowen.me/tiles
+- demo: https://james.js.org/tiles/
+- writeup/more details: https://james.js.org/tiles
 
 - spinning tile visualization
 - 3 different modes, many parameters to control, lots of possibilities
-- made with [p5.js](http://p5js.org)
+- made with [p5.js](https://p5js.org)
 
 ![image](https://user-images.githubusercontent.com/1694056/80071776-0d6a9280-84fa-11ea-836e-c2ed6ad47c2a.png)
 
