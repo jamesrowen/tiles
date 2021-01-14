@@ -7,7 +7,7 @@
 - 3 different modes, many parameters to control, lots of possibilities
 - made with [p5.js](https://p5js.org)
 
-![image](https://user-images.githubusercontent.com/1694056/80071776-0d6a9280-84fa-11ea-836e-c2ed6ad47c2a.png)
+# gallery
 
 ![image](https://user-images.githubusercontent.com/1694056/80071653-da280380-84f9-11ea-95c1-72cae0d92b52.png)
 
@@ -22,3 +22,5 @@
 ![image](https://user-images.githubusercontent.com/1694056/37859980-d81bd4cc-2ed9-11e8-8c35-195bfbe751ef.png)
 
 ![image](https://user-images.githubusercontent.com/1694056/37860099-f1d50e2c-2edb-11e8-9d30-2e9461797fee.png)
+
+![image](https://user-images.githubusercontent.com/1694056/80071776-0d6a9280-84fa-11ea-836e-c2ed6ad47c2a.png)
