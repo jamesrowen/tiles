@@ -1,10 +1,9 @@
 # tiles
 ![image](https://user-images.githubusercontent.com/1694056/37859969-a6bd7d5e-2ed9-11e8-9cfb-17f2c9879319.png)
 
-## [live demo](https://james.js.org/tiles/)
-## [writeup with more details](https://james.js.org/tiles)
-
-- spinning tile visualization
+- [live demo](https://james.js.org/tiles/)
+- [writeup with background and further info](https://james.js.org/tiles)
+- a spinning tile visualization
 - 3 different modes, many parameters to control, lots of possibilities
 - made with [p5.js](https://p5js.org)
 
